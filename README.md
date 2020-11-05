@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+### FARMSとは？
+FARMS（ファームス）は1人〜15人前後の小規模チームを想定した営業支援ツールです。
+チームメンバーそれぞれが日々の顧客とのやりとりを記録していくことで、
+その情報をチーム全体で共有することができます。<br>
+みんなで連携しながら、どんどん顧客発掘を行い、案件獲得に繋げていきましょう！
 
-Things you may want to cover:
+## 開発環境
+・Ruby 2.6.6, Rails 6.0.3.2<br>
+・AWS/本番環境（EC2,IAM, S3）<br>
+・Amazon Linux<br>
+・MySQL<br>
+・nginx,unicorn<br>
+・VSCode, Vim<br>
 
-* Ruby version
+## 主な使用技術
+・capistrano（デプロイ自動化）<br>
+・RSpec（テストフレームワーク）<br>
+・HAML（テンプレートエンジン）<br>
+・SASS（BEM・グリッドデザイン）<br>
+・Vue.js<br>
+・AJAX<br>
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 主な機能
+・案件登録機能<br>
+・Googleカレンダー連携<br>
+・案件検索機能<br>
+・プロジェクト登録機能（管理者のみ）<br>
+・プロジェクト別アサインメンバー設定機能<br>
+・カテゴリ登録機能<br>
+・案件進捗表示機能（チーム別・個人別）<br>
+・ユーザー登録機能（管理者のみ）<br>
+・フィードバック（コメント）入力機能<br>
+・CSV入出力機能（管理者のみ）<br>
