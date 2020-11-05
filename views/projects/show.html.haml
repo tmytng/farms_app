@@ -1,0 +1,37 @@
+.contents
+  = render "layouts/header"
+  .main
+    = render "layouts/pj-category"
+    .mission-field
+      .mission-items
+        .mission-items__msg
+          .msg-box
+            %h4 コメント一覧
+            - if @messages
+              - @messages.each do |m|
+                %ul.msg-list
+                  %li.meg-lists
+                    = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                  %li.meg-lists
+                    = m.user.name
+                  %li.meg-lists
+                    = m.content
+          - if current_user
+            = form_with model: [@project, @message], local: true do |f|
+              .Form__contents
+                = f.text_field :content, placeholder: 'type a message'
+                = f.submit 'Send', class: 'Form__submit'
+          - else
+            投稿はログインユーザーのみです。
+        .mission-items__item
+          %h4 稼働実績
+          = column_chart User.pluck(:name)
+        .mission-items__item
+          %h4 アクション履歴
+          %br
+          17:10 〇〇さんが問い合わせ番号△△をチェックしました。
+          %br
+          16:59 〇〇さんが問い合わせ番号△△を更新しました。
+          %br
+          16:30 〇〇さんが問い合わせ番号△△を登録しました。
+          %br

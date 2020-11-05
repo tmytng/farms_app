@@ -1,0 +1,58 @@
+
+.post-main {
+  // .post-mainのプロパティはpost-section.scssに記載
+  h2.sub {
+    font-size: 16px;
+    margin-top:8px;
+  }
+  h3.sub {
+    font-size: 12px;
+    margin-top:16px;
+    color: gray;
+  }
+  span.require {
+    color: red;
+    font-size: 10px;
+  }
+  .form-field {
+    display: grid;
+    grid-gap: 24px;
+    grid-auto-rows: 7fr 1fr;
+    font-size: 12px;
+    grid-template-columns: 3fr 3fr 7fr 3fr;
+    .company-info {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      border-radius: 8px;
+    }
+    .status-info {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+      border-radius: 8px;
+    }
+    .contact-info {
+      grid-row: 1 / 2;
+      grid-column: 3 / 4;
+      border-radius: 8px;
+      .form-text-area {
+        height: 432px;
+      }
+    }
+    .log-info {
+      grid-row: 1 / 2;
+      grid-column: 4 / 5;
+      border-radius: 8px;
+      font-size: 8px;
+      color: gray;
+    }
+    .post-footer {
+      grid-row: 2 / 3;
+      grid-column: 1 / 5;
+      display: flex;
+      justify-content: center;
+      .backbtn {
+        margin-right: 8px;
+      }
+    }
+  }
+}

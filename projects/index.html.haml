@@ -1,0 +1,18 @@
+.index-contents
+  .index-header
+    .index-header__title
+      FARMS
+  .index-main
+    .index-box
+      .index-box__img
+        = image_tag current_user.image.url
+      .index-box__msg
+        ユーザー名：
+        #{current_user.name}
+    .assign_project
+      .assign_project__msg
+        アサインするプロジェクトを選んでください！
+      .assign_project__list
+        - current_user.projects.each do |project|
+          .assign_project__name
+            = link_to "#{project.name}", project_path(project)
