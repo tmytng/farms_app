@@ -18,19 +18,20 @@
       = link_to "#{project.name}", project_path(project)
 
 
--# = if user_signed_in? && current_user.id
+- if user_signed_in? && current_user.id
+  = link_to "ユーザー情報を編集する", edit_user_path(@user)
 
--# %p= link_to "トップページへ", posts_path
--# = link_to "ユーザー情報を編集する", edit_user_path(@user)
 -# %p= link_to "アサインプロジェクト編集", edit_project_path
-  -# .index-box__img_edit
-  -#   画像を変更する
-  -#   = form_with(model: @user, local: true) do |form|
-  -#     = form.label :image
-  -#     = form.file_field :image
-  -#     = form.hidden_field :image_cache
-  -#     = form.submit
+-#   .index-box__img_edit
+-#     画像を変更する
+-#     = form_with(model: @user, local: true) do |form|
+-#       = form.label :image
+-#       = form.file_field :image
+-#       = form.hidden_field :image_cache
+-#       = form.submit
 
 <br />
 = link_to "ログアウト", destroy_user_session_path, method: :delete
+<br />
+= link_to "トップページへ", root_path
 
