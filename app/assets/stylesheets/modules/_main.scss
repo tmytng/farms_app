@@ -1,0 +1,73 @@
+.main {
+  // .mainのプロパティはsection.scssに記載
+  .pj-category {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    &__act-lists {
+      display: flex;
+      &__list {
+        margin-left: 10px;
+        &--active {
+          font-weight: bold;
+          color: darkorange;
+        }
+      }
+    }
+  }
+  .mission-field {
+    padding: 8px;
+    background-color: #fff;
+    .mission-items {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 1fr 1fr ;
+      grid-auto-rows: calc((100vh/3) - 24px);
+      &__msg {
+        grid-column: 1;
+        grid-row: 1 / 3 ;
+        background: #fc2;
+        border-color: #fa0;
+        border: 3px solid #ccc;
+        border-radius: 8px;
+        overflow: scroll;
+        .msg-box {
+
+        }
+      }
+      &__item {
+        background: #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        border: 3px solid #ccc;
+      }
+    }
+  }
+  .contact-field {
+    padding:  8px;
+  }
+}
+.postbtn {
+  width: 120px;
+  background: #3CCACE;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  &__icon {
+    width: 60%;
+  }
+}
+.postbtn:hover {
+  opacity: 0.7;
+  transition: 200ms;
+}

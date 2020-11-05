@@ -1,0 +1,35 @@
+.signup-wrapper
+  .signup-header
+    FARMS
+  .signup-content
+    .box1
+      【FARMSとは？】<br />
+      FARMSは小規模チーム向けの営業支援ツールです。<br />
+      チームメンバーそれぞれが日々の顧客とのやりとりを記録していくことで、<br />
+      その情報をチーム全員で共有することができます。<br />
+      みんなで連携しながら、どんどん顧客発掘を行い、案件獲得に繋げていきましょう！<br /><br />
+
+      【主な機能】<br />
+      ・案件管理機能（リードステータス・アポイント登録カレンダー・案件履歴検索機能）<br />
+      ・チーム・個人の案件進捗表示機能・プロジェクト別アサインメンバー設定機能<br />
+      ・ユーザー登録機能・プロジェクト登録機能（管理者のみ）<br />
+      ・CSV入出力機能（管理者のみ）
+
+    .box2
+      .box-inner
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          %h1 ログイン
+          .box-email
+            = f.label :email, "Eメール"
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          .box-password
+            .a-row
+              .column-left
+                = f.label :password, "パスワード"
+            = f.password_field :password, autocomplete: "current-password"
+            = link_to "パスワードを忘れた場合", new_user_password_path
+          .box-login
+            = f.submit "ログイン"
+  .signup-footer
+    2020 &copy; tmytng Co., Ltd.
