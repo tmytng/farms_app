@@ -10,13 +10,14 @@
     -#           = image_tag project.image.url
     .mymenu
       .account-img
-        = image_tag current_user.image.url
+        test
+        -# = image_tag current_user.image.url
       .account-name
         = link_to "#{current_user.name}", user_path(current_user)
   .pj-sub
     .pj-name-box
       .pj-img
-        = image_tag @project.image.url
+        -# = image_tag @project.image.url
       .pj-name
         = @project.name
   .pj-member
@@ -25,7 +26,7 @@
       - @project.users.each do |member|
         %li.member-icons
           = link_to user_path(member) do
-            = image_tag member.image.url
+            -# = image_tag member.image.url
   .pj-desc
     .desc-box
       このプロジェクトの詳細欄です。

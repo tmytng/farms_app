@@ -5,6 +5,4 @@ class Project < ApplicationRecord
   has_many :messages
   validates :name, presence: true, uniqueness: true
 
-  mount_uploader :image, ImageUploader
-
 end

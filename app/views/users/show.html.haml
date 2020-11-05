@@ -1,7 +1,7 @@
 %h1 ユーザー詳細画面
 
 .index-box__img
-  = image_tag @user.image.url
+  -# = image_tag @user.image.url
 
 <br />
 ユーザー名：
@@ -17,9 +17,12 @@
     %li
       = link_to "#{project.name}", project_path(project)
 
+%h2 プロフィール画像
+= if @user.avatar.attached?
+  = image_tag @user.avatar
 
-- if user_signed_in? && current_user.id
-  = link_to "ユーザー情報を編集する", edit_user_path(@user)
+-# - if user_signed_in? && current_user.id
+-#   = link_to "ユーザー情報を編集する", edit_user_path(@user)
 
 -# %p= link_to "アサインプロジェクト編集", edit_project_path
 -#   .index-box__img_edit

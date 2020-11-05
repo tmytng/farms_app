@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :project_users
   has_many :projects, through: :project_users
   has_many :messages
+  has_one_attached :avatar
   validates :name, presence: true
   validates :email, uniqueness: true
-  mount_uploader :image, ImageUploader
 end

@@ -16,8 +16,6 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap_form'
-gem 'carrierwave'
-gem 'fog-aws'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'mini_magick'
 gem "chartkick"
