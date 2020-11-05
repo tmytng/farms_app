@@ -17,4 +17,5 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     # if @post.save
     #   flas
+  end
 end
