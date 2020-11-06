@@ -1,38 +1,40 @@
-%h1 ユーザー詳細画面
-
-%h2 ■基本情報
-%br
-
-.index-box__img
-- if @user.avatar.attached?
-  = image_tag @user.avatar
-
-%br
-
-ユーザー名：
-= @user.name
-%br
-プロフィール：
-= @user.profile
-%br
-ポジション：
-= @user.position
-%br
-%br
-- if user_signed_in? && current_user.id
-  = link_to "ユーザー登録情報を編集する", edit_user_path(@user)
-%br
-%br
-%h2 ■所属プロジェクト
-- @user.projects.each do |project|
-  %ul
-    %li
-      = link_to "#{project.name}", project_path(project)
-
-%br
-= link_to "ログアウト", destroy_user_session_path, method: :delete
-%br
-= link_to "トップページへ", root_path
+.user-contents
+  = render "layouts/user-header"
+  .user-main
+    .user-field
+      .info-box
+        .info-box__img
+          - if @user.avatar.attached?
+            = image_tag @user.avatar
+        .info-box__msg
+          %dl
+            %dt ユーザー名：
+            %dd
+              = @user.name
+            %dt プロフィール：
+            %dd
+              = @user.profile
+            %dt ポジション：
+            %dd
+              = @user.position
+            %dt 所属プロジェクト:
+            %dd
+              - @user.projects.each do |project|
+                %ul
+                  %li
+                    = link_to "#{project.name}", project_path(project)
+          %br
+          - if user_signed_in? && current_user.id
+            = link_to "ユーザー登録情報を編集する", edit_user_path(@user)
+          %br
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+          %br
+          = link_to "戻る", :back
+          %br
+          %br
+          %h2 管理者用メニュー
+          - if user_signed_in? && @user.admin.present?
+            = link_to "新規プロジェクト作成", new_project_path
 
 
 -# %p= link_to "アサインプロジェクト編集", edit_project_path
