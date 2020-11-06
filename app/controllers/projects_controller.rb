@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:create, :update, :show]
-  before_action :set_user, only: [:index]
 
   def index
   end
@@ -37,12 +36,6 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
-  end
-
-  def set_user
-    if user_signed_in?
-      @user = current_user
-    end
   end
 
   def project_params

@@ -18,7 +18,7 @@
     .mymenu {
       grid-row: 1 / 1;
       grid-column: 2 / 2;
-      background-color: green;
+      background-color: #45607a;
       display: flex;
       .account-img {
         width: 40px;
@@ -56,18 +56,18 @@
     .pj-name-box {
       display: flex;
       margin: 8px;
-      .pj-img {
-        width: 66px;
-        height: 64px;
-        padding: 4px;
-        overflow: hidden;
-        & img {
-          height: 60px;
-          width: 100%;
-          object-fit: cover;
-          display: block;
-        }
-      }
+      // .pj-img {
+      //   width: 66px;
+      //   height: 64px;
+      //   padding: 4px;
+      //   overflow: hidden;
+      //   & img {
+      //     height: 60px;
+      //     width: 100%;
+      //     object-fit: cover;
+      //     display: block;
+      //   }
+      // }
       .pj-name {
         font-size: 48px;
         margin-left: 6px;
