@@ -3,28 +3,35 @@
     FARMS
   .signup-content
     .box1
-      %h2 Sign up
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = render "devise/shared/error_messages", resource: resource
-        .field
-          = f.label :email
-          %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email"
-        .field
-          = f.label :name
-          %br/
-          = f.text_field :name, autofocus: true, autocomplete: "name"
-        .field
-          = f.label :password
-          - if @minimum_password_length
-            %em
-              (#{@minimum_password_length} characters minimum)
-          %br/
-          = f.password_field :password, autocomplete: "new-password"
-        .field
-          = f.label :password_confirmation
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "new-password"
-        .actions
-          = f.submit "Sign up"
-      = render "devise/shared/links"
+      .box-inner
+        %h2 新規ユーザー登録
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .box-email
+            = f.label :email, "Eメール"
+            %br
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          .box-project
+            = f.label :name, "ユーザー名"
+            %br
+            = f.text_field :name, autofocus: true, autocomplete: "name"
+
+          .box-project
+            = f.label :イメージ
+            %br
+            = f.file_field :avatar
+
+          .box-password
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, autocomplete: "new-password"
+          .box-password
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+          .actions
+            = f.submit "Sign up"
+        -# = render "devise/shared/links"
