@@ -21,31 +21,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params) && @user.avatar.attach(params[:avatar])
-      redirect_to user_path(@user)
+    if current_user.update(user_params)
+      redirect_to root_path
     else
       render :edit
     end
   end
 
-  # def update
-  #   if current_user.update(user_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-
-
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :avatar)
-  end
-
-  def update_params
-    params.require(:user).permit(:avatar)
+    params.require(:user).permit(:name, :email, :avatar, :email, :profile, :position)
   end
 
 end

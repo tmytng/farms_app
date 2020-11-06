@@ -18,8 +18,6 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'mini_magick'
 gem "chartkick"
 gem 'active_hash'
-gem 'materialize-sass', '~> 1.0.0'
-gem 'material_icons'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
