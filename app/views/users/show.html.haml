@@ -24,18 +24,20 @@
                   %li
                     = link_to "#{project.name}", project_path(project)
           %br
-          - if user_signed_in? && current_user.id
-            = link_to "ユーザー登録情報を編集する", edit_user_path(@user)
+          - if user_signed_in? && current_user.id == @user.id
+            = link_to "ユーザー情報を編集する", edit_user_path(@user)
+            %br
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
           %br
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
+          %br
+
+          - if user_signed_in? && @user.id == current_user.id && current_user.admin.present?
+            = "■管理者用メニュー"
+            %br
+            = link_to "新規プロジェクト作成", new_project_path
+          %br
           %br
           = link_to "戻る", :back
-          %br
-          %br
-          %h2 管理者用メニュー
-          - if user_signed_in? && @user.admin.present?
-            = link_to "新規プロジェクト作成", new_project_path
-
 
 -# %p= link_to "アサインプロジェクト編集", edit_project_path
 -#   .index-box__img_edit
