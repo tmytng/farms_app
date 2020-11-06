@@ -5,14 +5,19 @@
   .index-main
     .index-box
       .index-box__img
-        -# = image_tag current_user.image.url
+        - if @user.avatar.attached?
+          = image_tag @user.avatar
       .index-box__msg
         ユーザー名：
         #{current_user.name}
     .assign_project
       .assign_project__msg
         アサインするプロジェクトを選んでください！
+        %br
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+
       .assign_project__list
         - current_user.projects.each do |project|
           .assign_project__name
             = link_to "#{project.name}", project_path(project)
+

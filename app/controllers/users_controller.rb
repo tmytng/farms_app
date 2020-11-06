@@ -1,9 +1,24 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
 
-  def edit; end
+  def new
+    @projects = Project.all
+  end
+
+  def create
+    user = User.create!(user_params)
+    redirect_to root_path
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+  end
 
   def update
     if current_user.update(user_params)
@@ -13,17 +28,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @projects = Project.all
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :image)
+    params.require(:user).permit(:name, :email, :avatar, :email, :profile, :position)
   end
+
 end

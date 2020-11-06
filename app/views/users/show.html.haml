@@ -1,25 +1,39 @@
 %h1 ユーザー詳細画面
 
-.index-box__img
-  = image_tag @user.image.url
+%h2 ■基本情報
+%br
 
-<br />
+.index-box__img
+- if @user.avatar.attached?
+  = image_tag @user.avatar
+
+%br
+
 ユーザー名：
 = @user.name
-<br />
+%br
 プロフィール：
 = @user.profile
-<br />
-<br /><br />
-%p 参加プロジェクト
+%br
+ポジション：
+= @user.position
+%br
+%br
+- if user_signed_in? && current_user.id
+  = link_to "ユーザー登録情報を編集する", edit_user_path(@user)
+%br
+%br
+%h2 ■所属プロジェクト
 - @user.projects.each do |project|
   %ul
     %li
       = link_to "#{project.name}", project_path(project)
 
+%br
+= link_to "ログアウト", destroy_user_session_path, method: :delete
+%br
+= link_to "トップページへ", root_path
 
-- if user_signed_in? && current_user.id
-  = link_to "ユーザー情報を編集する", edit_user_path(@user)
 
 -# %p= link_to "アサインプロジェクト編集", edit_project_path
 -#   .index-box__img_edit
@@ -29,9 +43,3 @@
 -#       = form.file_field :image
 -#       = form.hidden_field :image_cache
 -#       = form.submit
-
-<br />
-= link_to "ログアウト", destroy_user_session_path, method: :delete
-<br />
-= link_to "トップページへ", root_path
-
