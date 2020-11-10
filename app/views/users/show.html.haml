@@ -30,13 +30,16 @@
             = link_to "ログアウト", destroy_user_session_path, method: :delete
           %br
           %br
-
-          - if user_signed_in? && @user.id == current_user.id && current_user.admin.present?
-            = "■管理者用メニュー"
-            %br
-            = link_to "新規プロジェクト作成", new_project_path
+          - if current_user.admin.present?
+            = button_to 'このユーザーを削除する', user_path, method: :delete
           %br
-            = link_to "アサインプロジェクト編集", edit_project_path
+            = link_to "ユーザー一覧", users_path
+          -#   %br
+          -# - if @user == current_user && current_user.admin.present?
+          -#   = link_to "新規プロジェクト作成", new_project_path
+          -# %br
+          -#   = link_to "アサインプロジェクト編集", edit_project_path
+          -# %br
           %br
           %br
           = link_to "戻る", :back

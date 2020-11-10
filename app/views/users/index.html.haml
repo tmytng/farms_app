@@ -1,3 +1,19 @@
-.content
-  = link_to posts_path do
-    postのトップへ
+.index-contents
+  .index-header
+    .index-header__title
+      FARMS
+  .index-main
+    .assign_project
+      .assign_project__msg
+        選択するユーザーを選んでください！
+      .assign_project__list
+        - @users.each do |user|
+          .prj-list
+            = link_to user_path(user) do
+              -# .prj-list__prj-name
+              -#   = image_tag user.avatar
+              .prj-list__prj-name
+                = user.name
+              .prj-list__prj-profile
+                = user.profile
+        %br
