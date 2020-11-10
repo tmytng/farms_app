@@ -1,5 +1,26 @@
-%h1 新規プロジェクトグループ作成
+.post-contents
+  = render "layouts/post-header"
+  .post-main
+    .post-field
+      %h2.sub 新規プロジェクトグループ作成
+      = form_with(model: [@project], class: "form-field",local: true) do |f|
+        %h3.sub プロジェクト情報
+        .form-group
+          = f.label :project_name, "会社名", class: "label-text"
+          %span{class: "require"} 必須
+          = f.text_field :project_name, placeholder: "丸々商事案件", id: "project_name", class: "form-control"
+        .form-group
+          = f.label :project_profile, "プロジェクト概要", class: "label-text"
+          %span{class: "require"} 必須
+          = f.text_field :project_profile, id: "project_profile", class: "form-control"
+        .form-group
+          = f.label :project_image, "プロジェクト画像", class: "label-text"
+          %span{class: "require"} 必須
+          = f.file_field :project_image, id: "project_image", class: "form-control"
+        %h3.sub アサインユーザー情報
 
-管理者用メニュー。
-これから作成する。
-
+        .post-footer
+          .form-group
+            %p= link_to "戻る", :back, class: "backbtn btn btn-primary"
+          .form-group
+            = f.submit "登録する", class: "btn btn-primary"

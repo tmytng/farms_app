@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = '新規登録が完了しました'
-      redirect_to project_path(@project)
+      redirect_to project_posts_path(@project)
     else
       render :new
     end
