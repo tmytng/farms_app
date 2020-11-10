@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:update, :edit, :show]
+  before_action :set_project, only: [:update, :edit, :show, :destroy]
 
   def index
     @projects = Project.all
@@ -27,6 +27,14 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    if @project.destroy!
+      redirect_to root_path, notice: "削除が完了しました"
+    else
+      redirect_to root_path, alert: "削除が失敗しました"
+    end
   end
 
   def show
