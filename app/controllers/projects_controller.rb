@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:create, :update, :edit, :show]
+  before_action :set_project, only: [:update, :edit, :show]
 
   def index
     @projects = Project.all
@@ -7,11 +7,11 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    # @project.users << current_user
   end
 
   def create
-    if @project.save
+    @project = Project.new(project_params)
+    if @project.save!
       redirect_to projects_path, notice: '新規プロジェクトを作成しました'
     else
       render :new
@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :project_image, :profile, user_ids: []).merge(user_id: current_user.id)
+    params.require(:project).permit(:name, :profile, :prj_image, user_ids: [])
+    # .merge(user_id: current_user.id)
   end
 end
