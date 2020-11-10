@@ -47,8 +47,8 @@
             %span{class: "require"} 必須
             = f.collection_select(:product_id, Product.all, :id, :name,{include_blank: "---"}, class: "form-control form-control-sm" )
           .custom-file
-            = f.label :add_file, "添付ファイル", class: "custom-file-label"
-            = f.file_field :add_file, placeholder: "必要に応じてファイルを添付", class: "custom-file-input"
+            = f.label :post_files, "添付ファイル", class: "custom-file-label"
+            = f.file_field :post_files, multiple: true, placeholder: "必要に応じてファイルを添付", class: "custom-file-input"
         .contact-info
           %h3.sub コンタクト情報
           .form-group
