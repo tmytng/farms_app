@@ -1,17 +1,32 @@
 %h1 プロジェクト編集
 
 .index-box__img
-  -# = image_tag @project.image.url
-<br />
-プロジェクト名：
-= @project.name
-<br />
-プロフィール：
-= @project.profile
-<br />
+  - if @project.prj_image.attached?
+    = image_tag @project.prj_image
+%br
 .index-box__img_edit
-  画像を変更する
-  = form_with(model: @project, local: true) do |form|
-    = form.label :image
-    = form.file_field :image
-    = form.submit
+  = form_with(model: @project, local: true) do |f|
+    .form-group
+      = f.label :name, "プロジェクト名", class: "label-text"
+      %span{class: "require"} 必須
+      = f.text_field :name, placeholder: "丸々商事案件", class: "form-control"
+    .form-group
+      = f.label :profile, "プロジェクト概要", class: "label-text"
+      %span{class: "require"} 必須
+      = f.text_field :profile, id: "project_profile", class: "form-control"
+    .form-group
+      = f.label :prj_image, "プロジェクト画像", class: "label-text"
+      %span{class: "require"} 必須
+      = f.file_field :prj_image, id: "prj_image", class: "form-control"
+    %h3.sub アサインユーザー情報
+    .form-group
+      = f.label :member, "プロジェクトメンバー", class: "label-text"
+      %span{class: "require"} 必須
+      = f.collection_check_boxes :user_ids, User.all, :id, :name, class: "form-control"
+    .post-footer
+      .form-group
+        = f.submit "更新する", class: "btn btn-primary"
+      .form-group
+        = link_to '削除する', project_path, method: :delete
+      .form-group
+        = link_to "戻る", :back, class: "backbtn btn btn-primary"
