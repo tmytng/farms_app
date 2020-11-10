@@ -1,6 +1,78 @@
-%h1 問い合わせ詳細画面
-
-
-<br />
-= link_to project_posts_path do
-  postのトップへいくで
+.post-contents
+  = render "layouts/post-header"
+  .post-main
+    .post-field
+      %h2.sub 案件詳細画面
+      .company-info
+        %h3.sub 顧客情報
+        %dl
+          %dt
+            会社名：
+          %dd
+            = @post.company_name
+          %dt
+            都道府県：
+          %dd
+            = @post.prefecture.name
+          %dt
+            所在地：
+          %dd
+            = @post.company_address
+          %dt
+            URL：
+          %dd
+            = @post.company_url
+          %dt
+            担当者名：
+          %dd
+            = @post.contact_person
+          %dt
+            電話番号：
+          %dd
+            = @post.phone_number
+          %dt
+            email：
+          %dd
+            = @post.email
+      .status-info
+        %h3.sub ステータス情報
+        %dl
+          %dt
+            案件ステータス：
+          %dd
+            = @post.leadstatus.name
+          %dt
+            購入予定時期：
+          %dd
+            = @post.purchase_date
+          %dt
+            提案商材：
+          %dd
+            = @post.product.name
+          %dt
+            添付ファイル：
+          %dd
+            - if @post.post_files.attached?
+              - @post.post_files.each do |file|
+                = file.filename
+      .contact-info
+        %h3.sub コンタクト情報
+        %dl
+          %dt
+            概要：
+          %dd
+            = @post.contact_reason
+          %dt
+            応対履歴：
+          %dd
+            = @post.contact_des
+      .log-info
+        %h3.sub ログ情報
+        %ul
+          %li
+            9/3 14:44 ユーザ名
+          %li
+            〇〇さんが登録情報を更新しました。
+      .post-footer
+        .form-group
+          = link_to "戻る", project_posts_path, class: "backbtn btn btn-primary"
