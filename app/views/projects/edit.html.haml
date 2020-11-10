@@ -1,7 +1,7 @@
 %h1 プロジェクト編集
 
 .index-box__img
-  = image_tag @project.image.url
+  -# = image_tag @project.image.url
 <br />
 プロジェクト名：
 = @project.name
@@ -14,5 +14,4 @@
   = form_with(model: @project, local: true) do |form|
     = form.label :image
     = form.file_field :image
-    = form.hidden_field :image_cache
     = form.submit
