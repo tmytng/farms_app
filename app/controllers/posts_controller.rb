@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_project
+  before_action :set_post, only: [:edit, :show]
 
   def index
     # @posts = Post.all
@@ -36,5 +37,9 @@ class PostsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
