@@ -1,23 +1,6 @@
-.main {
-  // .mainのプロパティはsection.scssに記載
-  // .pj-category {
-  //   display: flex;
-  //   justify-content: center;
-  //   background-color: #fff;
-  //   &__act-lists {
-  //     display: flex;
-  //     &__list {
-  //       margin-left: 10px;
-  //       &--active {
-  //         font-weight: bold;
-  //         color: darkorange;
-  //       }
-  //     }
-  //   }
-  // }
+.pj-main {
   .mission-field {
     padding: 8px;
-    background-color: #fff;
     .mission-items {
       display: grid;
       grid-gap: 10px;
