@@ -12,8 +12,13 @@
       【主な機能】<br />
       ・案件管理機能（リードステータス・アポイント登録カレンダー・案件履歴検索機能）<br />
       ・チーム・個人の案件進捗表示機能・プロジェクト別アサインメンバー設定機能<br />
-      ・ユーザー登録機能・プロジェクト登録機能（管理者のみ）<br />
-      ・CSV入出力機能（管理者のみ）
+      ・ユーザー登録機能・プロジェクト登録機能（管理者のみ）<br /><br />
+      -# ・CSV入出力機能（管理者のみ）
+
+      【テストアカウント情報】<br />
+      ・管理ユーザー（Email）： kubota@test.com<br />
+      ・管理ユーザー（password）： 12345678<br />
+
 
     .box2
       .box-inner
@@ -28,7 +33,7 @@
               .column-left
                 = f.label :password, "パスワード"
             = f.password_field :password, autocomplete: "current-password"
-            = link_to "パスワードを忘れた場合", new_user_password_path
+            -# = link_to "パスワードを忘れた場合", new_user_password_path
           .box-login
             = f.submit "ログイン"
   .signup-footer
