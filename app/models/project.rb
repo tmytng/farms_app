@@ -6,6 +6,6 @@ class Project < ApplicationRecord
   has_one_attached :prj_image
   validates :name, presence: true, uniqueness: true
   validates :profile, presence: true, uniqueness: true
-  validates :project_user_ids, presence: true
+  # validates :project_user_ids, presence: true
 
 end

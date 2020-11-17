@@ -28,7 +28,6 @@ p "create Projects"
   Project.create!(
   name: '新規開拓プロジェクト',
   profile: '新規問い合わせ。顧客登録・取引実績なしのみ登録。',
-  project_user_ids: 1
   )
 p "create Project_Users"
   ProjectUser.create!(
