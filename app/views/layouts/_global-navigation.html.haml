@@ -1,0 +1,14 @@
+.global-navigation
+  -# .search-box
+  -#   search box
+  .navi-menus
+    .navi-menus__list
+      = link_to "ユーザー一覧", users_path
+    .navi-menus__list
+      = link_to "プロジェクト一覧", projects_path
+  .my-account
+    .account-img
+      - if current_user.avatar.attached?
+        = image_tag current_user.avatar
+    .account-name
+      = link_to "#{current_user.name}", user_path(current_user)
