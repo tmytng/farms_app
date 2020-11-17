@@ -1,5 +1,7 @@
-%h1 プロジェクト編集
+.contents
+  = render "layouts/global-navigation"
 
+%h1 プロジェクト編集
 .index-box__img
   - if @project.prj_image.attached?
     = image_tag @project.prj_image
