@@ -27,7 +27,11 @@ p "create Users"
 p "create Projects"
   Project.create!(
   name: '新規開拓プロジェクト',
-  profile: '新規問い合わせ。顧客登録・取引実績なしのみ登録。',
+  profile: '新規問い合わせ。顧客登録・取引実績なしのみ登録。'
+  )
+  Project.create!(
+  name: 'A社提携プロジェクト',
+  profile: '代理店のA社を経由した問い合わせ対応。'
   )
 p "create Project_Users"
   ProjectUser.create!(
@@ -35,20 +39,20 @@ p "create Project_Users"
   user_id: 1
   )
 p "create Post"
-Post.create!(
-company_name: 'アイウエオ株式会社',
-prefecture_id: 4,
-company_address: ' 練馬区練馬1-1-1',
-company_url: 'http://test.com',
-contact_person: '田中　一郎',
-phone_number: '03-1111-2222',
-email: 'tanaka@aiueo.net',
-leadstatus_id: 1,
-purchase_date: '2020-11-19',
-product_id: 3,
-contact_reason: '商品導入検討',
-contact_des: '11/19 ホームページを見て問い合わせあり。スペック確認したいとのこと。回答済み。',
-project_id: 1,
-user_id: 1
+  Post.create!(
+  company_name: 'アイウエオ株式会社',
+  prefecture_id: 4,
+  company_address: ' 練馬区練馬1-1-1',
+  company_url: 'http://test.com',
+  contact_person: '田中　一郎',
+  phone_number: '03-1111-2222',
+  email: 'tanaka@aiueo.net',
+  leadstatus_id: 1,
+  purchase_date: '2020-11-19',
+  product_id: 3,
+  contact_reason: '商品導入検討',
+  contact_des: '11/19 ホームページを見て問い合わせあり。スペック確認したいとのこと。回答済み。',
+  project_id: 1,
+  user_id: 1
   )
 
