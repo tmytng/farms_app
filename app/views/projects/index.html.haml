@@ -3,11 +3,11 @@
   .main
     .index-field
       .sub-msg
-        アサインするプロジェクトを選んでください！
+        プロジェクト一覧
       .pj-container
         - @projects.each do |project|
           .pj-box
-            = link_to project_path(project) do
+            = link_to project_posts_path(project) do
               .pj-box__pj-name
                 = project.name
               .pj-box__pj-members

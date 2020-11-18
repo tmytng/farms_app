@@ -22,7 +22,7 @@
               - @user.projects.each do |project|
                 %ul
                   %li
-                    = link_to "#{project.name}", project_path(project)
+                    = link_to "#{project.name}", project_posts_path(project)
           %br
           - if user_signed_in? && current_user.id == @user.id
             = link_to "ユーザー情報を編集する", edit_user_path(@user)
@@ -32,8 +32,6 @@
           %br
           - if current_user.admin.present?
             = button_to 'このユーザーを削除する', user_path, method: :delete
-          %br
-            = link_to "ユーザー一覧", users_path
           -#   %br
           -# - if @user == current_user && current_user.admin.present?
           -#   = link_to "新規プロジェクト作成", new_project_path
