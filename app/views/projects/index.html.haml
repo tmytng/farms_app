@@ -1,16 +1,28 @@
-.index-contents
+.contents
   = render "layouts/global-navigation"
-  .index-main
-    .assign_project
-      .assign_project__msg
+  .main
+    .index-field
+      .sub-msg
         アサインするプロジェクトを選んでください！
-      .assign_project__list
+      .pj-container
         - @projects.each do |project|
-          .prj-list
+          .pj-box
             = link_to project_path(project) do
-              .prj-list__prj-name
+              .pj-box__pj-name
                 = project.name
-              .prj-list__prj-profile
+              .pj-box__pj-members
+                %ul.member-list
+                  - project.users.each do |member|
+                    %li.member-icons
+                      - if member.avatar.attached?
+                        = link_to user_path(member) do
+                          = image_tag member.avatar
+              .pj-box__pj-profile
                 = project.profile
-        %br
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
+              .pj-box__pj-start
+                作成者：#{project.creator}
+                作成日：#{project.created_at.strftime("%Y/%m/%d")}
+              .pj-box__pj-last-updated
+                最終更新：2020/11/18
+              .pj-box__pj-member-count
+                メンバー：#{project.users.count}人
