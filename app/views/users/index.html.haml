@@ -1,17 +1,21 @@
 .contents
   = render "layouts/global-navigation"
   .main
-    .index-sub
-      .index-sub__msg
-        選択するユーザーを選んでください！
-      .index-sub__list
+    .index-field
+      .sub-msg
+        ユーザー一覧
+      .users-container
         - @users.each do |user|
-          .prj-list
+          .users-box
             = link_to user_path(user) do
-              -# .prj-list__prj-name
-              -#   = image_tag user.avatar
-              .prj-list__prj-name
+              .users-box__avatar
+                - if user.avatar.attached?
+                  = image_tag user.avatar
+              .users-box__name
                 = user.name
-              .prj-list__prj-profile
+              .users-box__profile
                 = user.profile
-        %br
+              .users-box__register-date
+                ユーザー登録日：#{user.created_at.strftime("%Y/%m/%d")}
+              .users-box__last-updated
+                最終ログイン： 2020/11/18 15:53
