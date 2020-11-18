@@ -47,7 +47,7 @@
         height: auto;
         width: auto;
         padding: 8px;
-        background-color: lightgray;
+        background-color: #ffffea;
         font-size: 12px;
         &__a:hover,
         a:link,
@@ -56,11 +56,34 @@
           color: black;
         }
         &__pj-name {
-          font-size: 16px;
-          margin-bottom: 8px;
+          font-size: 24px;
           font-weight: bold;
         }
         &__pj-profile {
+          margin: 14px 0;
+        }
+        &__pj-members {
+          display: flex;
+          justify-content: left;
+          margin: 8px 8px 8px 0;
+          & img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            // margin-left: 8px;
+            object-fit: cover;
+            display: block;
+          }
+          .member-list {
+            font-size: 16px;
+            display: flex;
+            justify-content: left;
+            // &__member-icons {
+            // }
+          }
+        }
+        &__pj-start, &__pj-last-updated, &__pj-member-count {
+          color: #414141;
         }
       }
     }

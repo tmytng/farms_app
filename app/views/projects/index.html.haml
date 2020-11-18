@@ -10,11 +10,19 @@
             = link_to project_path(project) do
               .pj-box__pj-name
                 = project.name
-              .pj-box__pj-member
-                作成者：〇〇 人数：#{project.users.count}
-                -# = project.creater
-              .pj-box__pj-start
-                作成日：
-                = project.created_at.strftime("%Y/%m/%d")
+              .pj-box__pj-members
+                %ul.member-list
+                  - project.users.each do |member|
+                    %li.member-icons
+                      - if member.avatar.attached?
+                        = link_to user_path(member) do
+                          = image_tag member.avatar
               .pj-box__pj-profile
                 = project.profile
+              .pj-box__pj-start
+                作成者：#{project.creator}
+                作成日：#{project.created_at.strftime("%Y/%m/%d")}
+              .pj-box__pj-last-updated
+                最終更新：2020/11/18
+              .pj-box__pj-member-count
+                メンバー：#{project.users.count}人
