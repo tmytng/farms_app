@@ -11,13 +11,10 @@
               .pj-box__pj-name
                 = project.name
               .pj-box__pj-member
-                人数：
-                -# = project.created_at
-              .pj-box__pj-create
-                作成者：
+                作成者：〇〇 人数：#{project.users.count}
                 -# = project.creater
               .pj-box__pj-start
                 作成日：
-                = project.created_at
+                = project.created_at.strftime("%Y/%m/%d")
               .pj-box__pj-profile
                 = project.profile
