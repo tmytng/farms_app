@@ -1,6 +1,6 @@
-.user-contents
+.contents
   = render "layouts/global-navigation"
-  .user-main
+  .main
     .user-field
       %h1 ユーザー登録情報の編集
       = form_with model: current_user, url: edit_user_registration_path, local: true do |f|

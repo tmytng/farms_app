@@ -1,10 +1,10 @@
-.index-contents
+.contents
   = render "layouts/global-navigation"
-  .index-main
-    .assign_project
-      .assign_project__msg
+  .main
+    .index-sub
+      .index-sub__msg
         アサインするプロジェクトを選んでください！
-      .assign_project__list
+      .index-sub__list
         - @projects.each do |project|
           .prj-list
             = link_to project_path(project) do
