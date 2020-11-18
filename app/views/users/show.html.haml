@@ -2,42 +2,44 @@
   = render "layouts/global-navigation"
   .main
     .user-field
-      .info-box
-        .info-box__img
+      .user-items
+        .user-items__avatar-box
           - if @user.avatar.attached?
             = image_tag @user.avatar
-        .info-box__msg
-          %dl
-            %dt ユーザー名：
-            %dd
-              = @user.name
-            %dt プロフィール：
-            %dd
-              = @user.profile
-            %dt ポジション：
-            %dd
-              = @user.position
-            %dt 所属プロジェクト:
-            %dd
-              - @user.projects.each do |project|
-                %ul
-                  %li
-                    = link_to "#{project.name}", project_posts_path(project)
-          %br
-          - if user_signed_in? && current_user.id == @user.id
-            = link_to "ユーザー情報を編集する", edit_user_path(@user)
-            %br
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
-          %br
-          %br
-          - if current_user.admin.present?
-            = button_to 'このユーザーを削除する', user_path, method: :delete
-          -#   %br
-          -# - if @user == current_user && current_user.admin.present?
-          -#   = link_to "新規プロジェクト作成", new_project_path
-          -# %br
-          -#   = link_to "アサインプロジェクト編集", edit_project_path
-          -# %br
-          %br
-          %br
-          = link_to "戻る", :back
+        .user-items__info-box
+        .user-items__button-box
+
+      -# %table.user-field__user-info
+      -#   %tbody
+      -#     %tr
+      -#       %th ユーザー名：
+      -#       %td
+      -#         = @user.name
+      -#     %tr
+      -#       %th ポジション：
+      -#       %td
+      -#         = @user.position
+      -#     %tr
+      -#       %th プロフィール：
+      -#       %td
+      -#         = @user.profile
+      -#     %tr
+      -#       %th 所属プロジェクト：
+      -#       %td
+      -#         - @user.projects.each do |project|
+      -#           %ul
+      -#             %li
+      -#               = link_to "#{project.name}", project_posts_path(project)
+      -#     %tr
+      -#       %th ユーザー登録日：
+      -#       %td
+      -#         = @user.created_at
+    -# .user-field
+    -#   - if user_signed_in? && current_user.id == @user.id
+    -#     = link_to "自身のユーザー情報を編集する", edit_user_path(@user)
+        -#   %br
+        -#     = link_to "ログアウト", destroy_user_session_path, method: :delete
+        -#   %br
+        -# - if current_user.admin.present?
+        -#   = button_to 'このユーザーを削除する', user_path, method: :delete
+      -# = link_to "戻る", :back
