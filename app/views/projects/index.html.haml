@@ -1,16 +1,23 @@
 .contents
   = render "layouts/global-navigation"
   .main
-    .index-sub
-      .index-sub__msg
+    .index-field
+      .sub-msg
         アサインするプロジェクトを選んでください！
-      .index-sub__list
+      .pj-container
         - @projects.each do |project|
-          .prj-list
+          .pj-box
             = link_to project_path(project) do
-              .prj-list__prj-name
+              .pj-box__pj-name
                 = project.name
-              .prj-list__prj-profile
+              .pj-box__pj-member
+                人数：
+                -# = project.created_at
+              .pj-box__pj-create
+                作成者：
+                -# = project.creater
+              .pj-box__pj-start
+                作成日：
+                = project.created_at
+              .pj-box__pj-profile
                 = project.profile
-        %br
-        = link_to "ログアウト", destroy_user_session_path, method: :delete

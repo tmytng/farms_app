@@ -19,49 +19,5 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
-    font-size: 16px;
-    .index-sub {
-      grid-row: 1 / 2 ;
-      grid-column: 1 / 1;
-      &__msg{
-        font-size: 24px;
-        margin: 16px;
-      }
-      &__list{
-      text-align: center;
-      font-size: 18px;
-      overflow: scroll;
-      }
-      &__a:hover,
-      a:link,
-      a:visited,
-      a:active {
-        color: black;
-        text-decoration: none;
-      }
-      &__name{
-        margin-bottom: 16px;
-      }
-      .prj-list {
-        height: 65px;
-        width: auto;
-        padding: 16px 24px 32px 24px;
-        overflow: scroll;
-        &__a:hover,
-        a:link,
-        a:visited,
-        a:active {
-          color: black;
-        }
-        &__prj-name {
-          font-size: 16px;
-          margin-bottom: 8px;
-          font-weight: bold;
-        }
-        &__prj-profile {
-          font-size: 12px;
-        }
-      }
-    }
   }
 }
