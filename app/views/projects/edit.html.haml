@@ -23,6 +23,6 @@
             .form-group
               = f.submit "更新する", class: "btn btn-primary"
             .form-group
-              = link_to '削除する', project_path, method: :delete
+              = button_to '削除する', project_path, method: :delete
             .form-group
               = link_to "戻る", :back, class: "backbtn btn btn-primary"
