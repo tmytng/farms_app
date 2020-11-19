@@ -138,4 +138,19 @@ p "create Post"
   project_id: 1,
   user_id: 1
   )
+  Post.create!(
+  company_name: '三角シティ株式会社',
+  prefecture_id: 15,
+  company_address: ' 東市1-1-1',
+  contact_person: 'ハラ',
+  phone_number: '080-1111-2222',
+  email: 'hara@aiueo.net',
+  leadstatus_id: 2,
+  purchase_date: '2021-01-20',
+  product_id: 3,
+  contact_reason: '新規導入検討',
+  contact_des: '2020/11/19 ハラ様より問い合わせ。見積書の作成希望。オンラインの見積もり作成プランを提案し、終話。',
+  project_id: 1,
+  user_id: 1
+  )
 
