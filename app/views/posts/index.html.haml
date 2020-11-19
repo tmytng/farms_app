@@ -25,7 +25,9 @@
             %td #{post.created_at.strftime("%Y年%m月%d日 %H時%M分")}
             %td #{post.updated_at.strftime("%Y年%m月%d日 %H時%M分")}
             %td #{post.user.name}
-= link_to new_project_post_path do
-  .postbtn
-    %span.postbtn__text 新規登録
-    = image_tag 'icon/icon_pen.png', alt: '投稿ボタン', class: 'postbtn__icon'
+
+- if current_user == @project.users
+  = link_to new_project_post_path do
+    .postbtn
+      %span.postbtn__text 新規登録
+      = image_tag 'icon/icon_pen.png', alt: '投稿ボタン', class: 'postbtn__icon'

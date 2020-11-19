@@ -81,8 +81,9 @@
         .post-footer
           .form-group
             %p= link_to "戻る", :back, class: "backbtn btn btn-primary"
-          .form-group
-            = f.submit "登録する", class: "btn btn-primary"
+          - if current_user == @project.users
+            .form-group
+              = f.submit "修正する", class: "btn btn-primary"
 
 
 %script{:crossorigin => "anonymous", :integrity => "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", :src => "https://code.jquery.com/jquery-3.5.1.slim.min.js"}
