@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  after_action :after_login, only: [:create]
 
   def index
     @users = User.all
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @users = User.all
   end
 
   def edit
@@ -34,9 +36,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy!
-      redirect_to root_path, notice: "削除が完了しました"
+      redirect_to users_path, notice: "削除が完了しました"
     else
-      redirect_to root_path, alert: "削除が失敗しました"
+      render :edit, alert: "削除が失敗しました"
     end
   end
 
@@ -46,4 +48,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :avatar, :email, :profile, :position)
   end
 
+  def after_login
+    current_user.update(first_sign_in_at: current_user.current_sign_in_at) unless current_user.first_sign_in_at
+  end
 end

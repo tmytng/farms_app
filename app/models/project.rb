@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   has_many :project_users, dependent: :destroy
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :users, through: :project_users
   has_many :messages, dependent: :destroy
   has_one_attached :prj_image

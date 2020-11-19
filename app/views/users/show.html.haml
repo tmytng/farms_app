@@ -48,7 +48,7 @@
               %tr
                 %th 最終ログイン
                 %td
-                  2020/11/16 15:30
+                  = @user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")
         .user-items__button-box
           - if current_user.id == @user.id
             .user-items__button-box__users-btn

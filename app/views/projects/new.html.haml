@@ -13,10 +13,6 @@
           = f.label :profile, "プロジェクト概要", class: "label-text"
           %span{class: "require"} 必須
           = f.text_field :profile, id: "project_profile", class: "form-control"
-        .form-group
-          = f.label :prj_image, "プロジェクト画像", class: "label-text"
-          %span{class: "require"} 必須
-          = f.file_field :prj_image, id: "prj_image", class: "form-control"
         %h3.sub アサインユーザー情報
         .form-group
           = f.label :member, "プロジェクトメンバー", class: "label-text"

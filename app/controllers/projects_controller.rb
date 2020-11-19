@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to project_path, notice: 'プロジェクト情報を更新しました'
+      redirect_to project_posts_path(@project), notice: 'プロジェクト情報を更新しました'
     else
       render :edit
     end
@@ -32,8 +32,8 @@ class ProjectsController < ApplicationController
   def destroy
     if @project.destroy!
       redirect_to root_path, notice: "削除が完了しました"
-    else
-      redirect_to root_path, alert: "削除が失敗しました"
+    # else
+    #   redirect_to root_path, alert: "削除が失敗しました"
     end
   end
 
