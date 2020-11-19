@@ -74,8 +74,8 @@
     }
     .users-container {
       display: grid;
-      grid-template-columns: repeat(6, auto);
-      gap: 6px;
+      grid-template-columns: repeat(5, auto);
+      gap: 8px;
       justify-content: space-around;
       padding: 0 16px;
       &__a:hover,

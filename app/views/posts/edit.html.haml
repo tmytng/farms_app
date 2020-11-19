@@ -80,8 +80,8 @@
             9/3 14:44 〇〇さんが登録情報を更新しました。
         .post-footer
           .form-group
-            %p= link_to "戻る", :back, class: "backbtn btn btn-primary"
-          - if current_user == @project.users
+            %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
+          - if @project.user_ids.include? current_user.id
             .form-group
               = f.submit "修正する", class: "btn btn-primary"
 
