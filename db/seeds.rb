@@ -95,7 +95,7 @@ p "create Project_Users"
   )
   ProjectUser.create!(
   project_id: 3,
-  user_id: 1
+  user_id: 5
   )
   ProjectUser.create!(
   project_id: 4,

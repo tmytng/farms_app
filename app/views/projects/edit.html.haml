@@ -19,10 +19,10 @@
             = f.label :member, "プロジェクトメンバー", class: "label-text"
             %span{class: "require"} 必須
             = f.collection_check_boxes :user_ids, User.all, :id, :name, class: "form-control"
-          .post-footer
-            .form-group
-              = f.submit "更新する", class: "btn btn-primary"
-            .form-group
-              = button_to '削除する', project_path, method: :delete, class: "btn btn-danger"
-            .form-group
-              = link_to "戻る", :back, class: "backbtn btn btn-primary"
+          .form-group
+            = f.submit "更新する", method: :patch, class: "btn btn-primary"
+      .post-footer
+        .form-group
+          = button_to '削除する', project_path, method: :delete, class: "btn btn-danger"
+        .form-group
+          = link_to "戻る", :back, class: "backbtn btn btn-primary"
