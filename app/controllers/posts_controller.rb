@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_project
-  before_action :set_post, only: [:edit, :show]
+  before_action :set_post, only: [:edit, :show, :update]
 
   def index
     # @posts = Post.all
@@ -12,11 +12,17 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to project_posts_path, notice: '登録情報を修正しました'
+    else
+      render :edit
+    end
   end
 
   def create

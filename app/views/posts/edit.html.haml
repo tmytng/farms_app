@@ -2,7 +2,7 @@
   = render "layouts/global-navigation"
   .post-main
     .post-field
-      %h2.sub 新規案件登録画面
+      %h2.sub 登録情報修正
       = form_with(model: [@project, @post], html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
         .company-info
           %h3.sub 顧客情報
