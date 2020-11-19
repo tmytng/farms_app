@@ -3,13 +3,17 @@
   .post-main
     .post-field
       %h2.sub 新規案件登録画面
-      = form_with(model: [@project, @post], class: "form-field",local: true) do |f|
+      = form_with(model: [@project, @post], html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
         .company-info
           %h3.sub 顧客情報
           .form-group
             = f.label :company_name, "会社名", class: "label-text"
             %span{class: "require"} 必須
-            = f.text_field :company_name, placeholder: "アイウエオ株式会社", id: "company_name", class: "form-control form-control-sm"
+            = f.text_field :company_name, placeholder: "アイウエオ株式会社", id: "company_name", class: "form-control form-control-sm", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              お名前を入力してください
           .form-group
             = f.label :contact_reason, "都道府県", class: "label-text"
             %span{class: "require"} 必須
@@ -17,7 +21,11 @@
           .form-group
             = f.label :contact_reason, "所在地", class: "label-text"
             %span{class: "require"} 必須
-            = f.text_field :contact_reason, placeholder: "新宿区新宿1-1-1", id: "contact_reason", class: "form-control form-control-sm"
+            = f.text_field :contact_reason, placeholder: "新宿区新宿1-1-1", id: "contact_reason", class: "form-control form-control-sm", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              都道府県以下の住所を入力してください
           .form-group
             = f.label :company_url, "URL", class: "label-text"
             = f.url_field :company_url, placeholder: "http://test.com", id: "company_url", class: "form-control form-control-sm"
@@ -27,11 +35,19 @@
           .form-group
             = f.label :phone_number, "電話番号", class: "label-text"
             %span{class: "require"} 必須
-            = f.telephone_field :phone_number, placeholder: "03-1111-2222", id: "phone_number", class: "form-control form-control-sm"
+            = f.telephone_field :phone_number, placeholder: "03-1111-2222", id: "phone_number", class: "form-control form-control-sm", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              電話番号を入力してください
           .form-group
             = f.label :email, "メールアドレス", class: "label-text"
             %span{class: "require"} 必須
-            = f.email_field :email, placeholder: "tanaka@aiueo.com", id: "email", class: "form-control form-control-sm"
+            = f.email_field :email, placeholder: "tanaka@aiueo.com", id: "email", class: "form-control form-control-sm", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              メールアドレスを入力してください
         .status-info
           %h3.sub ステータス情報
           .form-group
@@ -41,7 +57,11 @@
           .form-group
             = f.label :purchase_date, "購入予定時期:", class: "label-text"
             %span{class: "require"} 必須
-            = f.date_field :purchase_date, class: "form-control form-control-sm"
+            = f.date_field :purchase_date, class: "form-control form-control-sm", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              購入予定時期を入力してください
           .form-group
             = f.label :product_id, "提案商材", class: "label-text"
             %span{class: "require"} 必須
@@ -54,11 +74,19 @@
           .form-group
             = f.label :contact_reason, "概要", class: "label-text"
             %span{class: "require"} 必須
-            = f.text_field :contact_reason, placeholder: "商品購入問い合わせ", id: "contact_reason", class: "form-control form-control-sm"
+            = f.text_field :contact_reason, placeholder: "商品購入問い合わせ", id: "contact_reason", class: "form-control form-control-sm", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              案件概要を入力してください
           .form-group
             = f.label :contact_des, "応対履歴", class: "label-text"
             %span{class: "require"} 必須
-            = f.text_area :contact_des, class: "form-control form-text-area"
+            = f.text_area :contact_des, class: "form-control form-text-area", required: "#{'required'}"
+            %p.valid-feedback
+              正しく入力されています
+            %p.invalid-feedback
+              応対履歴を入力してください
             = f.hidden_field :project_id, value: @project.id
         .log-info
           %h3.sub ログ情報
@@ -69,6 +97,29 @@
             %p= link_to "戻る", :back, class: "backbtn btn btn-primary"
           .form-group
             = f.submit "登録する", class: "btn btn-primary"
+
+
+%script{:crossorigin => "anonymous", :integrity => "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", :src => "https://code.jquery.com/jquery-3.5.1.slim.min.js"}
+%script{:crossorigin => "anonymous", :integrity => "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", :src => "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"}
+%script{:crossorigin => "anonymous", :integrity => "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"}
+
+:javascript
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      var forms = document.getElementsByClassName('needs-validation');
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+
 
 -# 追加予定
 -# 問い合わせチャネル→選択式
