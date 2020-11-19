@@ -60,6 +60,6 @@
         .post-footer
           .form-group
             %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
-          - if current_user == @project.users
+          - if @project.user_ids.include? current_user.id
             .form-group
-              = f.submit "修正する", class: "btn btn-primary"
+              %p= link_to "修正する", edit_project_post_path, class: "backbtn btn btn-primary"

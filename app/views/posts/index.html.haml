@@ -26,7 +26,7 @@
             %td #{post.updated_at.strftime("%Y年%m月%d日 %H時%M分")}
             %td #{post.user.name}
 
-- if current_user == @project.users
+- if @project.user_ids.include? current_user.id
   = link_to new_project_post_path do
     .postbtn
       %span.postbtn__text 新規登録
