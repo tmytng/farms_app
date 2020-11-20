@@ -1,71 +1,6 @@
 .main {
-  // .mainのプロパティはsection.scssに記載
-  .user-field {
-    .sub-msg{
-      font-size: 24px;
-      margin: 16px 16px 32px 16px;
-    }
-    .user-items {
-      display: grid;
-      grid-gap: 8px;
-      grid-template-columns: 1fr 4fr 8fr 1fr;
-      grid-auto-rows: calc((100vh/8) - 28px);
-      justify-content: center;
-      &__avatar-box {
-        grid-column: 2 / 3;
-        grid-row: 1 / 7;
-        justify-content: center;
-        display: flex;
-        width: 320px;
-        height: 320px;
-        & img {
-          width: 240px;
-          height: 240px;
-          border-radius: 50%;
-          // width: 100%;
-          object-fit: cover;
-          display: block;
-        }
-      }
-      &__info-box {
-        grid-column: 3 / 4;
-        grid-row: 1 / 7;
-        padding: 4px 8px 8px 0;
-        & table {
-          width: 100%;
-          height: auto;
-          & tr {
-            border: 1px solid gray;
-            & th {
-              padding: 2px;
-              border: 1px solid gray;
-              width: 24%;
-              background-color: lightgray;
-            }
-            & td {
-              padding: 2px;
-            }
-          }
-        }
-      }
-      &__button-box {
-        grid-column: 2 / 4;
-        grid-row: 7 / 9;
-        display: flex;
-        justify-content: space-around;
-        &__users-btn {
-          &__a:hover,
-          a:link,
-          a:visited,
-          a:active {
-            color: black;
-            text-decoration: none;
-          }
-        }
-      }
-    }
-  }
   .index-field {
+    padding: 8px;
     grid-row: 1 / 2 ;
     grid-column: 1 / 2;
     .sub-msg{
@@ -165,6 +100,101 @@
         }
         &__pj-start, &__pj-last-updated, &__pj-member-count {
           color: #414141;
+        }
+      }
+    }
+  }
+  .user-field {
+    padding: 8px;
+    .sub-msg{
+      font-size: 24px;
+      margin: 16px 16px 32px 16px;
+    }
+    .user-items {
+      display: grid;
+      grid-gap: 8px;
+      grid-template-columns: 1fr 4fr 8fr 1fr;
+      grid-auto-rows: calc((100vh/8) - 28px);
+      justify-content: center;
+      &__avatar-box {
+        grid-column: 2 / 3;
+        grid-row: 1 / 7;
+        justify-content: center;
+        display: flex;
+        width: 320px;
+        height: 320px;
+        & img {
+          width: 240px;
+          height: 240px;
+          border-radius: 50%;
+          // width: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+      &__info-box {
+        grid-column: 3 / 4;
+        grid-row: 1 / 7;
+        padding: 4px 8px 8px 0;
+        & table {
+          width: 100%;
+          height: auto;
+          & tr {
+            border: 1px solid gray;
+            & th {
+              padding: 2px;
+              border: 1px solid gray;
+              width: 24%;
+              background-color: lightgray;
+            }
+            & td {
+              padding: 2px;
+            }
+          }
+        }
+      }
+      &__button-box {
+        grid-column: 2 / 4;
+        grid-row: 7 / 9;
+        display: flex;
+        justify-content: space-around;
+        &__users-btn {
+          &__a:hover,
+          a:link,
+          a:visited,
+          a:active {
+            color: black;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .pj-field {
+    padding: 16px 16px;
+    .sub-msg{
+      font-size: 24px;
+      padding: 8px 0 16px 0;
+    }
+    .pj-new-form {
+      span.require {
+        color: red;
+        font-size: 12px;
+      }
+      .half-form {
+        width: 45%;
+      }
+      .check-control input[type="checkbox"] + label {
+        display: inline-block;
+        margin-right: 12px;
+      }
+      .form-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__btns {
+          margin: 8px;
+          padding: 8px;
         }
       }
     }

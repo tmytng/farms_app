@@ -14,7 +14,7 @@
     .SettingProjectForm__leftField
       %label.SettingProjectForm__label チャットメンバーを追加
     .SettingProjectForm__rightField
-      / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
+      / グループ作成機能の追加時はここにcollection_check_boxesの記述
       = f.collection_check_boxes :user_ids, User.all, :id, :name
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
   .SettingProjectForm__field
