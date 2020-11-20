@@ -4,6 +4,9 @@
     .index-field
       .sub-msg
         プロジェクト一覧
+      - if current_user.admin?
+        .sub-msg
+          = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
       .pj-container
         - @projects.each do |project|
           .pj-box
@@ -21,6 +24,7 @@
                 = project.profile
               .pj-box__pj-start
                 作成者：#{project.creator}
+              .pj-box__pj-start
                 作成日：#{project.created_at.strftime("%Y/%m/%d")}
               .pj-box__pj-last-updated
                 最終更新：2020/11/18
