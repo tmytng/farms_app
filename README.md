@@ -25,8 +25,8 @@ FARMS（ファームス）は1人〜15人前後の小規模チームを想定し
 ・capistrano（デプロイ自動化）<br>
 ・HAML（テンプレートエンジン）<br>
 ・SASS（BEM・グリッドデザイン）<br>
-・Active Storage<br>
-・Bootstrap<br>
+・Active Storage（添付ファイル管理）<br>
+・Bootstrap（レスポンシブ・UI）<br>
 
 ## 主な機能
 ・プロジェクト作成・編集・削除機能<br>
