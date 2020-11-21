@@ -6,7 +6,7 @@
         ユーザー一覧
       - if current_user.admin?
         .sub-msg
-          = link_to "ユーザー新規作成", new_user_session_path, class: 'btn btn-primary btn-sm'
+          = link_to "ユーザー新規作成", new_user_registration_path, class: 'btn btn-primary btn-sm'
       .users-container
         - @users.each do |user|
           .users-box
@@ -21,4 +21,6 @@
               .users-box__register-date
                 ユーザー登録日：#{user.created_at.strftime("%Y/%m/%d")}
               .users-box__last-updated
-                最終ログイン： #{user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")}
+                最終ログイン：
+                - if user.current_sign_in_at.present?
+                  = "#{user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")}"

@@ -94,7 +94,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def current_user_is_admin?
-    user_signed_in? && current_user.has_role?(:admin)
+    user_signed_in? && current_user.admin?
   end
 
   # The path used after sign up.

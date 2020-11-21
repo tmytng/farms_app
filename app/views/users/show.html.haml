@@ -48,7 +48,8 @@
               %tr
                 %th 最終ログイン
                 %td
-                  = @user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")
+                  - if @user.current_sign_in_at.present?
+                    = @user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")
         .user-items__button-box
           - if current_user.id == @user.id
             .user-items__button-box__users-btn
