@@ -140,9 +140,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def editable?
     raise CanCan::AccessDenied unless user_signed_in?
-
-    if params[:id].present? && !current_user_is_admin?
-      raise CanCan::AccessDenied
-    end
   end
 end
