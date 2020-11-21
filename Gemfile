@@ -19,6 +19,8 @@ gem 'mini_magick'
 gem "chartkick"
 gem 'active_hash'
 gem 'aws-sdk-s3'
+gem 'cancancan'
+gem 'rolify'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
