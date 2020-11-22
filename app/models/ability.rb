@@ -3,9 +3,9 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(operator)
 
-    user ||= User.new
+    operator ||= User.new
     can :read,  :all
 
     if user.admin?
