@@ -3,7 +3,7 @@
   .main
     .user-field
       %h1 ユーザー登録情報の編集
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-field needs-validation", method: :put }) do |f|
         = render "devise/shared/error_messages", resource: resource
         .FormField
           .FormField__label--normal
