@@ -4,7 +4,7 @@
     .index-field
       .sub-msg
         プロジェクト一覧
-      - if current_user.admin?
+      - if current_user.has_role? :admin
         .sub-msg
           = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
       .pj-container

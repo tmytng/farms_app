@@ -41,9 +41,9 @@
               %tr
                 %th ユーザー権限
                 %td
-                  - if @user.admin?
+                  - if @user.has_role? :admin
                     = "管理者"
-                  - else
+                  - elsif @user.has_role? :operator
                     = "一般ユーザー"
               %tr
                 %th 最終ログイン
@@ -58,6 +58,6 @@
             = link_to "戻る", :back
           .user-items__button-box__users-btn
             = link_to "ログアウト", destroy_user_session_path, method: :delete
-          - if current_user.admin?
+          - if current_user.has_role? :admin
             .user-items__button-box__users-btn
               = button_to 'このユーザーを削除する', user_path, method: :delete
