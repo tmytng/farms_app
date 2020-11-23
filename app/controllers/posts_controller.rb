@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_project
-  before_action :set_post, only: [:edit, :show, :update]
+  before_action :set_post, only: [:edit, :show, :update, :destroy]
 
   def index
     # @posts = Post.all
@@ -35,10 +35,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    if @post.destroy!
+      redirect_to root_path, notice: "削除が完了しました"
+    end
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason,:phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :add_file, :project_id, :post_files).merge(user_id: current_user.id)
+    params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason,:phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :project_id, post_files:[]).merge(user_id: current_user.id)
   end
 
   def set_project

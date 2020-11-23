@@ -7,4 +7,6 @@ class Post < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :leadstatus
   belongs_to_active_hash :product
+
+  audited max_audits: 1000
 end

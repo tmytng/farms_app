@@ -42,8 +42,12 @@
             %br
             = @post.product.name
           .custom-file
-            = f.label :post_files, "添付ファイル", class: "custom-file-label"
-            = f.file_field :post_files, multiple: true, placeholder: "必要に応じてファイルを添付", class: "custom-file-input"
+            = f.label :post_files, "添付ファイル", class: "label-text"
+            %br
+            - @post.post_files.each do |file|
+              %ul
+                %li
+                  = file.filename
         .contact-info
           %h3.sub コンタクト情報
           .form-group
@@ -59,7 +63,10 @@
             9/3 14:44 〇〇さんが登録情報を更新しました。
         .post-footer
           .form-group
-            %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
+            = link_to "投稿一覧ページへ戻る", project_posts_path, class: "backbtn btn btn-secondary"
           - if @project.user_ids.include? current_user.id
             .form-group
-              %p= link_to "修正する", edit_project_post_path, class: "backbtn btn btn-primary"
+              = link_to "修正する", edit_project_post_path, class: "btn btn-primary"
+          - if user_signed_in? && current_user.has_role?(:admin)
+            .form-group
+              = button_to "削除する", project_post_path, method: :delete, class: "btn btn-danger"
