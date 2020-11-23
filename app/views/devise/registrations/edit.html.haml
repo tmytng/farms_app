@@ -1,59 +1,63 @@
-.contents
-  = render "layouts/global-navigation"
-  .main
-    .user-field.container
-      .sub-msg
-        ユーザー情報変更
-      .user-new-form
-        = form_with model: @user, url:  edit_user_registration_path, id: 'edit_user', class: 'edit_user form-field needs-validation', html: { novalidate: true }, local: true do |f|
-          .form-group
-            = f.label :name, "ユーザー名", class: "label-text"
-            %span.require 必須
-            = f.text_field :name, class: "form-control form-control-sm", required: "#{'required'}"
-            %p.invalid-feedback
-              ユーザー名を入力してください
-          .form-group
-            = f.label :avatar, "ユーザー画像"
-            %span.require 必須
-            = f.file_field :avatar, required: "#{'required'}"
-            %p.invalid-feedback
-              ユーザー画像をアップロードしてください
-          .form-group
-            = f.label :email, "Eメール", class: "label-text"
-            %span.require 必須
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm", required: "#{'required'}"
-            %p.invalid-feedback
-              メールアドレスを入力してください
-          .form-group
-            = f.label :profile, "プロフィール", class: "label-text"
-            = f.text_field :profile, class: "form-control form-control-sm"
-          .form-group
-            = f.label :position, "ポジション", class: "label-text"
-            %span.require
-            = f.text_field :position, class: "form-control"
-            .form-footer.my-4
-              .form-group.form-footer__btns
-                %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
-              .form-group.form-footer__btns
-                = f.submit "更新する", class: "btn btn-primary"
+- form_url = (request.path_info.to_s == edit_other_user_registration_path(resource))? other_user_registration_path(resource): user_registration_path
+= render 'form', resource: resource, resource_name: resource_name, form_url: form_url
 
-%script{:crossorigin => "anonymous", :integrity => "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", :src => "https://code.jquery.com/jquery-3.5.1.slim.min.js"}
-%script{:crossorigin => "anonymous", :integrity => "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", :src => "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"}
-%script{:crossorigin => "anonymous", :integrity => "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"}
 
-:javascript
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      var forms = document.getElementsByClassName('needs-validation');
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
+-# .contents
+-#   = render "layouts/global-navigation"
+-#   .main
+-#     .user-field.container
+-#       .sub-msg
+-#         ユーザー情報変更
+-#       .user-new-form
+-#         = form_with model: @user, url:  edit_user_registration_path, id: 'edit_user', class: 'edit_user form-field needs-validation', html: { novalidate: true }, local: true do |f|
+-#           .form-group
+-#             = f.label :name, "ユーザー名", class: "label-text"
+-#             %span.require 必須
+-#             = f.text_field :name, class: "form-control form-control-sm", required: "#{'required'}"
+-#             %p.invalid-feedback
+-#               ユーザー名を入力してください
+-#           .form-group
+-#             = f.label :avatar, "ユーザー画像"
+-#             %span.require 必須
+-#             = f.file_field :avatar, required: "#{'required'}"
+-#             %p.invalid-feedback
+-#               ユーザー画像をアップロードしてください
+-#           .form-group
+-#             = f.label :email, "Eメール", class: "label-text"
+-#             %span.require 必須
+-#             = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm", required: "#{'required'}"
+-#             %p.invalid-feedback
+-#               メールアドレスを入力してください
+-#           .form-group
+-#             = f.label :profile, "プロフィール", class: "label-text"
+-#             = f.text_field :profile, class: "form-control form-control-sm"
+-#           .form-group
+-#             = f.label :position, "ポジション", class: "label-text"
+-#             %span.require
+-#             = f.text_field :position, class: "form-control"
+-#             .form-footer.my-4
+-#               .form-group.form-footer__btns
+-#                 %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
+-#               .form-group.form-footer__btns
+-#                 = f.submit "更新する", class: "btn btn-primary"
+
+-# %script{:crossorigin => "anonymous", :integrity => "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", :src => "https://code.jquery.com/jquery-3.5.1.slim.min.js"}
+-# %script{:crossorigin => "anonymous", :integrity => "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", :src => "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"}
+-# %script{:crossorigin => "anonymous", :integrity => "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"}
+
+-# :javascript
+-#   (function() {
+-#     'use strict';
+-#     window.addEventListener('load', function() {
+-#       var forms = document.getElementsByClassName('needs-validation');
+-#       var validation = Array.prototype.filter.call(forms, function(form) {
+-#         form.addEventListener('submit', function(event) {
+-#           if (form.checkValidity() === false) {
+-#             event.preventDefault();
+-#             event.stopPropagation();
+-#           }
+-#           form.classList.add('was-validated');
+-#         }, false);
+-#       });
+-#     }, false);
+-#   })();

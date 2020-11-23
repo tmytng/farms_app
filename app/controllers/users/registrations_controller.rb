@@ -31,11 +31,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    # if by_admin_user?(params)
-    #   self.resource = resource_class.to_adapter.get!(params[:id])
-    # else
+    if by_admin_user?(params)
+      self.resource = resource_class.to_adapter.get!(params[:id])
+    else
       self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    # end
+    end
 
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
@@ -85,8 +85,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile, :position])
   end
 
   def by_admin_user?(params)
@@ -109,8 +109,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after update.
   def after_update_path_for(resource)
     if current_user_is_admin?
+      flash[:notice] = '更新が完了しました'
       users_path
     else
+      flash[:notice] = 'ユーザー情報の更新が完了しました'
       super(resource)
     end
   end
