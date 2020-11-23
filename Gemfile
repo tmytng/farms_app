@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
+  gem 'seed_dump'
 
 end
 
