@@ -10,7 +10,7 @@
       .pj-container
         - @projects.each do |project|
           .pj-box
-            = link_to project_posts_path(project) do
+            = link_to project_posts_path(project), class:"test" do
               .pj-box__pj-name
                 = project.name
               .pj-box__pj-members
