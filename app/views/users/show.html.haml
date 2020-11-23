@@ -1,7 +1,7 @@
 .contents
   = render "layouts/global-navigation"
   .main
-    .user-field
+    .user-field.container
       .sub-msg
         ユーザー詳細
       .user-items
@@ -51,13 +51,13 @@
                   - if @user.current_sign_in_at.present?
                     = @user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")
         .user-items__button-box
+          .user-items__button-box__users-btn
+            = link_to "戻る", :back, class: "btn btn-secondary"
+          .user-items__button-box__users-btn
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary"
           - if current_user.id == @user.id
             .user-items__button-box__users-btn
-              = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user)
-          .user-items__button-box__users-btn
-            = link_to "戻る", :back
-          .user-items__button-box__users-btn
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+              = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
           - if current_user.has_role? :admin
             .user-items__button-box__users-btn
-              = button_to 'このユーザーを削除する', user_path, method: :delete
+              = button_to 'このユーザーを削除する', user_path, method: :delete, class: "btn btn-danger"
