@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_project
-  before_action :set_post, only: [:edit, :show, :update]
+  before_action :set_post, only: [:edit, :show, :update, :destroy]
 
   def index
     # @posts = Post.all
@@ -32,6 +32,12 @@ class PostsController < ApplicationController
       redirect_to project_posts_path(@project)
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @post.destroy!
+      redirect_to root_path, notice: "削除が完了しました"
     end
   end
 

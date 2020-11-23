@@ -59,7 +59,10 @@
             9/3 14:44 〇〇さんが登録情報を更新しました。
         .post-footer
           .form-group
-            %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
+            = link_to "戻る", :back, class: "backbtn btn btn-secondary"
           - if @project.user_ids.include? current_user.id
             .form-group
-              %p= link_to "修正する", edit_project_post_path, class: "backbtn btn btn-primary"
+              = link_to "修正する", edit_project_post_path, class: "btn btn-primary"
+          - if user_signed_in? && current_user.has_role?(:admin)
+            .form-group
+              = button_to "削除する", project_post_path, method: :delete, class: "btn btn-danger"
