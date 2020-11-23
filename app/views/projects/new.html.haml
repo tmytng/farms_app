@@ -6,7 +6,7 @@
         新規プロジェクトグループ作成
       .pj-new-form
         = form_with(model: @project, html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
-          %h3.text-muted.my-2 プロジェクト情報
+          %h3.text-muted.my-2 新規プロジェクト登録
           .form-group
             = f.label :name, "プロジェクト名", class: "label-text"
             %span.require 必須

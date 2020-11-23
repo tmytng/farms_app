@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [:cancel]
-  prepend_before_action :authenticate_scope!, only: [:update, :destroy]
+  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
   prepend_before_action :set_minimum_password_length, only: [:new, :edit]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
@@ -86,7 +86,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile, :position])
   end
 
   def by_admin_user?(params)
@@ -94,7 +94,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def current_user_is_admin?
-    user_signed_in? && current_user.admin?
+    user_signed_in? && current_user.has_role?(:admin)
   end
 
   # The path used after sign up.
@@ -109,8 +109,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after update.
   def after_update_path_for(resource)
     if current_user_is_admin?
+      flash[:notice] = '更新が完了しました'
       users_path
     else
+      flash[:notice] = 'ユーザー情報の更新が完了しました'
       super(resource)
     end
   end
