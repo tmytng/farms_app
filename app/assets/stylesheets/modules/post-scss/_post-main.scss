@@ -7,6 +7,7 @@
   h3.sub {
     font-size: 12px;
     margin-top:16px;
+    margin-bottom: 8px;
     color: gray;
   }
   span.require {
@@ -18,7 +19,7 @@
     grid-gap: 24px;
     grid-auto-rows: 7fr 1fr;
     font-size: 12px;
-    grid-template-columns: 3fr 3fr 7fr 3fr;
+    grid-template-columns: 3fr 3fr 6fr 4fr;
     .company-info {
       grid-row: 1 / 2;
       grid-column: 1 / 2;
@@ -41,8 +42,22 @@
       grid-row: 1 / 2;
       grid-column: 4 / 5;
       border-radius: 8px;
-      font-size: 8px;
-      color: gray;
+      display: grid;
+      grid-gap: 8px;
+      grid-auto-rows: auto 1fr 1fr;
+      grid-template-columns: 1fr;
+      .action-log-box {
+        grid-row: 2 / 3;
+        grid-column: 1;
+        background-color: cadetblue;
+        overflow: scroll;
+      }
+      .contact-log-box {
+        grid-row: 3/ 4;
+        grid-column: 1;
+        background-color: darkseagreen;
+        overflow: scroll;
+      }
     }
     .post-footer {
       grid-row: 2 / 3;
