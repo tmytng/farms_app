@@ -21,6 +21,7 @@ gem 'active_hash'
 gem 'aws-sdk-s3'
 gem 'cancancan'
 gem 'rolify'
+gem "audited", "~> 4.7"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
