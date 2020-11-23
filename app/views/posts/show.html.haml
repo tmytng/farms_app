@@ -44,7 +44,8 @@
           .custom-file
             = f.label :post_files, "添付ファイル", class: "label-text"
             %br
-            = @post.post_files.filename
+            - @post.post_files.each do |file|
+              = file.filename
         .contact-info
           %h3.sub コンタクト情報
           .form-group
