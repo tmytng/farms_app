@@ -46,6 +46,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def import
+    current_user.posts.import(params[:file])
+    redirect_to project_posts_path, notice: "投稿履歴を追加しました"
+  end
+
   private
 
   def post_params

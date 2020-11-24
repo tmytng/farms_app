@@ -23,3 +23,7 @@
           = link_to "プロジェクト編集", edit_project_path(@project), class: 'btn btn-danger btn-sm'
         %li.pj-category__act-lists__list
           = link_to "CSVエクスポート", project_posts_path(format: :csv), class: 'btn btn-danger btn-sm'
+        %li.pj-category__act-lists__list
+          = form_tag import_project_posts_path, multipart: true, class: 'mb-3' do
+            = file_field_tag :file
+            = submit_tag "CSVインポート", class: 'btn btn-danger btn-sm'
