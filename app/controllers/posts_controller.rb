@@ -5,6 +5,11 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all
     @posts = Post.where(project_id: @project.id)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def new
