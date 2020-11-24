@@ -9,9 +9,13 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validates :name, presence: true
   validates :email, uniqueness: true
-
+  has_many :audits
   after_create :assign_admin_role
   after_create :assign_default_role
+
+  validates :name, :email, presence: true
+  validates :name, length: { maximum: 15 }
+  # validates :name, :email, uniqueness: true, case_sensitive: true
 
   def assign_default_role
     self.add_role(:operator) if self.roles.blank?
