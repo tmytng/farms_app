@@ -59,8 +59,16 @@
             = f.hidden_field :project_id, value: @project.id
         .log-info
           %h3.sub ログ情報
-          .form-group
-            9/3 14:44 〇〇さんが登録情報を更新しました。
+          .action-log-box
+            %p アクションログ
+            -# .dl
+            -#   .dt YYYY/MM/DD HH:MM USER
+            -#   .dd 新規登録
+          .contact-log-box
+            %p コンタクトログ
+            -# .dl
+            -#   .dt YYYY/MM/DD HH:MM USER
+            -#   .dd 問い合わせ内容
         .post-footer
           .form-group
             = link_to "投稿一覧ページへ戻る", project_posts_path, class: "backbtn btn btn-secondary"
