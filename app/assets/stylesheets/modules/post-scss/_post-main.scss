@@ -51,6 +51,18 @@
         grid-column: 1;
         // background-color: cadetblue;
         overflow: scroll;
+        .log-msg-list {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          &__created-at {
+            list-style: none;
+            margin-top: 6px;
+          }
+          &__register {
+            list-style: none;
+          }
+        }
       }
       .contact-log-box {
         grid-row: 3/ 4;

@@ -61,14 +61,12 @@
           %h3.sub ログ情報
           .action-log-box
             %p アクションログ
-            %ul
+            %ul.log-msg-list
             - @logs.each do |log|
-              %li
-                = log.created_at.strftime("%Y/%m/%d %H:%M")
-              %li
-                = log.action
-              %li
-                = log.user.name
+              %li.log-msg-list__created-at
+                = "[#{log.action}]" + log.created_at.strftime("%Y/%m/%d %H:%M")
+              %li.log-msg-list__register
+                = "入力：#{log.user.name}"
           .contact-log-box
             %p コンタクトログ
             -# .dl
