@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validates :name, :email, presence: true
   validates :name, length: { maximum: 15 }
-  validates :name, :email, uniqueness: true
+  # validates :name, :email, uniqueness: true, case_sensitive: true
 
   def assign_default_role
     self.add_role(:operator) if self.roles.blank?
