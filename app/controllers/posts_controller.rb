@@ -5,6 +5,11 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all
     @posts = Post.where(project_id: @project.id)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def new
@@ -39,6 +44,11 @@ class PostsController < ApplicationController
     if @post.destroy!
       redirect_to root_path, notice: "削除が完了しました"
     end
+  end
+
+  def import
+    current_user.posts.import(params[:file])
+    redirect_to project_posts_path, notice: "投稿履歴を追加しました"
   end
 
   private

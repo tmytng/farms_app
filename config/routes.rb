@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
-    resources :posts, :messages
+    resources :posts do
+      post :import, on: :collection
+    end
+  end
+  resources :projects do
+    resources :message
   end
 end
