@@ -10,6 +10,20 @@ class Post < ApplicationRecord
 
   audited max_audits: 1000
 
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+
+  validates :company_name, presence: true
+  validates :prefecture_id, presence: true, exclusion: { in: ["---"] }
+  validates :company_address, presence: true
+  validates :contact_person, presence: true
+  validates :phone_number, format: { with: VALID_PHONE_REGEX, message: 'は有効でありません。'}
+  validates :email, presence: true
+  validates :purchase_date, presence: true
+  validates :leadstatus_id, presence: true, exclusion: { in: ["---"] }
+  validates :product_id, presence: true, exclusion: { in: ["---"] }
+  validates :contact_reason, presence: true, length: {maximum: 30}
+  validates :contact_des, presence: true, length: {maximum: 1000}
+
   def self.csv_attributes
     ["id", "company_name", "company_address", "company_url", "prefecture_id", "contact_person", "contact_reason", "phone_number", "email", "leadstatus_id", "purchase_date", "product_id", "contact_des", "project_id", "created_at", "updated_at"]
   end

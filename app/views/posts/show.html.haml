@@ -69,9 +69,12 @@
                 = "入力：#{log.user.name}"
           .contact-log-box
             %p コンタクトログ
-            -# .dl
-            -#   .dt YYYY/MM/DD HH:MM USER
-            -#   .dd 問い合わせ内容
+            -# %ul.log-msg-list
+            -# - @logs.each do |log|
+            -#   %li.log-msg-list__created-at
+            -#     = log.created_at.strftime("%Y/%m/%d %H:%M")
+            -#   %li.log-msg-list__register
+            -#     = log.audited_changes
         .post-footer
           .form-group
             = link_to "投稿一覧ページへ戻る", project_posts_path, class: "backbtn btn btn-secondary"
