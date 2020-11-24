@@ -61,9 +61,14 @@
           %h3.sub ログ情報
           .action-log-box
             %p アクションログ
-            -# .dl
-            -#   .dt YYYY/MM/DD HH:MM USER
-            -#   .dd 新規登録
+            %ul
+            - @logs.each do |log|
+              %li
+                = log.created_at.strftime("%Y/%m/%d %H:%M")
+              %li
+                = log.action
+              %li
+                = log.user.name
           .contact-log-box
             %p コンタクトログ
             -# .dl

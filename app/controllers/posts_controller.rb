@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @logs = @post.audits.all
   end
 
   def edit

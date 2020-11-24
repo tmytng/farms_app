@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validates :name, presence: true
   validates :email, uniqueness: true
-
+  has_many :audits
   after_create :assign_admin_role
   after_create :assign_default_role
 
