@@ -4,6 +4,12 @@ FactoryBot.define do
     name              {"test-project"}
     profile           {"これはテストプロジェクトです"}
     creator           {"testuser"}
-    users
   end
+
+  # after(:create) do |user|
+  #   create(:project_user,
+  #         project: project,
+  #         user: create(:user))
+  #   end
+  # end
 end

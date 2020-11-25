@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    if @project.save!
+    if @project.save
       redirect_to projects_path, notice: '新規プロジェクトを作成しました'
     else
       render :new

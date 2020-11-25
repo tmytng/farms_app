@@ -1,9 +1,9 @@
 = form_with model: project, local: true do |f|
-  - if group.errors.any?
-    .SettingGroupForm__errors
-      %h2= "#{group.errors.full_messages.count}件のエラーが発生しました。"
+  - if project.errors.any?
+    .SettingprojectForm__errors
+      %h2= "#{project.errors.full_messages.count}件のエラーが発生しました。"
       %ul
-        - group.errors.full_messages.each do |message|
+        - project.errors.full_messages.each do |message|
           %li= message
   .SettingProjectForm__field
     .SettingProjectForm__leftField
