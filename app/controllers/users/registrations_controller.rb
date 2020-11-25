@@ -109,9 +109,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after update.
   def after_update_path_for(resource)
     if current_user_is_admin?
-      users_path, success: '更新が完了しました'
+      flash[:notice] = '更新が完了しました'
+      users_path
     else
-      super(resource), success: 'ユーザー情報の更新が完了しました'
+      flash[:notice] = 'ユーザー情報の更新が完了しました'
+      super(resource)
     end
   end
 
