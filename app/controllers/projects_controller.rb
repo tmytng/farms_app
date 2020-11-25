@@ -12,17 +12,17 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to projects_path, notice: '新規プロジェクトを作成しました'
+      redirect_to projects_path, success: '新規プロジェクトを作成しました'
     else
-      render :new
+      render :new, warning: '入力内容を確認してください'
     end
   end
 
   def update
     if @project.update(project_params)
-      redirect_to project_posts_path(@project), notice: 'プロジェクト情報を更新しました'
+      redirect_to project_posts_path(@project), success: 'プロジェクト情報を更新しました'
     else
-      render :edit
+      render :edit, warning: '入力内容を確認してください'
     end
   end
 
@@ -31,9 +31,9 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy!
-      redirect_to root_path, notice: "削除が完了しました"
-    # else
-    #   redirect_to root_path, alert: "削除が失敗しました"
+      redirect_to root_path, success: "削除が完了しました"
+    else
+      redirect_to root_path, warning: "削除が失敗しました"
     end
   end
 

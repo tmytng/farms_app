@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if current_user.update(user_params)
-      redirect_to users_path
+      redirect_to users_path, success: 'ユーザー情報を更新しました'
     else
       render :edit
     end
@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy!
-      redirect_to users_path, notice: "削除が完了しました"
+      redirect_to users_path, success: "削除が完了しました"
     else
-      render :edit, alert: "削除が失敗しました"
+      render :edit, warning: "削除が失敗しました"
     end
   end
 
