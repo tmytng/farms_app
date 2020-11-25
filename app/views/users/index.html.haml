@@ -2,10 +2,12 @@
   = render "layouts/global-navigation"
   .main
     .index-field
-      .sub-msg
+      .sub-title
         ユーザー一覧
+      .sub-title__msg
+        プロジェクトに参加している全メンバーが見られます！
       - if current_user.has_role? :admin
-        .sub-msg
+        .sub-title
           = link_to "ユーザー新規作成", new_user_registration_path, class: 'btn btn-primary btn-sm'
       .users-container
         - @users.each do |user|

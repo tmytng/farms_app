@@ -16,6 +16,15 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def create
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to project_posts_path(@project), success: '新規登録が完了しました'
+    else
+      render :new
+    end
+  end
+
   def show
     @logs = @post.audits.all
   end
@@ -25,31 +34,21 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to project_posts_path, notice: '登録情報を修正しました'
+      redirect_to project_posts_path, success: '登録情報を更新しました'
     else
-      render :edit
-    end
-  end
-
-  def create
-    @post = Post.new(post_params)
-    if @post.save
-      flash[:notice] = '新規登録が完了しました'
-      redirect_to project_posts_path(@project)
-    else
-      render :new
+      render :edit, warning: '登録内容に誤りがあります'
     end
   end
 
   def destroy
     if @post.destroy!
-      redirect_to root_path, notice: "削除が完了しました"
+      redirect_to root_path, success: "削除が完了しました"
     end
   end
 
   def import
     current_user.posts.import(params[:file])
-    redirect_to project_posts_path, notice: "投稿履歴を追加しました"
+    redirect_to project_posts_path, success: "投稿履歴を追加しました"
   end
 
   private

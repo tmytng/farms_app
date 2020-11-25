@@ -2,10 +2,12 @@
   = render "layouts/global-navigation"
   .main
     .index-field
-      .sub-msg
+      .sub-title
         プロジェクト一覧
+      .sub-title__msg
+        アサインするプロジェクトを選択しましょう！
       - if current_user.has_role? :admin
-        .sub-msg
+        .sub-title
           = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
       .pj-container
         - @projects.each do |project|
