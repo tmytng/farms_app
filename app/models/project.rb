@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :profile, presence: true, length: {maximum: 300}
   validates :user_ids, presence: true
+  validates :creator, presence: true
   # validates :project_user_ids, presence: true
 
 end

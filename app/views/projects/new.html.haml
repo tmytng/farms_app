@@ -27,6 +27,7 @@
             = f.collection_check_boxes :user_ids, User.all, :id, :name, include_hidden: false
             %p.invalid-feedback
               プロジェクトメンバーを選択してください
+            = f.hidden_field :creator, value: current_user.id
             .form-footer.my-4
               .form-group.form-footer__btns
                 %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
