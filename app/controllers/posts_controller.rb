@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(project_id: @project.id)
+    # @audit =
 
     respond_to do |format|
       format.html

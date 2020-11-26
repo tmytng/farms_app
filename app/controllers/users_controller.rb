@@ -2,8 +2,9 @@ class UsersController < ApplicationController
   after_action :after_login, only: [:create]
 
   def index
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @users = User.all
+    # @q = User.ransack(params[:q])
+    # @users = @q.result(distinct: true)
 
   end
 
