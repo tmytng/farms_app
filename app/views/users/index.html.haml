@@ -15,7 +15,6 @@
       - if current_user.has_role? :admin
         .sub-msg
           = link_to "ユーザー新規作成", new_user_registration_path, class: 'btn btn-primary btn-sm'
-
       .users-container
         - @users.each do |user|
           .users-box
