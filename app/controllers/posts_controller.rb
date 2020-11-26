@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to project_posts_path, notice: '登録情報を修正しました'
     else
-      render :edit
+      render :edit, notice: '登録情報が修正できません'
     end
   end
 

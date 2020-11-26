@@ -23,8 +23,8 @@
             = f.label :contact_person, "担当者名", class: "label-text"
             = f.text_field :contact_person, placeholder: "田中一郎", id: "contact_person", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
           .form-group
-            = f.label :phone_number, "電話番号", class: "label-text"
-            = f.telephone_field :phone_number, placeholder: "03-1111-2222", id: "phone_number", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+            = f.label :phone_number, "電話番号（ハイフンなし）", class: "label-text"
+            = f.telephone_field :phone_number, placeholder: "0311112222", id: "phone_number", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
           .form-group
             = f.label :email, "メールアドレス", class: "label-text"
             = f.email_field :email, placeholder: "tanaka@aiueo.com", id: "email", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
