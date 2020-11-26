@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show, :update, :destroy]
 
   def index
-    # @posts = Post.all
     @posts = Post.where(project_id: @project.id)
 
     respond_to do |format|

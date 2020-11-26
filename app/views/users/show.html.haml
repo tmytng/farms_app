@@ -52,7 +52,7 @@
                     = @user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")
         .user-items__button-box
           .user-items__button-box__users-btn
-            = link_to "ユーザー一覧へ戻る", users_path, class: "btn btn-secondary"
+            = link_to "ユーザーディレクトリへ戻る", users_path, class: "btn btn-secondary"
           - if current_user.id == @user.id
             .user-items__button-box__users-btn
               = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary"
