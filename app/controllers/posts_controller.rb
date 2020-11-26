@@ -21,11 +21,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @logs = @post.audits.all
   end
 
   def update
     if @post.update(post_params)
-      redirect_to project_posts_path, notice: '登録情報を修正しました'
+      redirect_to project_post_path, notice: '登録情報を修正しました'
     else
       render :edit, notice: '登録情報が修正できません'
     end

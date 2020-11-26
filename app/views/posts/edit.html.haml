@@ -81,9 +81,12 @@
           %h3.sub ログ情報
           .action-log-box
             %p アクションログ
-            -# .dl
-            -#   .dt YYYY/MM/DD HH:MM USER
-            -#   .dd 新規登録
+            %ul.log-msg-list
+            - @logs.each do |log|
+              %li.log-msg-list__created-at
+                = "[#{log.action}]" + "#{l log.created_at}"
+              %li.log-msg-list__register
+                = "入力：#{log.user.name}"
           .contact-log-box
             %p コンタクトログ
             -# .dl
