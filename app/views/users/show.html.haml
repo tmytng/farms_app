@@ -37,7 +37,7 @@
               %tr
                 %th ユーザー登録日
                 %td
-                  = @user.created_at.strftime("%Y/%m/%d")
+                  = l @user.created_at, format: :day
               %tr
                 %th ユーザー権限
                 %td
@@ -49,7 +49,7 @@
                 %th 最終ログイン
                 %td
                   - if @user.current_sign_in_at.present?
-                    = @user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")
+                    = l @user.current_sign_in_at, format: :short
         .user-items__button-box
           .user-items__button-box__users-btn
             = link_to "ユーザーディレクトリへ戻る", users_path, class: "btn btn-secondary"

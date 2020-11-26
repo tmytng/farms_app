@@ -27,8 +27,8 @@
               .users-box__profile
                 = user.profile
               .users-box__register-date
-                ユーザー登録日：#{user.created_at.strftime("%Y/%m/%d")}
+                ユーザー登録日：#{l user.created_at, format: :day}
               .users-box__last-updated
                 最終ログイン：
                 - if user.current_sign_in_at.present?
-                  = "#{user.current_sign_in_at.strftime("%Y/%m/%d %H:%M")}"
+                  = "#{l user.current_sign_in_at, format: :short}"

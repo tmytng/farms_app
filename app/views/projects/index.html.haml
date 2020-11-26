@@ -25,7 +25,7 @@
               .pj-box__pj-start
                 作成者：#{project.creator}
               .pj-box__pj-start
-                作成日：#{project.created_at.strftime("%Y/%m/%d")}
+                作成日：#{l project.created_at, format: :short}
               .pj-box__pj-last-updated
                 最終更新：2020/11/18
               .pj-box__pj-member-count

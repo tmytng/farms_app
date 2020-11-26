@@ -11,7 +11,7 @@
               - @messages.each do |m|
                 %ul.msg-list
                   %li.meg-lists
-                    = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                    = l m.created_at
                   %li.meg-lists
                     = m.user.name
                   %li.meg-lists

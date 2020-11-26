@@ -22,8 +22,8 @@
             %td #{post.company_name}
             %td #{post.contact_person}
             %td #{post.leadstatus.name}
-            %td #{post.created_at.strftime("%Y年%m月%d日 %H時%M分")}
-            %td #{post.updated_at.strftime("%Y年%m月%d日 %H時%M分")}
+            %td #{l post.created_at}
+            %td #{l post.updated_at}
             %td #{post.user.name}
 
 - if @project.user_ids.include? current_user.id
