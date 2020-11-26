@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(project_id: @project.id)
-    # @audit =
 
     respond_to do |format|
       format.html
@@ -25,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if @post.update!(post_params)
       redirect_to project_post_path, notice: '登録情報を修正しました'
     else
       render :edit, notice: '登録情報が修正できません'

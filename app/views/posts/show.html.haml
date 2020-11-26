@@ -10,12 +10,12 @@
             = f.label :company_name, "会社名", class: "label-text"
             = f.text_field :company_name, placeholder: "アイウエオ株式会社", id: "company_name", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
           .form-group
-            = f.label :contact_reason, "都道府県", class: "label-text"
+            = f.label :prefecture, "都道府県", class: "label-text"
             %br
             = @post.prefecture.name
           .form-group
-            = f.label :contact_reason, "所在地", class: "label-text"
-            = f.text_field :contact_reason, placeholder: "新宿区新宿1-1-1", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+            = f.label :company_address, "所在地", class: "label-text"
+            = f.text_field :company_address, placeholder: "新宿区新宿1-1-1", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
           .form-group
             = f.label :company_url, "URL", class: "label-text"
             = f.url_field :company_url, placeholder: "http://test.com", id: "company_url", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"

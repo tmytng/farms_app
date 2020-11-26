@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    # @audits = Audit.all
+    # @last_log = Audit.where(associated_id: @project.id).last
   end
 
   def new

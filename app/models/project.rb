@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   has_many :project_users, dependent: :destroy
+  has_associated_audits
   has_many :posts, dependent: :destroy
   has_many :users, through: :project_users
   has_many :messages, dependent: :destroy
@@ -9,5 +10,9 @@ class Project < ApplicationRecord
   validates :user_ids, presence: true
   validates :creator, presence: true
   # validates :project_user_ids, presence: true
+
+  # def  last_log
+  #   associated_audits.ids.to_s.last
+  # end
 
 end
