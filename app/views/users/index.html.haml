@@ -3,10 +3,19 @@
   .main
     .index-field
       .sub-msg
-        ユーザー一覧
+        メンバーディレクトリ
+      -# .sub-msg__search
+      -#   = search_form_for @q do |f|
+      -#     .form-group.row
+      -#       = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+      -#       .col-sm-10
+      -#         = f.search_field :name_cont, class: 'form-control'
+      -#     .form-group
+      -#       = f.submit class: 'btn btn-outline-primary'
       - if current_user.has_role? :admin
         .sub-msg
           = link_to "ユーザー新規作成", new_user_registration_path, class: 'btn btn-primary btn-sm'
+
       .users-container
         - @users.each do |user|
           .users-box

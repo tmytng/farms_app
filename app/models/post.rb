@@ -24,6 +24,8 @@ class Post < ApplicationRecord
   validates :contact_reason, presence: true, length: {maximum: 30}
   validates :contact_des, presence: true, length: {maximum: 1000}
 
+  scope :recent, -> { order(created_at: :desc) }
+
   def self.csv_attributes
     ["id", "company_name", "company_address", "company_url", "prefecture_id", "contact_person", "contact_reason", "phone_number", "email", "leadstatus_id", "purchase_date", "product_id", "contact_des", "project_id", "created_at", "updated_at"]
   end
