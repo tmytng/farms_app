@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   belongs_to_active_hash :leadstatus
   belongs_to_active_hash :product
 
-  audited max_audits: 1000
+  audited associated_with: :project
 
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
 
