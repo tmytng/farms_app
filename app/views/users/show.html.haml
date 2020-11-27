@@ -60,7 +60,7 @@
             .user-items__button-box__users-btn
               = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
             .user-items__button-box__users-btn
-              = button_to 'このユーザーを削除する', user_path, method: :delete, class: "btn btn-danger"
+              = button_to 'このユーザーを削除する', user_path, data: { confirm: "[INFO ID:#{@user.name}]を削除します。よろしいですか？"},  method: :delete, class: "btn btn-danger"
           - elsif current_user.id == @user.id
             .user-items__button-box__users-btn
               = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
