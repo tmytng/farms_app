@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy!
-      redirect_to root_path, notice: "削除が完了しました"
+      redirect_to  project_posts_path, notice: "[INFO ID:#{@post.id}]の削除が完了しました"
     end
   end
 
