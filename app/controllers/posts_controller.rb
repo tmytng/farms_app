@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_project
-  before_action :set_post, only: [:edit, :show, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_logs, only: [:show, :edit]
 
   def index
     @posts = Post.where(project_id: @project.id)
-
     respond_to do |format|
       format.html
       format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
@@ -15,36 +15,35 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def show
-    @logs = @post.audits.all
+  def create
+    @post = Post.new(post_params)
+    if @post.save!
+      flash[:notice] = "#{@post.company_name}様の新規登録が完了しました"
+      redirect_to project_posts_path(@project)
+    else
+      flash.now[:notice] =  "登録内容に誤りがあります"
+      render :new
+    end
   end
 
   def edit
-    @logs = @post.audits.all
   end
 
   def update
     if @post.update(post_params)
       redirect_to project_post_path, notice: "#{@post.company_name}様の登録情報を修正しました"
     else
-      render :edit
-      flash.now.notice "登録情報を修正できません"
-    end
-  end
-
-  def create
-    @post = Post.new(post_params)
-    if @post.save
-      flash[:notice] = '新規登録が完了しました'
-      redirect_to project_posts_path(@project)
-    else
+      flash.now[:notice] =  "修正内容に誤りがあります"
       render :new
     end
   end
 
+  def show
+  end
+
   def destroy
     if @post.destroy!
-      redirect_to root_path, notice: "削除が完了しました"
+      redirect_to  project_posts_path, notice: "[INFO ID:#{@post.id}]の削除が完了しました"
     end
   end
 
@@ -66,4 +65,9 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
+  def set_logs
+    @logs = @post.audits.all
+  end
+
 end
