@@ -1,5 +1,5 @@
 = form_with(model: project, html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
-  %h3.text-muted.my-2 新規プロジェクト登録
+  %h3.text-muted.my-2 プロジェクト概要
   .form-group
     = f.label :name, "プロジェクト名", class: "label-text"
     %span.require 必須
@@ -12,7 +12,7 @@
     = f.text_field :profile, id: "project_profile", class: "form-control form-control-sm", required: "#{'required'}"
     %p.invalid-feedback
       プロジェクト概要を入力してください
-  %h3.text-muted.my-2 アサインユーザー情報
+  %h3.text-muted.my-2 メンバー情報
   .checkbox.check-control
     = f.label :member, "プロジェクトメンバー"
     %span.require 必須
@@ -24,8 +24,17 @@
     .form-footer.my-4
       .form-group.form-footer__btns
         %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
-      .form-group.form-footer__btns
-        = f.submit "登録する", class: "btn btn-primary"
+      - if request.path_info == new_project_path
+        .form-group.form-footer__btns
+          = f.submit "登録する", class: "btn btn-primary"
+      - else
+        .form-group.form-footer__btns
+          = f.submit "更新する", method: :patch, class: "btn btn-primary"
+- if request.path_info == new_project_path
+- else
+  .form-footer.my-4
+    .form-group.form-footer__btns
+      = button_to '削除する', project_path, method: :delete, data: { confirm: "プロジェクト:#{project.name}を削除します。よろしいですか？"}, class: "btn btn-danger"
 
 %script{:crossorigin => "anonymous", :integrity => "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", :src => "https://code.jquery.com/jquery-3.5.1.slim.min.js"}
 %script{:crossorigin => "anonymous", :integrity => "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", :src => "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"}

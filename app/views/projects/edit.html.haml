@@ -1,28 +1,8 @@
 .contents
   = render "layouts/global-navigation"
   .main
-    .index-field
+    .pj-field.container
       .sub-msg
-      %h1 プロジェクト編集
-      .index-box__img_edit
-        = form_with(model: @project, local: true) do |f|
-          .form-group
-            = f.label :name, "プロジェクト名", class: "label-text"
-            %span{class: "require"} 必須
-            = f.text_field :name, placeholder: "丸々商事案件", class: "form-control"
-          .form-group
-            = f.label :profile, "プロジェクト概要", class: "label-text"
-            %span{class: "require"} 必須
-            = f.text_field :profile, id: "project_profile", class: "form-control"
-          %h3.sub アサインユーザー情報
-          .form-group
-            = f.label :member, "プロジェクトメンバー", class: "label-text"
-            %span{class: "require"} 必須
-            = f.collection_check_boxes :user_ids, User.all, :id, :name, class: "form-control"
-          .form-group
-            = f.submit "更新する", method: :patch, class: "btn btn-primary"
-      .post-footer
-        .form-group
-          = button_to '削除する', project_path, method: :delete, class: "btn btn-danger"
-        .form-group
-          = link_to "戻る", :back, class: "btn btn-secondary"
+        = "プロジェクト:#{@project.name} 情報変更"
+      .pj-new-form
+        = render partial: 'pj-form', locals: { project: @project }
