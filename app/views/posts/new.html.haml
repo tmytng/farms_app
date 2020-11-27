@@ -27,11 +27,12 @@
             = f.url_field :company_url, placeholder: "http://test.com", id: "company_url", class: "form-control form-control-sm"
           .form-group
             = f.label :contact_person, "担当者名", class: "label-text"
+            %span{class: "require"} 必須
             = f.text_field :contact_person, placeholder: "田中一郎", id: "contact_person", class: "form-control form-control-sm"
           .form-group
             = f.label :phone_number, "電話番号（ハイフンなし）", class: "label-text"
             %span{class: "require"} 必須
-            = f.telephone_field :phone_number, placeholder: "0311112222", id: "phone_number", class: "form-control form-control-sm", required: "#{'required'}"
+            = f.telephone_field :phone_number, placeholder: "0312345678", id: "phone_number", class: "form-control form-control-sm", required: "#{'required'}", pattern: "[0-9]*", maxlength: "11"
             %p.invalid-feedback
               電話番号を入力してください
           .form-group
