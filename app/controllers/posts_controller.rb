@@ -24,10 +24,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update!(post_params)
-      redirect_to project_post_path, notice: '登録情報を修正しました'
+    if @post.update(post_params)
+      redirect_to project_post_path, notice: "#{@post.company_name}様の登録情報を修正しました"
     else
-      render :edit, notice: '登録情報が修正できません'
+      render :edit
+      flash.now.notice "登録情報を修正できません"
     end
   end
 
