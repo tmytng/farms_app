@@ -4,4 +4,4 @@
     .post-field
       %h2.sub
       = "[INFO ID:#{@post.id}] 登録情報変更"
-      = render partial: 'form', locals: { post: @post, project: @project, logs: @logs }
+      = render partial: 'post-form', locals: { post: @post, project: @project, logs: @logs }
