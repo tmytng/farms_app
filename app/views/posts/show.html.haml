@@ -83,4 +83,4 @@
               = link_to "修正する", edit_project_post_path, class: "btn btn-primary"
           - if user_signed_in? && current_user.has_role?(:admin)
             .form-group
-              = button_to "削除する", project_post_path, method: :delete, class: "btn btn-danger"
+              = button_to "削除する", project_post_path, method: :delete, data: { confirm: "[INFO ID:#{@post.id}]を削除します。よろしいですか？"}, class: "btn btn-danger"

@@ -73,20 +73,19 @@
   .log-info
     %h3.sub ログ情報
     .action-log-box
-      -# %p アクションログ
-      -# %ul.log-msg-list
-      -# - logs.each do |log|
-      -#   %li.log-msg-list__created-at
-      -#     = "[#{log.action}]" + "#{l log.created_at}"
-      -#   %li.log-msg-list__register
-      -#     = "入力：#{log.user.name}"
+      %p アクションログ
+      %ul.log-msg-list
+      - if logs.present?
+        - logs.each do |log|
+          %li.log-msg-list__created-at
+            = "[#{log.action}]" + "#{l log.created_at}"
+          %li.log-msg-list__register
+            = "入力：#{log.user.name}"
     .contact-log-box
       %p コンタクトログ
       -# .dl
       -#   .dt YYYY/MM/DD HH:MM USER
       -#   .dd 問い合わせ内容
-
-
   .post-footer
     .form-group
       %p= link_to "戻る", :back, class: "backbtn btn btn-secondary"
@@ -99,21 +98,18 @@
 %script{:crossorigin => "anonymous", :integrity => "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"}
 
 :javascript
-(function() {
-'use strict';
-window.addEventListener('load', function() {
-var forms = document.getElementsByClassName('needs-validation');
-var validation = Array.prototype.filter.call(forms, function(form) {
-  form.addEventListener('submit', function(event) {
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    form.classList.add('was-validated');
-  }, false);
-});
-}, false);
-})();
-
-
-
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      var forms = document.getElementsByClassName('needs-validation');
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
