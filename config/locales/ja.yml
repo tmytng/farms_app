@@ -4,3 +4,16 @@ ja:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y/%m/%d %H:%M"
       day: "%Y/%m/%d"
+  models:
+    post: ポスト
+  attributes:
+    audit:
+      action:
+        create: 作成
+        update: 更新
+        destroy: 削除
+  attributes:
+    created_at: 作成日時
+    updated_at: 更新日時
+  update: 更新
+  create: 作成

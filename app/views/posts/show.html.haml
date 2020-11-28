@@ -64,7 +64,7 @@
             %ul.log-msg-list
             - @logs.each do |log|
               %li.log-msg-list__created-at
-                = "[#{log.action}]" + "#{l log.created_at}"
+                = "[#{t log.action}]" + "#{l log.created_at, format: :short}"
               %li.log-msg-list__register
                 = "入力：#{log.user.name}"
           .contact-log-box
