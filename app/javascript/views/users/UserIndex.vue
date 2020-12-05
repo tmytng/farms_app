@@ -1,8 +1,8 @@
 <template>
-  <section id="UserIndex">
-    <h1>User-index</h1>
+  <div>
+    <h1>user Vuetify</h1>
     <p>{{users}}</p>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -21,3 +21,7 @@ import axios from 'axios'
     }
   }
 </script>
+
+
+<style scoped>
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <section id="enterprise">
+  <section id="home">
     <h1>{{ title }}</h1>
   </section>
 </template>
@@ -8,12 +8,11 @@
 export default {
   data() {
     return {
-      title: "Enterpriseです"
+      title: "HOME"
     };
   }
 };
 </script>
 
 <style scoped>
-
 </style>

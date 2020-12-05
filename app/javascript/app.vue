@@ -1,15 +1,15 @@
 <template>
-  <v-app>
-    <BaseRayout></BaseRayout>
+  <div id="App">
+    <BaseLayout></BaseLayout>
     <router-view></router-view>
-  </v-app>
+  </div>
 </template>
 
 <script>
-import BaseRayout from './components/BaseRayout.vue'
+import BaseLayout from './components/BaseLayout.vue'
   export default {
     components: {
-      BaseRayout,
+      BaseLayout,
     },
   }
 

@@ -5,13 +5,6 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      title: "Aboutですね"
-    };
-  }
-};
 </script>
 
 <style scoped>

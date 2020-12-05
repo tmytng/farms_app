@@ -4,16 +4,16 @@
     .mission-items {
       display: grid;
       grid-gap: 10px;
-      grid-template-columns: 1fr 1fr ;
-      grid-auto-rows: calc((100vh/3) - 24px);
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: calc((100vh / 3) - 24px);
       &__msg {
         grid-column: 1;
-        grid-row: 1 / 3 ;
+        grid-row: 1 / 3;
         background: #fc2;
         border-color: #fa0;
         border: 3px solid #ccc;
         border-radius: 8px;
-        overflow: scroll;
+        // overflow: scroll;
       }
       &__item {
         background: #ddd;
@@ -24,12 +24,12 @@
     }
   }
   .contact-field {
-    padding:  8px;
+    padding: 8px;
   }
 }
 .postbtn {
   width: 120px;
-  background: #3CCACE;
+  background: #3ccace;
   text-align: center;
   border-radius: 4%;
   bottom: 32px;
