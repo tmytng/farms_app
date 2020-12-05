@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <v-navigation-drawer app v-model="drawer" clipped >
       <v-container>
         <v-list-item>
@@ -59,9 +59,9 @@
       <router-view />
     </v-main>
     <v-footer color="primary" dark app>
-      Vuetify
+      <router-link to="/about">About</router-link>
     </v-footer>
-  </v-app>
+  </div>
 </template>
 
 <script>
