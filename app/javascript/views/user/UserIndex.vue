@@ -1,8 +1,8 @@
 <template>
-  <div class="UserIndex">
+  <section id="UserIndex">
     <h1>User-index</h1>
     <p>{{users}}</p>
-  </div>
+  </section>
 </template>
 
 <script>

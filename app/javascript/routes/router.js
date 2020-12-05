@@ -3,6 +3,7 @@ import Router from "vue-router";
 Vue.use(Router);
 import Enterprise from "../views/Enterprise.vue";
 import About from "../views/About.vue";
+import UserIndex from "../views/user/UserIndex.vue";
 
 const router = new Router({
   mode: "history",
@@ -14,6 +15,10 @@ const router = new Router({
     {
       path: "/about",
       component: About,
+    },
+    {
+      path: "/user/index",
+      component: UserIndex,
     },
   ],
 });

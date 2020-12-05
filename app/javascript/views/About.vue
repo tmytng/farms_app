@@ -1,7 +1,7 @@
 <template>
-  <section id="about">
-    <h1>テスト</h1>
-  </section>
+  <div>
+    <h1>about Vuetify</h1>
+  </div>
 </template>
 
 <script>

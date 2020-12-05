@@ -22,7 +22,7 @@
                 <v-list-item-title>{{ nav_list.name }}</v-list-item-title>
               </v-list-item-content>
             </template>
-              <v-list-item v-for="list in nav_list.lists" :key="list">
+              <v-list-item v-for="list in nav_list.lists" :key="list.name" :to="list.link">
                 <v-list-item-content>
                   <v-list-item-title>{{ list }}</v-list-item-title>
                 </v-list-item-content>
@@ -91,7 +91,7 @@ export default {
           },
           {
             name: 'メンバーディレクトリ',
-            icon: 'mdi-palette',
+            icon: 'mdi-palette', link:'/user/'
           },
           {
             name: '管理者メニュー',
