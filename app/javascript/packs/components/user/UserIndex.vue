@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="UserIndex">
     <h1>User-index</h1>
     <p>{{users}}</p>
   </div>

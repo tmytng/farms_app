@@ -11,11 +11,21 @@ import BaseRayout from 'packs/components/BaseRayout.vue'
 import UserIndex from 'packs/components/user/UserIndex.vue'
 
 const router = new VueRouter({
+mode: 'history',
+base: process.env.BASE_URL,
   routes: [
     { path: '/',
-      component: BaseRayout },
+      component: BaseRayout
+    },
     { path: '/users/',
-      component: UserIndex}
+      name: 'UserIndex',
+      component: () => import('packs/components/user/UserIndex.vue')
+    },
+    {
+      path: '/enterprise',
+      name: 'enterprise',
+      component: () => import('packs/components//Enterprise.vue')
+    }
   ]
 })
 

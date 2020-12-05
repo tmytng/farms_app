@@ -33,10 +33,10 @@
     </v-navigation-drawer>
     <v-app-bar color="primary" dark app clipped-left>
     <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-    <v-toolbar-title>Farms</v-toolbar-title>
+    <v-toolbar-title>FARMS</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-<v-btn text>For Enterprise</v-btn>
+<v-btn text to="/enterprise">For Enterprise</v-btn>
 <v-menu offset-y>
   <template v-slot:activator="{on}">
   <v-btn v-on="on" text>Support<v-icon>mdi-menu-down</v-icon></v-btn>
@@ -75,14 +75,6 @@ export default {
           {name: 'Report a bug',icon: 'mdi-bug'},
           {name: 'Github issue board',icon: 'mdi-github'},
           {name: 'Stack overview',icon: 'mdi-stack-overflow'},
-        ],
-        nav_lists:[
-          {name: 'Getting Started',icon: 'mdi-vuetify'},
-          {name: 'Customization',icon: 'mdi-cogs'},
-          {name: 'Styles & animations',icon: 'mdi-palette'},
-          {name: 'UI Components',icon: 'mdi-view-dashboard'},
-          {name: 'Directives',icon: 'mdi-function'},
-          {name: 'Preminum themes',icon: 'mdi-vuetify'},
         ],
         nav_lists:[
           {
