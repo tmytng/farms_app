@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   resources :users
 
+  namespace :api, {format: 'json'} do
+    namespace :v1 do
+      resources :users, only: [:index]
+    end
+  end
+
   resources :projects do
     resources :posts do
       post :import, on: :collection

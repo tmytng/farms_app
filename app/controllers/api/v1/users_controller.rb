@@ -1,4 +1,8 @@
-class Api::V1::EmployeesController < ApiController
-  after_action :after_login, only: [:create]
+class Api::V1::UsersController < ApiController
+
+  def index
+    users = User.all
+    render json: users
+  end
 
 end
