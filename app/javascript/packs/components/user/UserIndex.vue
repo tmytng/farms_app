@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>test</h1>
+    <h1>User-index</h1>
     <p>{{users}}</p>
   </div>
 </template>
