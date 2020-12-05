@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @users = User.all
     # @q = User.ransack(params[:q])
     # @users = @q.result(distinct: true)
-
   end
 
   def new
