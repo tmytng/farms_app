@@ -97,7 +97,7 @@ export default {
             link:'/guthub-issue-board'
           },
           {
-            name: 'Stack overview',
+            name: 'About',
             icon: 'mdi-stack-overflow',
             link:'/about'
           },
@@ -123,7 +123,7 @@ export default {
             name: '管理者メニュー',
             icon: 'mdi-view-dashboard',
             lists:[{
-              name: 'プロジェクト新規作成', link: '/users/',
+              name: 'プロジェクト新規作成(メンバーディレクトリ)', link: '/users/',
             },
             {
               name: 'ユーザー新規作成', link: '/about',
