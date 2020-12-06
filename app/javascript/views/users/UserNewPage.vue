@@ -1,10 +1,49 @@
 <template>
   <v-container>
-    <p>test</p>
+    <h1 class="sub-msg">新規ユーザー登録</h1>
+    <div>
+      <user-form-pane :errors="errors" :user="user" @submit="createUser"></user-form-pane>
+    </div>
   </v-container>
 </template>
 
 <script>
+import axios from 'axios';
+import UserFormPane from './UserFormPane.vue';
+export default {
+  components: {
+    UserFormPane
+  },
+  data() {
+    return {
+      user: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: ''
+      },
+      errors: ''
+    }
+  },
+  methods: {
+    createUser: function() {
+      console.log("動いた")
+      console.log(this.user.password)
+      axios
+        .post('/api/v1/users', this.user)
+        .then(response => {
+          let u = response.data;
+          this.$router.push({ name: 'UserDetailPage', params: { id: u.id } });
+        })
+        .catch(error => {
+          console.error(error);
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
+    }
+  }
+}
 </script>
 
 
