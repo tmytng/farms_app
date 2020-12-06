@@ -4,7 +4,7 @@
     <v-navigation-drawer
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
-      app right
+      app right dark
     >
       <v-list dense>
         <template v-for="item in items">
@@ -32,6 +32,7 @@
               v-for="(child, i) in item.children"
               :key="i"
               link
+
             >
               <v-list-item-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
@@ -73,7 +74,7 @@
         style="width: 416px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down">FARMS</span>
+        <span class="hidden-sm-and-down"><a href='/'>FARMS</a></span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -91,16 +92,12 @@
         >
           <v-img
             src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
+            alt="ユーザー画像"
           ></v-img></v-avatar></v-app-bar-nav-icon>
     </v-app-bar>
     <!-- メインコンテンツ -->
     <v-main>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-      </v-container>
+      <router-view />
     </v-main>
   </v-app>
 </template>
