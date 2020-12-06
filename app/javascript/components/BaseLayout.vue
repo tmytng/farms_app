@@ -1,141 +1,248 @@
 <template>
   <v-app>
-    <!-- サイドバー -->
-    <v-navigation-drawer app v-model="drawer" clipped>
-      <v-container>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title class="title grey--text text--darken-2">
-              Navigation lists
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list nav dense>
-          <v-list-group
-          v-for="nav_list in nav_lists"
-          :key="nav_list.name"
-          :prepend-icon="nav_list.icon"
-          no-action
-          :append-icon="nav_list.lists ? undefined : ''">
-            <template v-slot:activator>
+    <v-app>
+      <!-- サイドバー -->
+      <v-navigation-drawer
+        v-model="drawer"
+        :clipped="$vuetify.breakpoint.lgAndUp"
+        app right
+      >
+        <v-list dense>
+          <template v-for="item in items">
+            <v-row
+              v-if="item.heading"
+              :key="item.heading"
+              align="center"
+            >
+              <v-col cols="12">
+                <v-subheader v-if="item.heading">
+                  {{ item.heading }}
+                </v-subheader>
+              </v-col>
+              <v-col
+                cols="6"
+                class="text-center"
+              >
+                <a
+                  href="#!"
+                  class="body-2 red--text"
+                >EDIT</a>
+              </v-col>
+            </v-row>
+            <v-list-group
+              v-else-if="item.children"
+              :key="item.text"
+              v-model="item.model"
+              :prepend-icon="item.model ? item.icon : item['icon-alt']"
+              append-icon=""
+            >
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ item.text }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </template>
+              <v-list-item
+                v-for="(child, i) in item.children"
+                :key="i"
+                link
+              >
+                <v-list-item-action v-if="child.icon">
+                  <v-icon>{{ child.icon }}</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ child.text }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+            <v-list-item
+              v-else
+              :key="item.text"
+              link
+            >
+              <v-list-item-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
               <v-list-item-content>
-                <v-list-item-title>{{ nav_list.name }}</v-list-item-title>
-              </v-list-item-content>
-            </template>
-              <v-list-item v-for="list in nav_list.lists" :key="list.name" :to="list.link">
-              <v-list-item-content>
-                <v-list-item-title>{{ list }}</v-list-item-title>
+                <v-list-item-title>
+                  {{ item.text }}
+                </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-          </v-list-group>
-        </v-list>
-      </v-container>
-    </v-navigation-drawer>
-
-    <!-- グローバルメニュー -->
-    <v-app-bar color="teal" dark app clipped-left>
-      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>FARMS</v-toolbar-title>
-      <v-spacer></v-spacer>
-        <v-toolbar-items>
-        <v-btn text to="/enterprise">For Enterprise</v-btn>
-        <v-menu offset-y>
-          <template v-slot:activator="{on}">
-          <v-btn v-on="on" text>Support<v-icon>mdi-menu-down</v-icon></v-btn>
           </template>
-          <v-list>
-            <v-subheader>Get help</v-subheader>
-            <v-list-item v-for="support in supports" :key="support.name" :to="support.link">
-            <v-list-item-icon>
-            <v-icon>{{ support.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-            <v-list-item-title>{{ support.name }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          </v-list>
-        </v-menu>
-        </v-toolbar-items>
-    </v-app-bar>
+        </v-list>
+      </v-navigation-drawer>
 
-    <!-- メインコンテンツ -->
-    <v-main>
-      <router-view />
-    </v-main>
-
-    <!-- フッター -->
-    <v-footer color="teal" dark app>
-      Footer
-    </v-footer>
+      <v-app-bar
+        :clipped-left="$vuetify.breakpoint.lgAndUp"
+        app
+        color="gray darken-3"
+        dark
+      >
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-toolbar-title
+          style="width: 300px"
+          class="ml-0 pl-4"
+        >
+          <span class="hidden-sm-and-down">FARMS</span>
+        </v-toolbar-title>
+        <v-text-field
+          flat
+          solo-inverted
+          hide-details
+          prepend-inner-icon="mdi-magnify"
+          label="Search"
+          class="hidden-sm-and-down"
+        ></v-text-field>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>mdi-apps</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-bell</v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          large
+        >
+          <v-avatar
+            size="32px"
+            item
+          >
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+              alt="Vuetify"
+            ></v-img></v-avatar>
+        </v-btn>
+      </v-app-bar>
+      <v-main>
+        <v-container
+          class="fill-height"
+          fluid
+        >
+        </v-container>
+      </v-main>
+      <v-btn
+        bottom
+        color="pink"
+        dark
+        fab
+        fixed
+        right
+        @click="dialog = !dialog"
+      >
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+      <v-dialog
+        v-model="dialog"
+        width="800px"
+      >
+        <v-card>
+          <v-card-title class="grey darken-2">
+            Create contact
+          </v-card-title>
+          <v-container>
+            <v-row class="mx-2">
+              <v-col
+                class="align-center justify-space-between"
+                cols="12"
+              >
+                <v-row
+                  align="center"
+                  class="mr-0"
+                >
+                  <v-avatar
+                    size="40px"
+                    class="mx-3"
+                  >
+                    <img
+                      src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png"
+                      alt=""
+                    >
+                  </v-avatar>
+                  <v-text-field
+                    placeholder="Name"
+                  ></v-text-field>
+                </v-row>
+              </v-col>
+              <v-col cols="6">
+                <v-text-field
+                  prepend-icon="mdi-account-card-details-outline"
+                  placeholder="Company"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="6">
+                <v-text-field
+                  placeholder="Job title"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  prepend-icon="mdi-mail"
+                  placeholder="Email"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  type="tel"
+                  prepend-icon="mdi-phone"
+                  placeholder="(000) 000 - 0000"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  prepend-icon="mdi-text"
+                  placeholder="Notes"
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-card-actions>
+            <v-btn
+              text
+              color="primary"
+            >More</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+              text
+              color="primary"
+              @click="dialog = false"
+            >Cancel</v-btn>
+            <v-btn
+              text
+              @click="dialog = false"
+            >Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-app>
   </v-app>
 </template>
 
 <script>
-export default {
-  data(){
-    return{
-        drawer: false,
-        supports:[
-          {
-            name: 'Consulting and suppourt',
-            icon: 'mdi-vuetify',
-            link:'/consulting-and-support'
-          },
-          {
-            name: 'Discord community',
-            icon: 'mdi-discord',
-            link:'/discord-community'},
-          {
-            name: 'Report a bug',
-            icon: 'mdi-bug',
-            link:'/report-a-bug'
-          },
-          {
-            name: 'Github issue board',
-            icon: 'mdi-github-face',
-            link:'/guthub-issue-board'
-          },
-          {
-            name: 'About',
-            icon: 'mdi-stack-overflow',
-            link:'/about'
-          },
+export default ({
+  data: () => ({
+    dialog: false,
+    drawer: false,
+    items: [
+      { icon: 'mdi-contacts', text: '谷口太郎' },
+      { icon: 'mdi-history', text: 'ユーザー情報変更' },
+      { icon: 'mdi-content-copy', text: 'プロジェクト一覧' },
+      { icon: 'mdi-content-copy', text: 'メンバーディレクトリ' },
+      {
+        icon: 'mdi-chevron-up',
+        'icon-alt': 'mdi-chevron-down',
+        text: '管理者メニュー',
+        model: false,
+        children: [
+          { text: 'プロジェクト新規作成' },
+          { text: 'ユーザー新規作成' },
         ],
-        nav_lists:[
-          {
-            name: '谷口太郎',
-            icon: 'mdi-speedometer',
-          },
-          {
-            name: 'ユーザー情報変更',
-            icon: 'mdi-function'
-          },
-          {
-            name: 'プロジェクト一覧',
-            icon: 'mdi-cogs'
-          },
-          {
-            name: 'メンバーディレクトリ',
-            icon: 'mdi-palette',
-          },
-          {
-            name: '管理者メニュー',
-            icon: 'mdi-view-dashboard',
-            lists:[{
-              name: 'プロジェクト新規作成(メンバーディレクトリ)', link: '/users/',
-            },
-            {
-              name: 'ユーザー新規作成', link: '/about',
-              }
-            ]
-          },
-          {
-            name: 'ログアウト',
-            icon: 'mdi-vuetify'
-          }
-        ]
-    }
-  }
-}
+      },
+    ],
+  }),
+})
 </script>

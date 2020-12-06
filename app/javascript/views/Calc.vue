@@ -1,8 +1,8 @@
 <template>
 <v-container>
 <p>カウント:{{ count }}
-<button v-on:click="countUp">Up</button>
-<button v-on:click="countDown">Down</button></p>
+<v-btn v-on:click="countUp">Up</v-btn>
+<v-btn v-on:click="countDown">Down</v-btn></p>
 </v-container>
 </template>
 
