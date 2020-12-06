@@ -26,21 +26,20 @@ export default {
     }
   },
   methods: {
-    createUser: function() {
-      console.log("動いた")
-      console.log(this.user.password)
-      axios
-        .post('/api/v1/users', this.user)
-        .then(response => {
-          let u = response.data;
-          this.$router.push({ name: 'UserDetailPage', params: { id: u.id } });
-        })
-        .catch(error => {
-          console.error(error);
-          if (error.response.data && error.response.data.errors) {
-            this.errors = error.response.data.errors;
+    createUser() {
+      axios.post('/api/v1/users', {user: {name: this.user.name, email: this.user.email, profile: this.user.profile, position: this.user.position, password: this.user.password, password_confirmation: this.user.password_confirmation }})
+        .then(res => {
+          switch (res.status) {
+            case 201:
+              this.$emit('add', res.data)
+              this.user = { name: '', email: '', profile: '', position: '', password: '', password_confirmation: ''}
+              this.$emit('close')
+              break;
+            case 400:
+              console.log(res.data.message)
+              break;
           }
-        });
+        })
     }
   }
 }
