@@ -1,7 +1,6 @@
 <template>
   <div id="App">
     <BaseLayout></BaseLayout>
-    <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -15,5 +14,4 @@ import BaseLayout from './components/BaseLayout.vue'
 
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -3,6 +3,8 @@
 <h1>ホーム</h1>
 <br />
 <p><a href='/users/'>ユーザーインデックスのリンク</a></p>
+<br />
+<p><a href='/users/new'>ユーザー新規作成のリンク</a></p>
 </v-container>
 </template>
 
