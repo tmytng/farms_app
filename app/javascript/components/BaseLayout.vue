@@ -7,7 +7,7 @@
       app right dark
     >
       <v-list dense>
-        <template v-for="item in items">
+        <template v-for="item in items" :to="item.link">
           <v-row
             v-if="item.heading"
             :key="item.heading"
@@ -111,7 +111,7 @@ export default ({
       { icon: 'mdi-contacts', text: '谷口太郎' },
       { icon: 'mdi-history', text: 'ユーザー情報変更' },
       { icon: 'mdi-content-copy', text: 'プロジェクト一覧' },
-      { icon: 'mdi-content-copy', text: 'メンバーディレクトリ' },
+      { icon: 'mdi-content-copy', text: 'メンバーディレクトリ', link: '/users/' },
       { icon: 'mdi-content-copy', text: 'プロジェクト新規作成' },
       { icon: 'mdi-content-copy', text: 'ユーザー新規作成' },
     ],

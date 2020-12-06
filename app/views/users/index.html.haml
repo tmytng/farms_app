@@ -1,2 +1,25 @@
 = javascript_pack_tag 'app'
 = stylesheet_pack_tag 'app'
+
+-# .contents
+-#   .main
+-#     .index-field
+-#       .sub-msg
+-#         メンバーディレクトリ
+-#       .users-container
+-#         - @users.each do |user|
+-#           .users-box
+-#             = link_to user_path(user) do
+-#               .users-box__avatar
+-#                 - if user.avatar.attached?
+-#                   = image_tag user.avatar
+-#               .users-box__name
+-#                 = user.name
+-#               .users-box__profile
+-#                 = user.profile
+-#               .users-box__register-date
+-#                 ユーザー登録日：#{l user.created_at, format: :day}
+-#               .users-box__last-updated
+-#                 最終ログイン：
+-#                 - if user.current_sign_in_at.present?
+-#                   = "#{l user.current_sign_in_at, format: :short}"
