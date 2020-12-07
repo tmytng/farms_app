@@ -2,9 +2,18 @@
 <v-container>
 <h1>ホーム</h1>
 <br />
-<p><a href='/users/'>ユーザーインデックスのリンク</a></p>
+<p><router-link to='/users/'>ユーザーインデックスのリンク</router-link></p>
 <br />
-<p><a href='/users/new'>ユーザー新規作成のリンク</a></p>
+<p><router-link to='/users/new'>ユーザー新規作成のリンク</router-link></p>
+<br />
+<p><router-link to='/projects/new'>プロジェクト新規作成のリンク</router-link></p>
+
+<br />
+<br />
+<p><router-link to='/enterprise'>エンタープライズのリンク</router-link></p>
+<br />
+<p><router-link to='/about'>アバウトのリンク</router-link></p>
+
 </v-container>
 </template>
 

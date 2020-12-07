@@ -74,7 +74,7 @@
         style="width: 416px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down"><a href='/'>FARMS</a></span>
+        <span class="hidden-sm-and-down"><router-link to="/">FARMS</router-link></span>
       </v-toolbar-title>
       <v-text-field
         flat

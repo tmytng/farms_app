@@ -13,12 +13,12 @@ class Api::V1::UsersController < ApiController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      user.avatar = user_params[:image]
-      render json: user, status: :created
+    @user = User.new(user_params)
+    if @user.save
+      # user.avatar = user_params[:image]
+      render json: @user, status: :created
     else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
