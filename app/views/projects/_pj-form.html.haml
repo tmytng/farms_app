@@ -1,4 +1,4 @@
-= form_with(model: project, html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
+= form_with(model: project, id: pjnew, html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
   %h3.text-muted.my-2 プロジェクト概要
   .form-group
     = f.label :name, "プロジェクト名", class: "label-text"
@@ -29,30 +29,11 @@
           = f.submit "登録する", class: "btn btn-primary"
       - else
         .form-group.form-footer__btns
-          = f.submit "更新する", method: :patch, class: "btn btn-primary"
+          = f.submit "更新する", method: :patch, class: "btn btn-primary", id:"project_create"
 - if request.path_info == new_project_path
 - else
   .form-footer.my-4
     .form-group.form-footer__btns
-      = button_to '削除する', project_path, method: :delete, data: { confirm: "プロジェクト:#{project.name}を削除します。\nよろしいですか？"}, class: "btn btn-danger"
+      = button_to '削除する', project_path, method: :delete, class: "btn btn-danger"
 
-%script{:crossorigin => "anonymous", :integrity => "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", :src => "https://code.jquery.com/jquery-3.5.1.slim.min.js"}
-%script{:crossorigin => "anonymous", :integrity => "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", :src => "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"}
-%script{:crossorigin => "anonymous", :integrity => "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"}
-
-:javascript
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      var forms = document.getElementsByClassName('needs-validation');
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
+= javascript_pack_tag 'project_create'

@@ -1,11 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
 Vue.use(Router);
-import Home from "../views/Home.vue";
-import Enterprise from "../views/Enterprise.vue";
-import About from "../views/About.vue";
-import UserIndexPage from "../views/users/UserIndexPage.vue";
-import UserNewPage from "../views/users/UserNewPage.vue";
+import Home from "../pages/Home.vue";
+import Enterprise from "../pages/Enterprise.vue";
+import About from "../pages/About.vue";
+import UserIndexPage from "../pages/users/UserIndexPage.vue";
+import UserNewPage from "../pages/users/UserNewPage.vue";
+import ProjectNewPage from "../pages/projects/ProjectNewPage.vue";
 
 const router = new Router({
   mode: "history",
@@ -30,6 +31,10 @@ const router = new Router({
       path: '/users/new',
       component: UserNewPage,
     },
+    // {
+    //   path: '/projects/new',
+    //   component: ProjectNewPage,
+    // },
   ],
 });
 export default router;

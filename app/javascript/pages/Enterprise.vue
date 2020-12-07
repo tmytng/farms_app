@@ -1,7 +1,7 @@
 <template>
-  <section id="enterprise">
+  <v-container>
     <h1>{{ title }}</h1>
-  </section>
+  </v-container>
 </template>
 
 <script>
