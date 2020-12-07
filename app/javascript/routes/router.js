@@ -7,6 +7,7 @@ import About from "../pages/About.vue";
 import UserIndexPage from "../pages/users/UserIndexPage.vue";
 import UserNewPage from "../pages/users/UserNewPage.vue";
 import ProjectNewPage from "../pages/projects/ProjectNewPage.vue";
+import ProjectIndexPage from "../pages/projects/ProjectIndexPage.vue";
 
 const router = new Router({
   mode: "history",
@@ -31,10 +32,14 @@ const router = new Router({
       path: '/users/new',
       component: UserNewPage,
     },
-    // {
-    //   path: '/projects/new',
-    //   component: ProjectNewPage,
-    // },
+    {
+      path: '/projects/new',
+      component: ProjectNewPage,
+    },
+    {
+      path: '/projects/',
+      component: ProjectIndexPage,
+    },
   ],
 });
 export default router;

@@ -1,32 +1,32 @@
-.contents
-  = render "layouts/global-navigation"
-  .main
-    .index-field
-      .sub-msg
-        プロジェクト一覧
-      - if current_user.has_role? :admin
-        .sub-msg
-          = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
-      .pj-container
-        - @projects.each do |project|
-          .pj-box
-            = link_to project_posts_path(project) do
-              .pj-box__pj-name
-                = project.name
-              .pj-box__pj-members
-                %ul.member-list
-                  - project.users.each do |member|
-                    %li.member-icons
-                      - if member.avatar.attached?
-                        = link_to user_path(member) do
-                          = image_tag member.avatar
-              .pj-box__pj-profile
-                = project.profile
-              .pj-box__pj-start
-                作成者：#{project.creator}
-              .pj-box__pj-start
-                作成日：#{l project.created_at, format: :short}
-              .pj-box__pj-last-updated
-                更新：2020/11/24
-              .pj-box__pj-member-count
-                メンバー：#{project.users.count}人
+-# .contents
+-#   = render "layouts/global-navigation"
+-#   .main
+-#     .index-field
+-#       .sub-msg
+-#         プロジェクト一覧
+-#       - if current_user.has_role? :admin
+-#         .sub-msg
+-#           = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
+-#       .pj-container
+-#         - @projects.each do |project|
+-#           .pj-box
+-#             = link_to project_posts_path(project) do
+-#               .pj-box__pj-name
+-#                 = project.name
+-#               .pj-box__pj-members
+-#                 %ul.member-list
+-#                   - project.users.each do |member|
+-#                     %li.member-icons
+-#                       - if member.avatar.attached?
+-#                         = link_to user_path(member) do
+-#                           = image_tag member.avatar
+-#               .pj-box__pj-profile
+-#                 = project.profile
+-#               .pj-box__pj-start
+-#                 作成者：#{project.creator}
+-#               .pj-box__pj-start
+-#                 作成日：#{l project.created_at, format: :short}
+-#               .pj-box__pj-last-updated
+-#                 更新：2020/11/24
+-#               .pj-box__pj-member-count
+-#                 メンバー：#{project.users.count}人
