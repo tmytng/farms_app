@@ -32,6 +32,13 @@ class Api::V1::ProjectsController < ApiController
     end
   end
 
+  def destroy
+    if @project.destroy
+      head :no_content
+    else
+      render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   private
 

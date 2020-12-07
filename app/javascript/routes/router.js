@@ -48,7 +48,7 @@ const router = new Router({
       component: ProjectEditPage,
     },
     {
-      path: '/projects/detail',
+      path: '/projects/:id(\\d+)',
       name: 'ProjectDetailPage',
       component: ProjectDetailPage,
     },
