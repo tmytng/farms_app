@@ -8,6 +8,8 @@ import UserIndexPage from "../pages/users/UserIndexPage.vue";
 import UserNewPage from "../pages/users/UserNewPage.vue";
 import ProjectNewPage from "../pages/projects/ProjectNewPage.vue";
 import ProjectIndexPage from "../pages/projects/ProjectIndexPage.vue";
+import ProjectEditPage from "../pages/projects/ProjectEditPage.vue";
+import ProjectDetailPage from "../pages/projects/ProjectDetailPage.vue";
 
 const router = new Router({
   mode: "history",
@@ -39,6 +41,16 @@ const router = new Router({
     {
       path: '/projects/',
       component: ProjectIndexPage,
+    },
+    {
+      path: '/projects/edit',
+      name: 'ProjectEditPage',
+      component: ProjectEditPage,
+    },
+    {
+      path: '/projects/detail',
+      name: 'ProjectDetailPage',
+      component: ProjectDetailPage,
     },
   ],
 });

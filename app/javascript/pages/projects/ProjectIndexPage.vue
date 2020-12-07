@@ -3,7 +3,7 @@
     <h1 class="sub-msg">プロジェクトディレクトリ</h1>
       <ul v-for="pj in projects" :key="pj.name">
         <li>{{pj.id}}</li>
-        <li>{{pj.name}}</li>
+        <li><router-link :to="{ name: 'ProjectDetailPage', params: { id: pj.id } }">{{ pj.name }}</router-link></li>
         <li>{{pj.profile}}</li>
       </ul>
   </v-container>
