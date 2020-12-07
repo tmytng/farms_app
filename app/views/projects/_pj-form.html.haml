@@ -29,11 +29,9 @@
           = f.submit "登録する", class: "btn btn-primary"
       - else
         .form-group.form-footer__btns
-          = f.submit "更新する", method: :patch, class: "btn btn-primary", id:"project_create"
+          = f.submit "更新する", method: :patch, class: "btn btn-primary"
 - if request.path_info == new_project_path
 - else
   .form-footer.my-4
     .form-group.form-footer__btns
       = button_to '削除する', project_path, method: :delete, class: "btn btn-danger"
-
-= javascript_pack_tag 'project_create'

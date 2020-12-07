@@ -27,4 +27,7 @@ import axios from 'axios'
 </script>
 
 <style scoped>
+ul, li {
+  list-style: none;
+}
 </style>

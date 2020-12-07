@@ -1,9 +1,7 @@
 <template>
   <v-container>
     <h1 class="sub-msg">新規ユーザー登録</h1>
-    <div>
-      <user-form-pane :errors="errors" :user="user" @submit="createUser"></user-form-pane>
-    </div>
+      <UserFormPane :errors="errors" :user="user" @submit="createUser"></UserFormPane>
   </v-container>
 </template>
 
@@ -20,26 +18,24 @@ export default {
         name: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
       },
       errors: ''
     }
   },
   methods: {
     createUser() {
-      axios.post('/api/v1/users', {user: {name: this.user.name, email: this.user.email, profile: this.user.profile, position: this.user.position, password: this.user.password, password_confirmation: this.user.password_confirmation }})
-        .then(res => {
-          switch (res.status) {
-            case 201:
-              this.$emit('add', res.data)
-              this.user = { name: '', email: '', profile: '', position: '', password: '', password_confirmation: ''}
-              this.$emit('close')
-              break;
-            case 400:
-              console.log(res.data.message)
-              break;
-          }
+      axios
+        .post('/api/v1/users', this.user)
+        .then(response => {
+          this.$router.push('/');
         })
+        .catch(error => {
+          console.error(error);
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
     }
   }
 }

@@ -1,10 +1,7 @@
 <template>
   <v-container>
     <h1 class="sub-msg">プロジェクト新規作成</h1>
-    <p>test</p>
-    <div>
-      <project-form-pane :errors="errors" :project="project" @submit="createProject"></project-form-pane>
-    </div>
+      <ProjectFormPane :errors="errors" :project="project" @submit="createProject"></ProjectFormPane>
   </v-container>
 </template>
 
@@ -18,22 +15,20 @@ export default {
   },
   data() {
     return {
-      Project: {
+      project: {
         name: '',
         profile: '',
-        creator: '',
-
+        // creatorはstrong parameterで処理
       },
       errors: ''
     }
   },
   methods: {
-    createProject: function() {
+    createProject() {
       axios
-        .post('/api/v1/projects', this.Project)
+        .post('/api/v1/projects', this.project)
         .then(response => {
-          let e = response.data;
-          this.$router.push({ name: 'ProjectIndexPage', params: { id: e.id } });
+          this.$router.push('/');
         })
         .catch(error => {
           console.error(error);

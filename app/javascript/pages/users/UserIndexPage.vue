@@ -1,11 +1,9 @@
 <template>
   <v-container>
-    <!-- <div v-if="errors.length != 0">
-      <ul v-for="e in errors" :key="e">
-        <li><font color="red">{{ e }}</font></li>
-      </ul>
-    </div> -->
+    <v-row>
     <h1 class="sub-msg">メンバーディレクトリ</h1>
+    </v-row>
+    <v-row>
     <div class="users-container">
     <ul class="users-box" v-for="u in users" :key="u.name">
       <li class="name">{{u.name}}</li>
@@ -13,6 +11,7 @@
       <li class="last-updated">最終ログイン：{{u.last_sign_in_at}}</li>
     </ul>
     </div>
+    </v-row>
   </v-container>
 </template>
 
@@ -54,7 +53,7 @@ ul,li {
 
 .users-container {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(4, auto);
   gap: 8px;
   justify-content: space-around;
 }
