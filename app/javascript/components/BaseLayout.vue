@@ -1,66 +1,61 @@
 <template>
   <v-app>
     <!-- サイドバー -->
-    <v-navigation-drawer
-      v-model="drawer"
-      :clipped="$vuetify.breakpoint.lgAndUp"
-      app right dark
-    >
-      <v-list dense>
-        <template v-for="item in items" :to="item.link">
-          <v-row
-            v-if="item.heading"
-            :key="item.heading"
-            align="center"
-          >
-          </v-row>
-          <v-list-group
-            v-else-if="item.children"
-            :key="item.text"
-            v-model="item.model"
-            :prepend-icon="item.model ? item.icon : item['icon-alt']"
-            append-icon=""
-          >
-            <template v-slot:activator>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ item.text }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item
-              v-for="(child, i) in item.children"
-              :key="i"
-              link
-
-            >
-              <v-list-item-action v-if="child.icon">
-                <v-icon>{{ child.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ child.text }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
+    <v-navigation-drawer app v-model="drawer" dark right >
+      <v-container>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title white--text text--darken-1">
+              テスト 太郎
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+  <v-list nav dense>
+      <template v-for="nav_list in nav_lists">
           <v-list-item
-            v-else
-            :key="item.text"
-            link
+              v-if="!nav_list.lists"
+              :to="nav_list.link"
+              :key="nav_list.name"
+                @click="menu_close"
           >
-            <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ item.text }}
-              </v-list-item-title>
-            </v-list-item-content>
+              <v-list-item-icon>
+                <v-icon>{{ nav_list.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>
+                  {{ nav_list.name }}
+                </v-list-item-title>
+              </v-list-item-content>
           </v-list-item>
-        </template>
-      </v-list>
-    </v-navigation-drawer>
+          <v-list-group
+              v-else
+              no-action
+              :prepend-icon="nav_list.icon"
+              :key="nav_list.name"
+              v-model="nav_list.active"
+          >
+              <template v-slot:activator>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      {{ nav_list.name }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+              </template>
+              <v-list-item
+                  v-for="list in nav_list.lists"
+                  :key="list.name"
+                  :to="list.link"
+              >
+              <v-list-item-title>
+                {{ list.name }}
+              </v-list-item-title>
+              </v-list-item>
+          </v-list-group>
+      </template>
+  </v-list>
+    </v-container>
+  </v-navigation-drawer>
 
     <!-- グローバルメニュー -->
     <v-app-bar
@@ -85,13 +80,14 @@
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" >
         <v-avatar
-          size="32px"
+          size="48px"
           item
+          class="user-avatar"
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+            src="https://i.gyazo.com/384257c3e613a8209685217013568b9d.png"
             alt="ユーザー画像"
           ></v-img></v-avatar></v-app-bar-nav-icon>
     </v-app-bar>
@@ -103,20 +99,55 @@
 </template>
 
 <script>
-export default ({
-  data: () => ({
-    dialog: false,
-    drawer: false,
-    items: [
-      { icon: 'mdi-contacts', text: '谷口太郎' },
-      { icon: 'mdi-history', text: 'ユーザー情報変更' },
-      { icon: 'mdi-content-copy', text: 'プロジェクト一覧' },
-      { icon: 'mdi-content-copy', text: 'メンバーディレクトリ', link: '/users/' },
-      { icon: 'mdi-content-copy', text: 'プロジェクト新規作成' },
-      { icon: 'mdi-content-copy', text: 'ユーザー新規作成' },
-    ],
-  }),
-})
+export default {
+  methods:{
+          menu_close(){
+            this.nav_lists.forEach( nav_list => nav_list.active = false)
+          }
+        },
+  data(){
+    return{
+      drawer: null,
+      nav_lists:[
+        {
+          name: 'ユーザー情報変更',
+          icon: 'mdi-cogs',
+          link: ''
+        },
+        {
+          name: 'プロジェクト一覧',
+          icon: 'mdi-view-dashboard',
+          link: '/projects/'
+        },
+        {
+          name: 'メンバーディレクトリ',
+          icon: 'mdi-function',
+          link: '/users'
+        },
+        {
+          name: '管理者機能',
+          icon: 'mdi-palette',
+          link: '',
+          active: false,
+          lists:[{
+            name :'プロジェクト新規作成', link:'/projects/new'
+            },
+            {
+            name :'メンバー新規作成', link:'/users/new'
+            },
+            {
+            name :'管理者権限変更', link:''}
+          ]
+        },
+        {
+          name: 'ログアウト',
+          icon: 'mdi-function',
+          link: ''
+        },
+      ]
+    }
+  }
+}
 </script>
 <style scoped>
 a:hover,
@@ -125,4 +156,12 @@ a:visited,
 a:active {
   color: #fff;
   text-decoration: none;
-}</style>
+}
+
+.user-avatar {
+  margin-right: 1.2em;
+}
+.title {
+  font-weight: bold;
+}
+</style>
