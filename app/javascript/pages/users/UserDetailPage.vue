@@ -1,34 +1,52 @@
 <template>
   <v-container>
-    <h1 class="sub-msg">新規ユーザー登録</h1>
-      <UserFormPane :errors="errors" :user="user" @submit="createUser"></UserFormPane>
+    <h1 class="sub-msg">ユーザー詳細画面</h1>
+      <dl>
+        <dt>メンバーID</dt>
+        <dd>{{ user.id }}</dd>
+        <dt>名前</dt>
+        <dd>{{ user.name }}</dd>
+        <dt>メールアドレス</dt>
+        <dd>{{ user.email }}</dd>
+        <dt>ポジション</dt>
+        <dd>{{ user.position }}</dd>
+        <dt>プロフィール</dt>
+        <dd>{{ user.profile }}</dd>
+        <dt>所属プロジェクト</dt>
+        <dd>テスト。要呼び出し</dd>
+        <dt>メンバー登録日</dt>
+        <dd>{{ user.created_at }}</dd>
+        <dt>ユーザー権限</dt>
+        <dd>テスト。要呼び出し</dd>
+        <dt>最終ログイン</dt>
+        <dd>テスト。要呼び出し</dd>
+      </dl>
+      <br />
+      <p><router-link :to="{ name: 'UserEditPage', params: { id: user.id } }">{{ user.name }}を編集する</router-link></p>
+      <button @click="destroyUser(user.id)">削除する</button>
   </v-container>
 </template>
 
 <script>
 import axios from 'axios';
-import UserFormPane from './UserFormPane.vue';
 export default {
-  components: {
-    UserFormPane
-  },
-  data() {
+  data: function () {
     return {
-      user: {
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-      },
+      user: {},
       errors: ''
     }
   },
+  mounted () {
+    axios
+      .get(`/api/v1/users/${this.$route.params.id}.json`)
+      .then(response => (this.user = response.data))
+  },
   methods: {
-    createUser() {
+    destroyUser(id) {
       axios
-        .post('/api/v1/users', this.user)
-        .then(response => {
-          this.$router.push('/');
+        .delete(`api/v1/users/` + id)
+          .then(response => {
+            this.$router.push('/users/');
         })
         .catch(error => {
           console.error(error);
@@ -37,7 +55,7 @@ export default {
           }
         });
     }
-  }
+  },
 }
 </script>
 
@@ -53,7 +71,10 @@ a:active {
 
 ul,li {
   list-style: none;
+}
 
+dt {
+  font-weight: bold;
 }
 .sub-msg {
   font-size: 24px;

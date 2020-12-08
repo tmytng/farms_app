@@ -99,20 +99,25 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   methods:{
           menu_close(){
             this.nav_lists.forEach( nav_list => nav_list.active = false)
           }
-        },
+  },
   data(){
     return{
       drawer: null,
+      userInfo: {
+        id:	1,
+        name:	"久保田 太郎",
+        },
       nav_lists:[
         {
           name: 'ユーザー情報変更',
           icon: 'mdi-cogs',
-          link: ''
+          link: '/users/1'
         },
         {
           name: 'プロジェクト一覧',
@@ -146,9 +151,16 @@ export default {
         },
       ]
     }
-  }
+  },
+  // created() {
+  //   axios.get(`api/users/${id}.json`).then(res => {
+  //   this.UserInfo = res.data;
+  //   })
+  // },
 }
+
 </script>
+
 <style scoped>
 a:hover,
 a:link,
@@ -157,7 +169,6 @@ a:active {
   color: #fff;
   text-decoration: none;
 }
-
 .user-avatar {
   margin-right: 1.2em;
 }

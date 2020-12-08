@@ -1,4 +1,6 @@
 class Api::V1::UsersController < ApiController
+  before_action :set_user, only: [:show, :update, :destroy]
+
   # 拾えなかったExceptionが発生したら500 Internal server errorを応答する
   rescue_from Exception, with: :render_status_500
 
@@ -9,10 +11,9 @@ class Api::V1::UsersController < ApiController
     @users = User.all
   end
 
-  # def show
-  #   @user = User.find(params[:id])
-  #   render json: @user
-  # end
+  def show
+    render json: @user
+  end
 
   def new
   end
@@ -39,6 +40,10 @@ class Api::V1::UsersController < ApiController
 
   def user_params
     params.require(:user).permit(:name, :email, :avatar, :profile, :position, :image, :password, :password_confirmation)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
 

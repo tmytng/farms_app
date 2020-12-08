@@ -18,8 +18,8 @@ const router = new Router({
   routes:
   [
     { path: '/',                    name: 'Home',               component: Home },
-    { path: '/enterprise',          name: 'EnterprisePage',     component: Enterprise },
     { path: '/about',               name: 'AboutPage',          component: About },
+    { path: '/enterprise',          name: 'EnterprisePage',     component: Enterprise },
     { path: '/users/',              name: 'UserIndexPage',      component: UserIndexPage },
     { path: '/users/new',           name: 'UserNewPage',        component: UserNewPage },
     { path: '/users/edit',          name: 'UserEditPage',       component: UserEditPage },
