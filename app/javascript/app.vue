@@ -1,17 +1,24 @@
 <template>
-  <div id="App">
-    <BaseLayout></BaseLayout>
-  </div>
+  <v-app>
+    <div id="App">
+      <Header />
+      <v-main>
+        <v-container />
+      </v-main>
+      <Footer />
+    </div>
+  </v-app>
 </template>
 
 <script>
-import BaseLayout from './components/BaseLayout.vue'
-  export default {
-    components: {
-      BaseLayout,
-    },
-  }
+import Header from './components/organisms/Header.vue'
+import Footer from './components/organisms/Footer.vue'
+
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+}
 
 </script>
-
-<style scoped></style>
