@@ -1,66 +1,66 @@
-.contents
-  = render "layouts/global-navigation"
-  .main
-    .user-field.container
-      .sub-msg
-        ユーザー詳細
-      .user-items
-        .user-items__avatar-box
-          - if @user.avatar.attached?
-            = image_tag @user.avatar
-        .user-items__info-box
-          %table
-            %tbody
-              %tr
-                %th ユーザー名
-                %td
-                  = @user.name
-              %tr
-                %th ポジション
-                %td
-                  = @user.position
-              %tr
-                %th メールアドレス
-                %td
-                  = @user.email
-              %tr
-                %th プロフィール
-                %td
-                  = @user.profile
-              %tr
-                %th 所属プロジェクト
-                %td
-                  - @user.projects.each do |project|
-                    %ul
-                      %li
-                        = link_to "#{project.name}", project_posts_path(project)
-              %tr
-                %th ユーザー登録日
-                %td
-                  = l @user.created_at, format: :day
-              %tr
-                %th ユーザー権限
-                %td
-                  - if @user.has_role? :admin
-                    = "管理者"
-                  - elsif @user.has_role? :operator
-                    = "一般ユーザー"
-              %tr
-                %th 最終ログイン
-                %td
-                  - if @user.current_sign_in_at.present?
-                    = l @user.current_sign_in_at, format: :short
-        .user-items__button-box
-          .user-items__button-box__users-btn
-            = link_to "メンバーディレクトリへ戻る", users_path, class: "btn btn-secondary"
-          - if current_user.id == @user.id
-            .user-items__button-box__users-btn
-              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary"
-          - if current_user.has_role? :admin
-            .user-items__button-box__users-btn
-              = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
-            .user-items__button-box__users-btn
-              = button_to 'このユーザーを削除する', user_path, data: { confirm: "ユーザー:#{@user.name}を削除します。よろしいですか？"},  method: :delete, class: "btn btn-danger"
-          - elsif current_user.id == @user.id
-            .user-items__button-box__users-btn
-              = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
+-# .contents
+-#   = render "layouts/global-navigation"
+-#   .main
+-#     .user-field.container
+-#       .sub-msg
+-#         ユーザー詳細
+-#       .user-items
+-#         .user-items__avatar-box
+-#           - if @user.avatar.attached?
+-#             = image_tag @user.avatar
+-#         .user-items__info-box
+-#           %table
+-#             %tbody
+-#               %tr
+-#                 %th ユーザー名
+-#                 %td
+-#                   = @user.name
+-#               %tr
+-#                 %th ポジション
+-#                 %td
+-#                   = @user.position
+-#               %tr
+-#                 %th メールアドレス
+-#                 %td
+-#                   = @user.email
+-#               %tr
+-#                 %th プロフィール
+-#                 %td
+-#                   = @user.profile
+-#               %tr
+-#                 %th 所属プロジェクト
+-#                 %td
+-#                   - @user.projects.each do |project|
+-#                     %ul
+-#                       %li
+-#                         = link_to "#{project.name}", project_posts_path(project)
+-#               %tr
+-#                 %th ユーザー登録日
+-#                 %td
+-#                   = l @user.created_at, format: :day
+-#               %tr
+-#                 %th ユーザー権限
+-#                 %td
+-#                   - if @user.has_role? :admin
+-#                     = "管理者"
+-#                   - elsif @user.has_role? :operator
+-#                     = "一般ユーザー"
+-#               %tr
+-#                 %th 最終ログイン
+-#                 %td
+-#                   - if @user.current_sign_in_at.present?
+-#                     = l @user.current_sign_in_at, format: :short
+-#         .user-items__button-box
+-#           .user-items__button-box__users-btn
+-#             = link_to "メンバーディレクトリへ戻る", users_path, class: "btn btn-secondary"
+-#           - if current_user.id == @user.id
+-#             .user-items__button-box__users-btn
+-#               = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary"
+-#           - if current_user.has_role? :admin
+-#             .user-items__button-box__users-btn
+-#               = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
+-#             .user-items__button-box__users-btn
+-#               = button_to 'このユーザーを削除する', user_path, data: { confirm: "ユーザー:#{@user.name}を削除します。よろしいですか？"},  method: :delete, class: "btn btn-danger"
+-#           - elsif current_user.id == @user.id
+-#             .user-items__button-box__users-btn
+-#               = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"

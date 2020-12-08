@@ -4,10 +4,10 @@
 <br />
 <h3>今日やること</h3>
 <ul>
-  <li>pj-destroy機能実装</li>
-  <li>user-CRUD実装</li>
+  <li>pj-destroy機能実装→<strong>難航</strong></li>
+  <li class="now">user-CRUD実装（Cは難航、RUDをやる）</li>
   <li>post-CRUD実装</li>
-  <li>画像アップデート機能</li>
+  <li>画像アップロード機能</li>
   <li>ユーザー認証機能</li>
   <li>フォーム機能</li>
 </ul>
@@ -44,5 +44,9 @@ ul, li {
 
 h1, h3 {
   margin: 16px 0;
+}
+
+.now {
+  color:red;
 }
 </style>
