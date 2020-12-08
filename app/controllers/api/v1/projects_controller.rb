@@ -25,7 +25,7 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def update
-    if @project.update_attributes(project_params)
+    if @project.update(project_params)
       head :no_content
     else
       render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
@@ -55,6 +55,6 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def project_params
-    params.require(:project).permit(:name, :profile, :prj_image, user_ids: []).merge(creator: current_user.name)
+    params.require(:project).permit(:id, :image, :created_at, :updated_at, :creator,:name, :profile, :prj_image, user_ids: []).merge(creator: current_user.name)
   end
 end

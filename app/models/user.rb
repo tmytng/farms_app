@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_secure_password
+  # ↓ユーザーログイン機能実装時に着手
+  # has_secure_password
+
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :trackable
   rolify

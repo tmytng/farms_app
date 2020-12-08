@@ -1,8 +1,8 @@
-.contents
-  = render "layouts/global-navigation"
-  .main
-    .user-field.container
-      .sub-msg
-        ユーザー情報変更
-      - form_url = (request.path_info.to_s == edit_other_user_registration_path(resource))? other_user_registration_path(resource): user_registration_path
-      = render 'form', resource: resource, resource_name: resource_name, form_url: form_url
+-# .contents
+-#   = render "layouts/global-navigation"
+-#   .main
+-#     .user-field.container
+-#       .sub-msg
+-#         ユーザー情報変更
+-#       - form_url = (request.path_info.to_s == edit_other_user_registration_path(resource))? other_user_registration_path(resource): user_registration_path
+-#       = render 'form', resource: resource, resource_name: resource_name, form_url: form_url
