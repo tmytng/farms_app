@@ -13,13 +13,13 @@
         <dt>プロフィール</dt>
         <dd>{{ user.profile }}</dd>
         <dt>所属プロジェクト</dt>
-        <dd>テスト。要データ呼び出し</dd>
+        <dd class="check">テスト。要データ呼び出し</dd>
         <dt>メンバー登録日</dt>
-        <dd>{{ user.created_at }}</dd>
+        <dd class="check">{{ user.created_at }}</dd>
         <dt>ユーザー権限</dt>
-        <dd>テスト。要データ呼び出し</dd>
+        <dd class="check">テスト。要データ呼び出し</dd>
         <dt>最終ログイン</dt>
-        <dd>テスト。要データ呼び出し</dd>
+        <dd class="check">テスト。要データ呼び出し</dd>
       </dl>
       <br />
       <p><router-link :to="{ name: 'UserEditPage', params: { id: user.id } }">{{ user.name }}を編集する</router-link></p>

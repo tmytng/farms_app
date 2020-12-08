@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # ↓ユーザーログイン機能実装時に着手
+  # 以下はユーザーログイン機能実装時に着手
   # has_secure_password
 
   devise :database_authenticatable, :registerable,
@@ -10,11 +10,11 @@ class User < ApplicationRecord
   has_many :projects, through: :project_users
   has_many :messages
   has_one_attached :avatar
-  attr_accessor :image
   has_many :audits
   after_create :assign_admin_role
   after_create :assign_default_role
 
+  # 以下は開発中のため、一旦解除
   # validates :name, :email, presence: true, uniqueness: true
   # validates :name, length: { maximum: 15 }
   # validates :name, length: { minimum: 3 }
@@ -35,21 +35,6 @@ class User < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     []
-  end
-
-  def avatar=(image)
-    if image.present?
-      prefix = image[/(image|application)(\/.*)(?=\;)/]
-      type = prefix.sub(/(image|application)(\/)/, '')
-      data = Base64.decode64(image.sub(/data:#{prefix};base64,/, ''))
-      filename = "#{Time.zone.now.strftime('%Y%m%d%H%M%S%L')}.#{type}"
-      File.open("#{Rails.root}/tmp/#{filename}", 'wb') do |f|
-        f.write(data)
-      end
-      avatar.detach if avatar.attached?
-      avatar.attach(io: File.open("#{Rails.root}/tmp/#{filename}"), filename: filename)
-      FileUtils.rm("#{Rails.root}/tmp/#{filename}")
-    end
   end
 
 end

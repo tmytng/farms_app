@@ -54,7 +54,7 @@ class Api::V1::UsersController < ApiController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).as_json
   end
 end
 
