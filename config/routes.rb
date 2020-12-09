@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     match 'users/:id', to: 'users/registrations#update', via: [:patch, :put], as: :other_user_registration
   end
 
+  resources :users
+
   resources :projects do
     resources :posts do
       post :import, on: :collection
