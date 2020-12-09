@@ -55,7 +55,7 @@
             = link_to "メンバーディレクトリへ戻る", users_path, class: "btn btn-secondary"
           - if current_user.id == @user.id
             .user-items__button-box__users-btn
-              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary"
+              = link_to "ログアウト", destroy_user_session_path, class: "btn btn-secondary"
           - if current_user.has_role? :admin
             .user-items__button-box__users-btn
               = link_to "#{@user.name}さんのユーザー情報を編集する", edit_user_path(@user), class: "btn btn-primary"
