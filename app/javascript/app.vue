@@ -8,7 +8,6 @@
 
 <script>
 import BaseLayout from 'components/organisms/BaseLayout.vue'
-import Footer from 'components/organisms/Footer.vue'
 
 export default {
   components: {

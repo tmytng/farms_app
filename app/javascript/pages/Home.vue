@@ -26,8 +26,7 @@
   <li>ユーザー画面の内部リンク不整合</li>
   <li>ドロワーの「メンバーディレクトリ」点滅する事象</li>
 </ul> -->
-
-<SaleGraph />
+<router-link to="/signup">signup</router-link>
 </v-container>
 </template>
 

@@ -9,6 +9,7 @@ import VueAxios from "vue-axios";
 import Vuetify from "vuetify";
 import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/dist/vuetify.min.css";
+import "vee-validate/dist/rules";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -17,11 +18,11 @@ Vue.use(Vuetify);
 const vuetify = new Vuetify();
 
 document.addEventListener("DOMContentLoaded", () => {
-  const app = new Vue({
-    store,
-    router,
-    vuetify,
-    render: (h) => h(App),
-  }).$mount();
-  document.body.appendChild(app.$el);
+    const app = new Vue({
+        store,
+        router,
+        vuetify,
+        render: (h) => h(App),
+    }).$mount();
+    document.body.appendChild(app.$el);
 });
