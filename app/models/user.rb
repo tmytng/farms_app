@@ -24,7 +24,6 @@ class User < ApplicationRecord
   def assign_admin_role
     self.add_role(:admin) if self.name == 'admin'
   end
-end
 
   def self.ransackable_attributes(auth_object = nil)
     %w[name created_at]
@@ -34,4 +33,13 @@ end
     []
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "test-admin"
+      user.admin = true
+      user.add_role(:admin)
+    end
+  end
 
+end
