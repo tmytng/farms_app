@@ -11,11 +11,19 @@ Rails.application.routes.draw do
 
   resources :users
 
+  # resources :projects do
+  #   collection do
+  #     get 'search'
+  #   end
+  # end
+
   resources :projects do
+    get :search, on: :collection
     resources :posts do
       post :import, on: :collection
     end
   end
+
   resources :projects do
     resources :message
   end

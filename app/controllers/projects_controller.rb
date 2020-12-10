@@ -45,6 +45,12 @@ class ProjectsController < ApplicationController
     @user_create = current_user.created_at
   end
 
+  def search
+    @projects = Project.search(params[:keyword])
+  end
+
+
+
   private
 
   def set_project

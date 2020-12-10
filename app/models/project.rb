@@ -15,4 +15,12 @@ class Project < ApplicationRecord
   #   associated_audits.ids.to_s.last
   # end
 
+  def self.search(search)
+    if search != ""
+      Project.where('text LIKE(?)', "%#{search}%")
+    else
+      Project.all
+    end
+  end
+
 end

@@ -33,7 +33,7 @@
           %a.dropdown-item{:href => "#"} テスト
           .dropdown-divider
           %a.dropdown-item{:href => "#"} ログアウト
-    %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+    = form_with(url: search_projects_path, local: true, method: :get, class: "form form-inline my-2 my-lg-0") do |form|
+      = form.text_field :keyword, placeholder: "投稿を検索する", class: "input form-control mr-sm-2"
+      = form.submit "検索", class: "button btn btn-outline-success my-2 my-sm-0"
 
