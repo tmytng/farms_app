@@ -37,3 +37,9 @@
       = form.text_field :keyword, placeholder: "投稿を検索する", class: "input form-control mr-sm-2 search-input"
       = form.submit "検索", class: "button btn btn-outline-success my-2 my-sm-0"
 
+
+
+
+-# - if current_user.has_role? :admin
+-#         .sub-msg
+-#           = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
