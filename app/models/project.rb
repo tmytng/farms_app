@@ -17,7 +17,7 @@ class Project < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Project.where('text LIKE(?)', "%#{search}%")
+      Project.where('profile LIKE(?)', "%#{search}%")
     else
       Project.all
     end
