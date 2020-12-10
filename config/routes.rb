@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     get 'users/:id/edit' => 'users/registrations#edit', as: :edit_other_user_registration
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
     match 'users/:id', to: 'users/registrations#update', via: [:patch, :put], as: :other_user_registration
   end
 

@@ -35,5 +35,7 @@
             -# = link_to "パスワードを忘れた場合", new_user_password_path
           .box-login
             = f.submit "ログイン"
+          .box-login
+            = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "backbtn btn btn-secondary"
   .signup-footer
     2020 &copy; tmytng
