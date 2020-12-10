@@ -48,8 +48,8 @@ class ProjectsController < ApplicationController
   def search
     @projects = Project.search(params[:keyword])
     respond_to do |format|
-      format.html
-      format.json
+      # format.html
+      format.js
     end
   end
 

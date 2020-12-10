@@ -10,5 +10,5 @@ require("channels")
 require("jquery")
 require('bootstrap/dist/js/bootstrap.min.js')
 import "../stylesheets/application.scss";
-import "../src/project_search";
+import "../src/search";
 const images = require.context('../images', true)

@@ -1,21 +1,23 @@
-.pj-box
-  = link_to project_posts_path(project) do
-    .pj-box__pj-name
+.card{:style => "width: 20rem"}
+  .card-body
+    %h5.card-title
       = project.name
-    .pj-box__pj-members
-      %ul.member-list
+    .card-text
+      %ul.pj-members
         - project.users.each do |member|
           %li.member-icons
             - if member.avatar.attached?
               = link_to user_path(member) do
                 = image_tag member.avatar
-    .pj-box__pj-profile
+    .card-text
       = project.profile
-    .pj-box__pj-start
+  %ul.list-group.list-group-flush
+    %li.list-group-item
       作成者：#{project.creator}
-    .pj-box__pj-start
+    %li.list-group-item
       作成日：#{l project.created_at, format: :short}
-    .pj-box__pj-last-updated
+    %li.list-group-item
       更新：2020/11/24
-    .pj-box__pj-member-count
+    %li.list-group-item
       メンバー：#{project.users.count}人
+    = link_to "Go somewhere", root_path, class:"btn btn-primary"

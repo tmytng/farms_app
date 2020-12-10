@@ -4,6 +4,6 @@
     .index-field
       .sub-msg
         プロジェクト一覧
-      .pj-container
-        - @projects.each do |project|
-          = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }
+    .card-columns
+      - @projects.each do |project|
+        = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }
