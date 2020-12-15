@@ -1,6 +1,6 @@
 $(function() {
 
-    let search_list = $(".card-columns");
+    let search_list = $("#cards");
 
     function appendProject(project) {
 
@@ -62,6 +62,9 @@ $(function() {
             })
             .done(function(projects) {
                 search_list.empty();
+                if (input.length === 0) {
+                    $('.user-search-result').empty();
+                }
                 if (projects.length !== 0) {
                     projects.forEach(function(project) {
                         appendProject(project);
