@@ -1,20 +1,45 @@
-.global-navigation
-  -# .search-box
-    -# = search_form_for @q, class: 'mb-5' do |f|
-    -#   .form-group.row
-    -#     = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
-    -#     .col-sm-10
-    -#       = f.search_field :name_cont, class: 'form-control'
-    -#   .form-group
-    -#     = f.submit class: 'btn btn-outline-primary'
-  .navi-menus
-    .navi-menus__list
-      = link_to "プロジェクト一覧", projects_path
-    .navi-menus__list
-      = link_to "メンバーディレクトリ", users_path
-  .my-account
-    .account-img
-      - if current_user.avatar.attached?
-        = image_tag current_user.avatar
-    .account-name
-      = link_to "#{current_user.name}", user_path(current_user)
+-# .global-navigation
+-#   .search-box
+-#     -# = search_form_for @q, class: 'mb-5' do |f|
+-#       .form-group.row
+-#         -# = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+-#         .col-sm-10
+-#           -# = f.search_field :name_cont, class: 'form-control'
+-#       .form-group
+-#         -# = f.submit class: 'btn btn-outline-primary'
+-#   .navi-menus
+-#     .navi-menus__list
+-#       = link_to "プロジェクト一覧", projects_path
+-#     .navi-menus__list
+-#       = link_to "メンバーディレクトリ", users_path
+-#   .my-account
+-#     .account-img
+-#       - if current_user.avatar.attached?
+-#         = image_tag current_user.avatar
+-#     .account-name
+-#       = link_to "#{current_user.name}", user_path(current_user)
+
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand{:href => "/"} Farms
+  -# %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    -# %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          = "#{current_user.name}"
+        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+          %a.dropdown-item{:href => "#"} ユーザー情報変更
+          %a.dropdown-item{:href => "#"} テスト
+          .dropdown-divider
+          %a.dropdown-item{:href => "#"} ログアウト
+    = form_with(url: search_projects_path, local: true, method: :get, class: "form form-inline my-2 my-lg-0") do |form|
+      = form.text_field :keyword, placeholder: "投稿を検索する", class: "input form-control mr-sm-2 search-input"
+      = form.submit "検索", class: "button btn btn-outline-success my-2 my-sm-0"
+
+
+
+
+-# - if current_user.has_role? :admin
+-#         .sub-msg
+-#           = link_to "プロジェクト新規作成", new_project_path, class: 'btn btn-primary btn-sm'
