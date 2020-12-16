@@ -2,6 +2,7 @@
   .keyword
     = f.label :company_name_cont, "社名検索"
     = f.search_field :company_name_cont
+    = f.hidden_field :project_id, value: @project.id
   .search
     = f.submit
 

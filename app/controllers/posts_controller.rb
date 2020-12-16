@@ -15,7 +15,8 @@ class PostsController < ApplicationController
 
   def search
     @q = Post.search(search_params)
-    @posts_results = @q.result(distinct: true)
+    @results = @q.result
+    @posts_results = @results.where(project_id: @project.id)
   end
 
   def new
