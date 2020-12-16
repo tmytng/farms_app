@@ -17,7 +17,7 @@
             %th 更新日時
             %th 登録者
         %tbody
-        - @posts.each do |post|
+        - @posts_results.each do |post|
           %tr.table-row
             %td
               = link_to project_post_path(@project, post) do

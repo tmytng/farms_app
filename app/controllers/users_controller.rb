@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   after_action :after_login, only: [:create]
 
   def index
-    @users = User.all
+    @users = User.all.includes(:avatar_attachment)
     # @q = User.ransack(params[:q])
     # @users = @q.result(distinct: true)
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @users = User.all
+    @users = User.all.includes(:avatar_attachment)
   end
 
   def edit

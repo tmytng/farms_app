@@ -1,4 +1,4 @@
-= search_form_for(@q, url: project_posts_path) do |f|
+= search_form_for(@q, url: search_project_posts_path) do |f|
   .keyword
     = f.label :company_name_cont, "社名検索"
     = f.search_field :company_name_cont

@@ -5,17 +5,17 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(project_id: @project.id)
+    @q = @posts.ransack(params[:q])
+    @posts_results = @q.result(distinct: true)
     respond_to do |format|
       format.html
       format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
-    @q = Post.ransack(params[:q])
-    @results = @q.result.includes(:user)
   end
 
   def search
     @q = Post.search(search_params)
-    @results = @q.result.includes(:user)
+    @posts_results = @q.result(distinct: true)
   end
 
   def new
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit!
+    params.require(:q).permit(:company_name_cont)
   end
 
   def set_project
