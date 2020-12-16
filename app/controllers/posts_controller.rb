@@ -10,12 +10,12 @@ class PostsController < ApplicationController
       format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
     @q = Post.ransack(params[:q])
-    @results = @q.result(distinct: true)
+    @results = @q.result.includes(:user)
   end
 
   def search
     @q = Post.search(search_params)
-    @results = @q.result(distinct: true)
+    @results = @q.result.includes(:user)
   end
 
   def new
