@@ -9,6 +9,9 @@ class PostsController < ApplicationController
       format.html
       format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
+
+    @q = Post.ransack(params[:q])
+    @results = @q.result(distinct: true)
   end
 
   def new
