@@ -24,6 +24,8 @@
     %ul.pj-category__act-lists
       %li.pj-category__act-lists__list
         = link_to "コンタクトログ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
+      %li.pj-category__act-lists__list
+        = link_to "案件詳細検索", project_posts_path(@project), class: 'btn btn-primary btn-sm'
       -# %li.pj-category__act-lists__list
       -# -#   = link_to "ダッシュボード", project_path(@project), class: 'btn btn-secondary btn-sm'
       - if current_user.has_role? :admin
