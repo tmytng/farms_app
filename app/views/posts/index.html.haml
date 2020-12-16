@@ -3,9 +3,6 @@
   = render "layouts/pj-header"
   .pj-main
     .contact-field
-    %h2 案件検索
-    = render 'search_form'
-    .contact-field
       %table.table.table-striped.table-hover
         %thead
           %tr
@@ -17,7 +14,7 @@
             %th 更新日時
             %th 登録者
         %tbody
-        - @posts_results.each do |post|
+        - @posts.each do |post|
           %tr.table-row
             %td
               = link_to project_post_path(@project, post) do

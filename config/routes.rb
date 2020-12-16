@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :projects do
     get :search, on: :collection
     resources :posts do
-      get :search, on: :collection
+      get :search, :search_result, on: :collection
       post :import, on: :collection
     end
   end

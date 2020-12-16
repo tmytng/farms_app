@@ -5,8 +5,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(project_id: @project.id)
-    @q = @posts.ransack(params[:q])
-    @posts_results = @q.result(distinct: true)
     respond_to do |format|
       format.html
       format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
@@ -14,9 +12,15 @@ class PostsController < ApplicationController
   end
 
   def search
-    @q = Post.search(search_params)
-    @results = @q.result
-    @posts_results = @results.where(project_id: @project.id)
+    @posts = Post.where(project_id: @project.id)
+    @q = @posts.ransack(params[:q])
+    @posts_results = @q.result(distinct: true)
+  end
+
+  def search_result
+    q = Post.search(search_params)
+    results = q.result
+    @posts_results = results.where(project_id: @project.id)
   end
 
   def new
