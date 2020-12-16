@@ -22,7 +22,7 @@
     = f.label :email_cont, "Eメール"
     = f.search_field :email_cont, include_blank: true
   .keyword
-    = f.label :leadstatus_id_eq, "リードステータス*"
+    = f.label :leadstatus_id_eq, "リードステータス"
     = f.collection_select :leadstatus_id_eq, Leadstatus.all, :id, :name, include_blank: '指定なし'
   .keyword
     = f.label :contact_reason_cont, "問い合わせ概要"
