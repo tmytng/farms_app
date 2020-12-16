@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def search_result
-    q = Post.search(search_params)
+    q = Post.ransack(search_params)
     results = q.result
     @posts_results = results.where(project_id: @project.id)
   end
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:company_name_cont)
+    params.require(:q).permit(:company_name_cont, :created_at_gteq, :created_at_lteq)
   end
 
   def set_project

@@ -1,44 +1,46 @@
 = search_form_for(@q, url: search_result_project_posts_path) do |f|
 
-  .keyword
-    = f.label :company_name_cont, "社名検索"
-    = f.search_field :company_name_cont
-  .keyword
-    = f.label :prefecture_id, "都道府県検索*"
-    = f.search_field :prefecture_id
-  .keyword
-    = f.label :company_address_cont, "住所検索"
-    = f.search_field :company_address_cont
-  .keyword
-    = f.label :company_url_cont, "URL検索"
-    = f.search_field :company_url_cont
-  .keyword
-    = f.label :contact_person_cont, "担当者検索"
-    = f.search_field :contact_person_cont
-  .keyword
-    = f.label :phone_number_cont, "電話番号検索"
-    = f.search_field :phone_number_cont
-  .keyword
-    = f.label :email_cont, "Eメール検索"
-    = f.search_field :email_cont
-  .keyword
-    = f.label :leadstatus_id, "リードステータス検索*"
-    = f.search_field :leadstatus_id
-  .keyword
-    = f.label :contact_reason_cont, "問い合わせ概要検索"
-    = f.search_field :contact_reason_cont
-  .keyword
-    = f.label :contact_des_cont, "問い合わせ内容検索"
-    = f.search_field :contact_des_cont
-  .keyword
-    = f.label :purchase_date, "購入予定期間内検索*"
-    = f.search_field :purchase_date
+  -# .keyword
+  -#   = f.label :company_name_cont, "社名検索"
+  -#   = f.search_field :company_name_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :prefecture_id, "都道府県検索*"
+  -#   = f.search_field :prefecture_id, include_blank: true
+  -# .keyword
+  -#   = f.label :company_address_cont, "住所検索"
+  -#   = f.search_field :company_address_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :company_url_cont, "URL検索"
+  -#   = f.search_field :company_url_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :contact_person_cont, "担当者検索"
+  -#   = f.search_field :contact_person_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :phone_number_cont, "電話番号検索"
+  -#   = f.search_field :phone_number_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :email_cont, "Eメール検索"
+  -#   = f.search_field :email_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :leadstatus_id, "リードステータス検索*"
+  -#   = f.search_field :leadstatus_id, include_blank: true
+  -# .keyword
+  -#   = f.label :contact_reason_cont, "問い合わせ概要検索"
+  -#   = f.search_field :contact_reason_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :contact_des_cont, "問い合わせ内容検索"
+  -#   = f.search_field :contact_des_cont, include_blank: true
+  -# .keyword
+  -#   = f.label :purchase_date, "購入予定期間内検索*"
+  -#   = f.search_field :purchase_date, include_blank: true
   .keyword
     = f.label :created_at, "案件登録日検索*"
-    = f.search_field :created_at
-  .keyword
-    = f.label :updated_at, "案件更新日検索*"
-    = f.search_field :updated_at
+    = f.date_select :created_at_gteq, include_blank: true
+    〜
+    = f.date_select :created_at_lteq, include_blank: true
+  -# .keyword
+  -#   = f.label :updated_at, "案件更新日検索*"
+  -#   = f.search_field :updated_at, include_blank: true
 
   .search
     = f.submit
