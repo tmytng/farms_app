@@ -71,7 +71,7 @@ class PostsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:company_name_cont, :created_at_gteq, :created_at_lteq)
+    params.require(:q).permit(:company_name_cont, :company_address_cont, :created_at_gteq, :created_at_lteq_end_of_day, :updated_at_gteq, :updated_at_lteq_end_of_day)
   end
 
   def set_project

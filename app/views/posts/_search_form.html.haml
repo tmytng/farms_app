@@ -1,14 +1,14 @@
 = search_form_for(@q, url: search_result_project_posts_path) do |f|
 
-  -# .keyword
-  -#   = f.label :company_name_cont, "社名検索"
-  -#   = f.search_field :company_name_cont, include_blank: true
+  .keyword
+    = f.label :company_name_cont, "社名検索"
+    = f.search_field :company_name_cont, include_blank: true
   -# .keyword
   -#   = f.label :prefecture_id, "都道府県検索*"
   -#   = f.search_field :prefecture_id, include_blank: true
-  -# .keyword
-  -#   = f.label :company_address_cont, "住所検索"
-  -#   = f.search_field :company_address_cont, include_blank: true
+  .keyword
+    = f.label :company_address_cont, "住所検索"
+    = f.search_field :company_address_cont, include_blank: true
   -# .keyword
   -#   = f.label :company_url_cont, "URL検索"
   -#   = f.search_field :company_url_cont, include_blank: true
@@ -34,13 +34,14 @@
   -#   = f.label :purchase_date, "購入予定期間内検索*"
   -#   = f.search_field :purchase_date, include_blank: true
   .keyword
-    = f.label :created_at, "案件登録日検索*"
+    = f.label :created_at, "登録日"
     = f.date_select :created_at_gteq, include_blank: true
     〜
-    = f.date_select :created_at_lteq, include_blank: true
-  -# .keyword
-  -#   = f.label :updated_at, "案件更新日検索*"
-  -#   = f.search_field :updated_at, include_blank: true
-
+    = f.date_select :created_at_lteq_end_of_day, include_blank: true
+  .keyword
+    = f.label :updated_at, "更新日"
+    = f.date_select :updated_at_gteq, include_blank: true
+    〜
+    = f.date_select :updated_at_lteq_end_of_day, include_blank: true
   .search
     = f.submit
