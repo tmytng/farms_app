@@ -9,8 +9,12 @@ class PostsController < ApplicationController
       format.html
       format.csv { send_data @posts.generate_csv, filename: "posts-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
-
     @q = Post.ransack(params[:q])
+    @results = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Post.search(search_params)
     @results = @q.result(distinct: true)
   end
 
@@ -61,6 +65,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason,:phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :project_id, post_files:[]).merge(user_id: current_user.id)
   end
 
+  def search_params
+    params.require(:q).permit!
+  end
+
   def set_project
     @project = Project.find(params[:project_id])
   end
@@ -72,5 +80,6 @@ class PostsController < ApplicationController
   def set_logs
     @logs = @post.audits.all
   end
+
 
 end
