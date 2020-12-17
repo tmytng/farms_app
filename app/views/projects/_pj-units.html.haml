@@ -1,4 +1,4 @@
-.card.mt-4
+.card.mt-4.shadow
   .row.no-gutters
     .col-md-4
       .bd-placeholder-img.h-100
@@ -32,29 +32,3 @@
           作成日：#{l project.created_at, format: :day}
         %li.list-group-item.border-0.pt-0.text-muted
           最終更新：2020/11/24
-
-
-
--# .card{:style => "width: 20rem"}
--#   .card-body
--#     %h5.card-title
--#       = project.name
--#     .card-text
--#       %ul.pj-members
--#         - project.users.each do |member|
--#           %li.member-icons
--#             - if member.avatar.attached?
--#               = link_to user_path(member) do
--#                 = image_tag member.avatar
--#     .card-text
--#       = project.profile
--#   %ul.list-group.list-group-flush
--#     %li.list-group-item
--#       作成者：#{project.creator}
--#     %li.list-group-item
--#       作成日：#{l project.created_at, format: :short}
--#     %li.list-group-item
--#       更新：2020/11/24
--#     %li.list-group-item
--#       メンバー：#{project.users.count}人
--#     = link_to "このプロジェクトへ", project_posts_path(project), class:"btn btn-primary"

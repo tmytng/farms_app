@@ -6,5 +6,5 @@
         プロジェクト
     .row
       - @projects.each do |project|
-        .col-md-12.bg-light
+        .col-sm-12.bg-light
           = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }
