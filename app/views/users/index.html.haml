@@ -6,7 +6,7 @@
         メンバーディレクトリ
     .row.mb-4
       - if current_user.has_role? :admin
-        = link_to "ユーザー新規作成", new_user_registration_path, class: 'btn btn-primary btn-sm'
+        = link_to "メンバー新規登録", new_user_registration_path, class: 'btn btn-primary btn-sm'
     .row
       - @users.each do |user|
         .col.bg-light
