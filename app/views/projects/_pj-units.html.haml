@@ -1,23 +1,60 @@
-.card{:style => "width: 20rem"}
-  .card-body
-    %h5.card-title
-      = project.name
-    .card-text
-      %ul.pj-members
-        - project.users.each do |member|
-          %li.member-icons
-            - if member.avatar.attached?
-              = link_to user_path(member) do
-                = image_tag member.avatar
-    .card-text
-      = project.profile
-  %ul.list-group.list-group-flush
-    %li.list-group-item
-      作成者：#{project.creator}
-    %li.list-group-item
-      作成日：#{l project.created_at, format: :short}
-    %li.list-group-item
-      更新：2020/11/24
-    %li.list-group-item
-      メンバー：#{project.users.count}人
-    = link_to "このプロジェクトへ", project_posts_path(project), class:"btn btn-primary"
+.card.mt-4
+  .row.no-gutters
+    .col-md-4
+      .bd-placeholder-img.h-100
+        - if project.prj_image.attached?
+          = image_tag project.prj_image, class: "img-responsive center-block"
+    .col-md-8
+      .card-body
+        %h2.card-title
+          = project.name
+        .card-text
+          %ul.pj-members
+            - project.users.each do |member|
+              %li.member-icons
+                - if member.avatar.attached?
+                  = link_to user_path(member) do
+                    = image_tag member.avatar
+        .card-text
+          = project.profile
+      %ul.list-group.list-group-flush
+        %li.list-group-item
+          = link_to "このプロジェクトを選択する", project_posts_path(project), class:"btn btn-primary"
+          - if current_user.has_role? :admin
+            = link_to "このプロジェクトを編集する", edit_project_path(project), class:"btn btn-secondary"
+        %li.list-group-item.border-0.pb-0.text-muted
+          プロジェクトコード: #{project.id.to_s}
+        %li.list-group-item.border-0.py-0.text-muted
+          作成者：#{project.creator}
+        %li.list-group-item.border-0.py-0.text-muted
+          メンバー：#{project.users.count}人
+        %li.list-group-item.border-0.py-0.text-muted
+          作成日：#{l project.created_at, format: :short}
+        %li.list-group-item.border-0.pt-0.text-muted
+          最終更新：2020/11/24
+
+
+
+-# .card{:style => "width: 20rem"}
+-#   .card-body
+-#     %h5.card-title
+-#       = project.name
+-#     .card-text
+-#       %ul.pj-members
+-#         - project.users.each do |member|
+-#           %li.member-icons
+-#             - if member.avatar.attached?
+-#               = link_to user_path(member) do
+-#                 = image_tag member.avatar
+-#     .card-text
+-#       = project.profile
+-#   %ul.list-group.list-group-flush
+-#     %li.list-group-item
+-#       作成者：#{project.creator}
+-#     %li.list-group-item
+-#       作成日：#{l project.created_at, format: :short}
+-#     %li.list-group-item
+-#       更新：2020/11/24
+-#     %li.list-group-item
+-#       メンバー：#{project.users.count}人
+-#     = link_to "このプロジェクトへ", project_posts_path(project), class:"btn btn-primary"

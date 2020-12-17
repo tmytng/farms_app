@@ -12,6 +12,10 @@
     = f.text_field :profile, id: "project_profile", class: "form-control form-control-sm", required: "#{'required'}"
     %p.invalid-feedback
       プロジェクト概要を入力してください
+  .form-group
+    = f.label :avatar, "プロジェクトイメージ"
+    %br
+    = f.file_field :prj_image
   %h3.text-muted.my-2 メンバー情報
   .checkbox.check-control
     = f.label :member, "プロジェクトメンバー"
