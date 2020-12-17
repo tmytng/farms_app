@@ -1,30 +1,29 @@
-.container.pj-contents
-  = render "layouts/global-navigation"
-  = render "layouts/pj-header"
-  .pj-main
-    .contact-field
-      %table.table.table-striped.table-hover
-        %thead
-          %tr
-            %th 問い合わせ番号
-            %th 会社名
-            %th 担当者
-            %th ステータス
-            %th 問い合わせ日時
-            %th 更新日時
-            %th 登録者
-        %tbody
-        - @posts.each do |post|
-          %tr.table-row
-            %td
-              = link_to project_post_path(@project, post) do
-                #{post.id}
-            %td #{post.company_name}
-            %td #{post.contact_person}
-            %td #{post.leadstatus.name}
-            %td #{l post.created_at, format: :short}
-            %td #{l post.updated_at, format: :short}
-            %td #{post.user.name}
+= render "layouts/global-navigation"
+= render "layouts/pj-header"
+.pj-main.container
+  .contact-field
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th 問い合わせ番号
+          %th 会社名
+          %th 担当者
+          %th ステータス
+          %th 問い合わせ日時
+          %th 更新日時
+          %th 登録者
+      %tbody
+      - @posts.each do |post|
+        %tr.table-row
+          %td
+            = link_to project_post_path(@project, post) do
+              #{post.id}
+          %td #{post.company_name}
+          %td #{post.contact_person}
+          %td #{post.leadstatus.name}
+          %td #{l post.created_at, format: :short}
+          %td #{l post.updated_at, format: :short}
+          %td #{post.user.name}
 
 -# - if @project.user_ids.include? current_user.id
 -#   = link_to new_project_post_path do
