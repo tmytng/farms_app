@@ -1,8 +1,9 @@
-.contents
+.container
   = render "layouts/global-navigation"
-  .main
-    .pj-field.container
-      .sub-msg
-        新規プロジェクトグループ作成
-      .pj-new-form
+  .container.container-m.main
+    .row
+      %h1.sub.mb-4
+        プロジェクトグループ新規作成
+    .row
+      .pj-new-form.bg-light
         = render partial: 'pj-form', locals: { project: @project }

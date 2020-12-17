@@ -12,14 +12,14 @@
       %li.nav-item
         = link_to "メッセージ", users_path, class:"nav-link mr-2"
       %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.navbar-brand.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        %a#navbarDropdown.nav-link.navbar-brand.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "", :role => "button"}
           - if current_user.avatar.attached?
             = image_tag current_user.avatar, class:"account-img d-inline-block"
             = "#{current_user.name}"
         .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdown"}
           = link_to "ユーザー情報変更", user_path(current_user), class:"dropdown-item"
           = link_to "メンバーディレクトリ", users_path, class:"dropdown-item"
-          = link_to "プロジェクト新規作成", users_path, class:"dropdown-item"
+          = link_to "プロジェクト新規作成", new_project_path, class:"dropdown-item"
           = link_to "メンバー新規登録", users_path, class:"dropdown-item"
           .dropdown-divider
           = link_to "ログアウト", users_path, class:"dropdown-item"
