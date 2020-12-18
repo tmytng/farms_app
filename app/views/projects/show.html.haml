@@ -1,7 +1,11 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.pj-main.container
-  ダッシュボード
+.container
+  %h1 ダッシュボード
+  %p
+  - if current_user.has_role? :admin
+    = link_to "CSVエクスポート", project_posts_path(@project, format: :csv), class: 'btn btn-danger btn-sm'
+
 -# .pj-contents
 -#   = render "layouts/global-navigation"
 -#   = render "layouts/pj-header"
