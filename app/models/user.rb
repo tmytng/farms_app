@@ -4,16 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
   rolify
-  has_many :posts
+  has_many :posts, dependent: :nullify
   has_many :project_users, dependent: :destroy
   has_many :projects, through: :project_users
-  has_many :messages
+  has_many :messages, dependent: :nullify
   has_one_attached :avatar
-  has_many :audits
+  has_many :audits, dependent: :nullify
   after_create :assign_admin_role
   after_create :assign_default_role
 
-  validates :name, :email, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :name, length: { maximum: 15 }
   validates :name, length: { minimum: 3 }
 

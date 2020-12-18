@@ -17,6 +17,7 @@ gem 'haml-rails', '>= 1.0', '<= 2.0.1'
 gem 'jbuilder', '~> 2.7'
 gem 'mini_magick'
 gem 'mysql2', '>= 0.4.4'
+gem 'parser', '~> 2.7.1.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 6.0.0'
 gem 'rails-i18n', '~> 6.0.0'
@@ -35,17 +36,17 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'capistrano-rbenv'
   gem 'factory_bot_rails'
+  gem 'overcommit'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rails-erd'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rubocop', require: false
-  gem 'rubocop-rails'
   gem 'rubocop-performance', require: false
+  gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'seed_dump'
-  gem 'overcommit'
 end
 
 group :development do

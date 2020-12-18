@@ -10,5 +10,5 @@ class Leadstatus < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :posts
+  has_many :posts, dependent: :nullify
 end
