@@ -1,86 +1,83 @@
-.post-contents
-  = render "layouts/global-navigation"
-  .post-main
-    .post-field
-      %h2.sub コンタクトログ
-      = form_with(model: [@project, @post], class: "form-field",local: true) do |f|
-        .company-info
-          %h3.sub 顧客情報
-          .form-group
-            = f.label :company_name, "会社名", class: "label-text"
-            = f.text_field :company_name, placeholder: "アイウエオ株式会社", id: "company_name", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :prefecture, "都道府県", class: "label-text"
-            %br
-            = @post.prefecture.name
-          .form-group
-            = f.label :company_address, "所在地", class: "label-text"
-            = f.text_field :company_address, placeholder: "新宿区新宿1-1-1", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :company_url, "URL", class: "label-text"
-            = f.url_field :company_url, placeholder: "http://test.com", id: "company_url", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :contact_person, "担当者名", class: "label-text"
-            = f.text_field :contact_person, placeholder: "田中一郎", id: "contact_person", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :phone_number, "電話番号（ハイフンなし）", class: "label-text"
-            = f.telephone_field :phone_number, placeholder: "0311112222", id: "phone_number", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :email, "メールアドレス", class: "label-text"
-            = f.email_field :email, placeholder: "tanaka@aiueo.com", id: "email", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-        .status-info
-          %h3.sub ステータス情報
-          .form-group
-            = f.label :leadstatus_id, "案件ステータス", class: "label-text"
-            %br
-            = @post.leadstatus.name
-          .form-group
-            = f.label :purchase_date, "購入予定時期:", class: "label-text"
-            = f.date_field :purchase_date, class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :product_id, "提案商材", class: "label-text"
-            %br
-            = @post.product.name
-          .custom-file
-            = f.label :post_files, "添付ファイル", class: "label-text"
-            %br
-            - @post.post_files.each do |file|
-              %ul
-                %li
-                  = file.filename
-        .contact-info
-          %h3.sub コンタクト情報
-          .form-group
-            = f.label :contact_reason, "概要", class: "label-text"
-            = f.text_field :contact_reason, placeholder: "商品購入問い合わせ", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :contact_des, "応対履歴", class: "label-text"
-            = f.text_area :contact_des, class: "form-control form-text-area form-control-plaintext", readonly: "#{'readonly'}"
-            = f.hidden_field :project_id, value: @project.id
-        .log-info
-          %h3.sub ログ情報
-          .action-log-box
-            %p アクションログ
-            %ul.log-msg-list
-            - @logs.each do |log|
-              %li.log-msg-list__created-at
-                = "[#{t log.action}]" + "#{l log.created_at, format: :short}"
-              %li.log-msg-list__register
-                = "入力：#{log.user.name}"
-          .contact-log-box
-            %p コンタクトログ
-            -# %ul.log-msg-list
-            -# - @logs.each do |log|
-            -#   %li.log-msg-list__created-at
-            -#     = l log.created_at
-            -#   %li.log-msg-list__register
-            -#     = log.audited_changes
-        .post-footer
-          .form-group
-            = link_to "投稿一覧ページへ戻る", project_posts_path, class: "backbtn btn btn-secondary"
-          - if @project.user_ids.include? current_user.id
-            .form-group
-              = link_to "修正する", edit_project_post_path, class: "btn btn-primary"
-          - if user_signed_in? && current_user.has_role?(:admin)
-            .form-group
-              = button_to "削除する", project_post_path, method: :delete, data: { confirm: "[INFO ID:#{@post.id}]\n顧客名:#{@post.company_name}様を削除します。\nよろしいですか？"}, class: "btn btn-danger"
+= render "layouts/global-navigation"
+.container-fluid.post-main
+  = form_with(model: [@project, @post], class: "form-field",local: true) do |f|
+    .row
+      .col-sm-12
+        %h2.sub コンタクトログID: #{@post.id}
+    .row.mb-2
+      .col-sm-12.col-lg-3.px-4.company-info
+        %h3.sub 顧客情報
+        .form-group
+          = f.label :company_name, "会社名", class: "label-text"
+          = f.text_field :company_name, placeholder: "アイウエオ株式会社", id: "company_name", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :prefecture, "都道府県", class: "label-text"
+          %br
+          = @post.prefecture.name
+        .form-group
+          = f.label :company_address, "所在地", class: "label-text"
+          = f.text_field :company_address, placeholder: "新宿区新宿1-1-1", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :company_url, "URL", class: "label-text"
+          = f.url_field :company_url, placeholder: "http://test.com", id: "company_url", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :contact_person, "担当者名", class: "label-text"
+          = f.text_field :contact_person, placeholder: "田中一郎", id: "contact_person", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :phone_number, "電話番号（ハイフンなし）", class: "label-text"
+          = f.telephone_field :phone_number, placeholder: "0311112222", id: "phone_number", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :email, "メールアドレス", class: "label-text"
+          = f.email_field :email, placeholder: "tanaka@aiueo.com", id: "email", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+      .col-sm-12.col-lg-5.px-4.contact-info
+        %h3.sub コンタクト情報
+        .form-group
+          = f.label :contact_reason, "概要", class: "label-text"
+          = f.text_field :contact_reason, placeholder: "商品購入問い合わせ", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :contact_des, "応対履歴", class: "label-text"
+          = f.text_area :contact_des, class: "form-control form-text-area form-control-plaintext", readonly: "#{'readonly'}"
+          = f.hidden_field :project_id, value: @project.id
+      .col-sm-12.col-lg-2.5.px-4.status-info
+        %h3.sub ステータス情報
+        .form-group
+          = f.label :leadstatus_id, "案件ステータス", class: "label-text"
+          %br
+          = @post.leadstatus.name
+        .form-group
+          = f.label :purchase_date, "購入予定時期:", class: "label-text"
+          = f.date_field :purchase_date, class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :product_id, "提案商材", class: "label-text"
+          %br
+          = @post.product.name
+        .custom-file
+          = f.label :post_files, "添付ファイル", class: "label-text"
+          %br
+          - @post.post_files.each do |file|
+            %ul
+              %li
+                = file.filename
+      .col-sm-12.col-lg-2.px-4.log-info
+        %h3.sub ログ情報
+        .action-log-box
+          %ul.log-msg-list
+          - @logs.each do |log|
+            %li.log-msg-list__created-at
+              = "[#{t log.action}]" + "#{l log.created_at, format: :short}"
+            %li.log-msg-list__register
+              = "入力：#{log.user.name}"
+  .row
+    .col.post-footer
+      .form-group
+        = link_to "投稿一覧ページへ戻る", project_posts_path, class: "backbtn btn btn-secondary"
+      - if @project.user_ids.include? current_user.id
+        .form-group
+          = link_to "修正する", edit_project_post_path, class: "btn btn-primary"
+        .form-group
+          = link_to "ストックする", edit_project_post_path, class: "btn btn-primary"
+      - if user_signed_in? && current_user.has_role?(:admin)
+        .form-group
+          = button_to "チェックする（ボタン化）", project_post_path, class: "btn btn-primary"
+        .form-group
+          = button_to "削除する", project_post_path, method: :delete, data: { confirm: "[INFO ID:#{@post.id}]\n顧客名:#{@post.company_name}様を削除します。\nよろしいですか？"}, class: "btn btn-danger"
