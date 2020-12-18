@@ -1,6 +1,6 @@
-.post-contents
-  = render "layouts/global-navigation"
-  .post-main
-    .post-field
-      %h2.sub 新規案件登録画面
-      = render partial: 'post-form', locals: { post: @post, project: @project, logs: @logs }
+= render "layouts/global-navigation"
+.container.post-main
+  .row
+    %h1.col-sm-12
+    コンタクトログ登録
+  = render partial: 'post-form', locals: { post: @post, project: @project, logs: @logs }

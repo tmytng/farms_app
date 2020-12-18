@@ -1,11 +1,11 @@
 = render "layouts/global-navigation"
-.container-fluid.post-main
+.container-fluid.post-main.px-5
   = form_with(model: [@project, @post], class: "form-field",local: true) do |f|
     .row
       .col-sm-12
-        %h2.sub コンタクトログID: #{@post.id}
+        %h2.mt-2 コンタクトログID: #{@post.id}
     .row.mb-2
-      .col-sm-12.col-lg-3.px-4.company-info
+      .col-sm-12.col-lg-2.px-3.company-info
         %h3.sub 顧客情報
         .form-group
           = f.label :company_name, "会社名", class: "label-text"
@@ -29,16 +29,7 @@
         .form-group
           = f.label :email, "メールアドレス", class: "label-text"
           = f.email_field :email, placeholder: "tanaka@aiueo.com", id: "email", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-      .col-sm-12.col-lg-5.px-4.contact-info
-        %h3.sub コンタクト情報
-        .form-group
-          = f.label :contact_reason, "概要", class: "label-text"
-          = f.text_field :contact_reason, placeholder: "商品購入問い合わせ", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-        .form-group
-          = f.label :contact_des, "応対履歴", class: "label-text"
-          = f.text_area :contact_des, class: "form-control form-text-area form-control-plaintext", readonly: "#{'readonly'}"
-          = f.hidden_field :project_id, value: @project.id
-      .col-sm-12.col-lg-2.5.px-4.status-info
+      .col-sm-12.col-lg-2.px-3.status-info
         %h3.sub ステータス情報
         .form-group
           = f.label :leadstatus_id, "案件ステータス", class: "label-text"
@@ -58,7 +49,17 @@
             %ul
               %li
                 = file.filename
-      .col-sm-12.col-lg-2.px-4.log-info
+      .col-sm-12.col-lg-6.px-3.contact-info
+        %h3.sub コンタクト情報
+        .form-group
+          = f.label :contact_reason, "概要", class: "label-text"
+          = f.text_field :contact_reason, placeholder: "商品購入問い合わせ", id: "contact_reason", class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
+        .form-group
+          = f.label :contact_des, "応対履歴", class: "label-text"
+          = f.text_area :contact_des, class: "form-control form-text-area form-control-plaintext", readonly: "#{'readonly'}"
+          = f.hidden_field :project_id, value: @project.id
+
+      .col-sm-12.col-lg-2.px-3.log-info
         %h3.sub ログ情報
         .action-log-box
           %ul.log-msg-list
@@ -66,7 +67,7 @@
             %li.log-msg-list__created-at
               = "[#{t log.action}]" + "#{l log.created_at, format: :short}"
             %li.log-msg-list__register
-              = "入力：#{log.user.name}"
+              = "入力者：#{log.user.name}"
   .row
     .col.post-footer
       .form-group
