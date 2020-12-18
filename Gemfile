@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec'
   gem 'seed_dump'
+  gem 'overcommit'
 end
 
 group :development do
