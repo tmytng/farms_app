@@ -1,6 +1,6 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.pj-main.container
+.container
   .row
-    = render 'search_form'
-  = link_to 'トップ', project_posts_path, class:"button btn"
+    .col
+      = render 'search_form'

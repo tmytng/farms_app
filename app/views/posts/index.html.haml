@@ -25,8 +25,8 @@
           %td #{l post.updated_at, format: :short}
           %td #{post.user.name}
 
--# - if @project.user_ids.include? current_user.id
--#   = link_to new_project_post_path do
--#     .postbtn
--#       %span.postbtn__text 新規登録
--#       = image_pack_tag 'icon/icon_pen.png', alt: '投稿ボタン', class: 'postbtn__icon'
+- if @project.user_ids.include? current_user.id
+  = link_to new_project_post_path do
+    .postbtn
+      %span.postbtn__text 新規登録
+      = image_pack_tag 'icon/icon_pen.png', alt: '投稿ボタン', class: 'postbtn__icon'
