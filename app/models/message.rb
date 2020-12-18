@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class Message < ApplicationRecord
-    belongs_to :project
-    belongs_to :user
+  belongs_to :project
+  belongs_to :user
 
-    validates :content, presence: true
-
+  validates :content, presence: true
 end

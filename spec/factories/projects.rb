@@ -1,9 +1,10 @@
-FactoryBot.define do
+# frozen_string_literal: true
 
+FactoryBot.define do
   factory :project do
-    name              {"test-project"}
-    profile           {"これはテストプロジェクトです"}
-    creator           {"testuser"}
+    name              { 'test-project' }
+    profile           { 'これはテストプロジェクトです' }
+    creator           { 'testuser' }
   end
 
   # after(:create) do |user|

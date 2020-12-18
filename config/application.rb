@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'csv'
@@ -15,7 +17,7 @@ module Sfatool
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
