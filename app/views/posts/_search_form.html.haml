@@ -1,0 +1,68 @@
+= search_form_for(@q, url: search_result_project_posts_path, class: "form-field post-search") do |f|
+  .row.mb-4
+    .form-box.col-md-6
+      %h5.text-muted.mb-4  会社情報
+      .form-group.row
+        = f.label :company_name_cont, "会社名", class:"col-md-2 col-form-label"
+        .col-md-8
+          = f.search_field :company_name_cont, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :phone_number_cont, "電話番号", class:"col-md-2 col-form-label"
+        .col-md-4
+          = f.search_field :phone_number_cont, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :contact_person_cont, "担当者名", class:"col-md-2 col-form-label"
+        .col-md-4
+          = f.search_field :contact_person_cont, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :email_cont, "Eメール", class:"col-md-2 col-form-label"
+        .col-md-6
+          = f.search_field :email_cont, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :company_url_cont, "URL", class:"col-md-2 col-form-label"
+        .col-md-6
+          = f.search_field :company_address_cont, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row.custom-control-inline
+        = f.label :prefecture_id_eq, "都道府県", class:"col-md-5 col-form-label prefecture-font-size"
+        .col-md-7
+          = f.collection_select(:prefecture_id_eq, Prefecture.all, :id, :name,{include_blank: '指定なし'}, class: "form-control form-control-sm" )
+      .custom-control-inline
+        = f.label :company_address_cont, "住所", class:"col-md-3 col-form-label prefecture-font-size"
+        .col-md-9
+          = f.search_field :company_address_cont, include_blank: true, class: "form-control form-control-sm"
+    .form-box.col-md-6
+      %h5.text-muted.mb-4  案件情報
+      .form-group.row
+        = f.label :leadstatus_id_eq, "リードステータス", class:"col-md-4 col-form-label"
+        .col-md-4
+          = f.collection_select(:leadstatus_id_eq, Leadstatus.all, :id, :name,{include_blank: '指定なし'}, class: "form-control form-control-sm" )
+      .form-group.row
+        = f.label :purchase_date, "購入予定時期", class:"col-md-4 col-form-label"
+        .col-md-4.custom-control-inline
+          = f.date_field :purchase_date_gteq, include_blank: true, class: "form-control form-control-sm"
+          〜
+          = f.date_field :purchase_date_lteq_end_of_day, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :created_at, "登録日", class:"col-md-4 col-form-label"
+        .col-md-4.custom-control-inline
+          = f.date_field :created_at_gteq, include_blank: true, class: "form-control form-control-sm"
+          〜
+          = f.date_field :created_at_lteq_end_of_day, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :updated_at, "更新日", class:"col-md-4 col-form-label"
+        .col-md-4.custom-control-inline
+          = f.date_field :updated_at_gteq, include_blank: true, class: "form-control form-control-sm"
+          〜
+          = f.date_field :updated_at_lteq_end_of_day, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :contact_reason_cont, "問い合わせ概要", class:"col-md-4 col-form-label"
+        .col-md-8
+          = f.search_field :contact_reason_cont, include_blank: true, class: "form-control form-control-sm"
+      .form-group.row
+        = f.label :contact_des_cont, "問い合わせ内容", class:"col-md-4 col-form-label"
+        .col-md-8
+          = f.search_field :contact_des_cont, include_blank: true, class: "form-control form-control-sm"
+  .row
+    .footer-box.col-md-12
+      .form-group
+        = f.submit "検索する", class: "btn btn-primary"

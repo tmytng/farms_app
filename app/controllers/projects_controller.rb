@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:update, :edit, :show, :destroy]
+  before_action :set_project, only: %i[update edit show destroy]
 
   def index
     @projects = Project.all
@@ -28,14 +30,13 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
-    if @project.destroy!
-      redirect_to root_path, notice: "削除が完了しました"
-    # else
-    #   redirect_to root_path, alert: "削除が失敗しました"
+    if @project.destroy
+      redirect_to root_path, notice: '削除が完了しました'
+    else
+      redirect_to root_path, alert: '削除が失敗しました'
     end
   end
 
@@ -52,8 +53,6 @@ class ProjectsController < ApplicationController
       format.json
     end
   end
-
-
 
   private
 

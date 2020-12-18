@@ -1,37 +1,45 @@
-.pj-contents
-  = render "layouts/global-navigation"
-  = render "layouts/pj-header"
-  .pj-main
-    .mission-field
-      .mission-items
-        .mission-items__msg
-          .msg-box
-            %h4 コメント一覧
-            - if @messages
-              - @messages.each do |m|
-                %ul.msg-list
-                  %li.meg-lists
-                    = l m.created_at
-                  %li.meg-lists
-                    = m.user.name
-                  %li.meg-lists
-                    = m.content
-          - if current_user
-            = form_with model: [@project, @message], local: true do |f|
-              .Form__contents
-                = f.text_field :content, placeholder: 'type a message'
-                = f.submit 'Send', class: 'Form__submit'
-          - else
-            投稿はログインユーザーのみです。
-        .mission-items__item
-          %h4 稼働実績
-          = column_chart User.pluck(:name)
-        .mission-items__item
-          %h4 アクション履歴
-          %br
-          17:10 〇〇さんが問い合わせ番号△△をチェックしました。
-          %br
-          16:59 〇〇さんが問い合わせ番号△△を更新しました。
-          %br
-          16:30 〇〇さんが問い合わせ番号△△を登録しました。
-          %br
+= render "layouts/global-navigation"
+= render "layouts/pj-header"
+.container
+  %h1 ダッシュボード
+  %p
+  - if current_user.has_role? :admin
+    = link_to "CSVエクスポート", project_posts_path(@project, format: :csv), class: 'btn btn-danger btn-sm'
+
+-# .pj-contents
+-#   = render "layouts/global-navigation"
+-#   = render "layouts/pj-header"
+-#   .pj-main
+-#     .mission-field
+-#       .mission-items
+-#         .mission-items__msg
+-#           .msg-box
+-#             %h4 コメント一覧
+-#             - if @messages
+-#               - @messages.each do |m|
+-#                 %ul.msg-list
+-#                   %li.meg-lists
+-#                     = l m.created_at
+-#                   %li.meg-lists
+-#                     = m.user.name
+-#                   %li.meg-lists
+-#                     = m.content
+-#           - if current_user
+-#             = form_with model: [@project, @message], local: true do |f|
+-#               .Form__contents
+-#                 = f.text_field :content, placeholder: 'type a message'
+-#                 = f.submit 'Send', class: 'Form__submit'
+-#           - else
+-#             投稿はログインユーザーのみです。
+-#         .mission-items__item
+-#           %h4 稼働実績
+-#           = column_chart User.pluck(:name)
+-#         .mission-items__item
+-#           %h4 アクション履歴
+-#           %br
+-#           17:10 〇〇さんが問い合わせ番号△△をチェックしました。
+-#           %br
+-#           16:59 〇〇さんが問い合わせ番号△△を更新しました。
+-#           %br
+-#           16:30 〇〇さんが問い合わせ番号△△を登録しました。
+-#           %br

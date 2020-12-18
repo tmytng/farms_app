@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   after_action :after_login, only: [:create]
 
   def index
-    @users = User.all
+    @users = User.all.includes(:avatar_attachment)
     # @q = User.ransack(params[:q])
     # @users = @q.result(distinct: true)
-
   end
 
   def new
@@ -19,15 +20,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @users = User.all
+    @users = User.all.includes(:avatar_attachment)
   end
 
   def edit
     @user = User.find(params[:id])
   end
 
-  def test
-  end
+  def test; end
 
   def update
     @user = User.find(params[:id])
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy!
-      redirect_to users_path, notice: "削除が完了しました"
+      redirect_to users_path, notice: '削除が完了しました'
     else
-      render :edit, alert: "削除が失敗しました"
+      render :edit, alert: '削除が失敗しました'
     end
   end
 

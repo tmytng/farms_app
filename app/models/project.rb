@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   has_many :project_users, dependent: :destroy
   has_associated_audits
@@ -6,7 +8,7 @@ class Project < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_one_attached :prj_image
   validates :name, presence: true, uniqueness: true
-  validates :profile, presence: true, length: {maximum: 300}
+  validates :profile, presence: true, length: { maximum: 300 }
   validates :user_ids, presence: true
   validates :creator, presence: true
   # validates :project_user_ids, presence: true
@@ -16,11 +18,10 @@ class Project < ApplicationRecord
   # end
 
   def self.search(search)
-    if search != ""
-      Project.where('profile LIKE(?)', "%#{search}%")
-    else
+    if search == ''
       Project.all
+    else
+      Project.where('profile LIKE(?)', "%#{search}%")
     end
   end
-
 end

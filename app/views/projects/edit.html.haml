@@ -1,8 +1,11 @@
-.contents
+.container
   = render "layouts/global-navigation"
-  .main
-    .pj-field.container
-      .sub-msg
-        = "プロジェクト:#{@project.name} 情報変更"
-      .pj-new-form
+  .container.container-m.main
+    .row
+      %h1.sub.mb-4
+        = "情報変更:"
+        %br
+        = " #{@project.name}"
+    .row
+      .pj-new-form.bg-light
         = render partial: 'pj-form', locals: { project: @project }

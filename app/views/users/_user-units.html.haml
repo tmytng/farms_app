@@ -1,0 +1,17 @@
+.card.mt-4.shadow{:style => "width: 242px;"}
+  .user-avatar.p-0.img-fluid
+    = link_to user_path(user) do
+      .bd-placeholder-img.img-fluid
+        - if user.avatar.attached?
+          = image_tag user.avatar
+    .card-body
+      %h5.card-title
+        = user.name
+      %ul.list-group.list-group-flush
+        %li.list-group-item.border-0.text-muted.p-0
+          %small.text-muted.m-0.p-0
+            最終ログイン：
+            - if user.current_sign_in_at.present?
+              = "#{l user.current_sign_in_at, format: :short}"
+        %li.list-group-item.m-0
+          = link_to "メッセージを送る", user_path(user), class:"btn btn-primary btn-sm"

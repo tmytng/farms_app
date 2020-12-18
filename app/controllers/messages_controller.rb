@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
   before_action :set_project
 
@@ -27,5 +29,4 @@ class MessagesController < ApplicationController
   def set_project
     @project = Project.find(params[:project_id])
   end
-
 end

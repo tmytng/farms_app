@@ -1,10 +1,10 @@
 .container
   = render "layouts/global-navigation"
-  .main
-    .index-field
-      .sub-msg
-        プロジェクト一覧
-    .card-columns
-      #cards
+  .container.container-m.main
+    .row
+      %h1.sub.mb-4
+        プロジェクト
+    .row
       - @projects.each do |project|
-        = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }
+        .col-sm-12.bg-light
+          = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }

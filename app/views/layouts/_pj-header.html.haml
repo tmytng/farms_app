@@ -1,37 +1,34 @@
-.pj-header
-  .pj-sub
-    = @project.name
-  .pj-member
-    %ul.member-list
-      members:
-      - @project.users.each do |member|
-        %li.member-icons
-          - if member.avatar.attached?
-            = link_to user_path(member) do
-              = image_tag member.avatar
-  .pj-desc
-    .desc-box
-      = @project.profile
-  .pj-category
-    -# .search-box
-    -#   = search_form_for @q, url: project_posts_path do |f|
-    -#     .form-group.row
-    -#       = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
-    -#       .col-sm-10
-    -#         = f.search_field :name_cont, class: 'form-control'
-    -#     .form-group
-    -#       = f.submit class: 'btn btn-outline-primary'
-    %ul.pj-category__act-lists
-      %li.pj-category__act-lists__list
-        = link_to "コンタクトログ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
-      -# %li.pj-category__act-lists__list
-      -# -#   = link_to "ダッシュボード", project_path(@project), class: 'btn btn-secondary btn-sm'
-      - if current_user.has_role? :admin
-        %li.pj-category__act-lists__list
-          = link_to "プロジェクト編集", edit_project_path(@project), class: 'btn btn-danger btn-sm'
-        %li.pj-category__act-lists__list
-          = link_to "CSVエクスポート", project_posts_path(format: :csv), class: 'btn btn-danger btn-sm'
-        -# %li.pj-category__act-lists__list
-        -#   = form_tag import_project_posts_path, multipart: true, class: 'mb-3' do
-        -#     = file_field_tag :file
-        -#     = submit_tag "CSVインポート", class: 'btn btn-danger btn-sm'
+.jumbotron.mb-2.p-0
+  .container
+    .row
+      .col-md-12
+        .pj-sub
+          = @project.name
+    .row
+      .col-md-12
+        .pj-member.m-1
+          %ul.member-list
+            members:
+            - @project.users.each do |member|
+              %li.member-icons
+                - if member.avatar.attached?
+                  = link_to user_path(member) do
+                    = image_tag member.avatar
+    .row
+      .col-md-12
+        .pj-desc
+          .desc-box
+            = @project.profile
+  .row
+    .col-md-12
+      .pj-category.pt-2
+        %ul.pj-category__act-lists
+          %li.pj-category__act-lists__list
+            = link_to "コンタクトログ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
+          %li.pj-category__act-lists__list
+            = link_to "詳細検索", search_project_posts_path(@project), class: 'btn btn-primary btn-sm'
+          %li.pj-category__act-lists__list
+            = link_to "ダッシュボード", project_path(@project), class: 'btn btn-primary btn-sm'
+          -# - if current_user.has_role? :admin
+          -#   %li.pj-category__act-lists__list
+          -#     = link_to "CSVエクスポート", project_posts_path(format: :csv), class: 'btn btn-danger btn-sm'
