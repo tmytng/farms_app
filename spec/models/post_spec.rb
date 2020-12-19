@@ -6,10 +6,8 @@ RSpec.describe Post, type: :model do
   describe 'バリデーションテスト' do
     subject { test_post.valid? }
 
-    let(:user) { create(:user) }
-    let(:project) { create(:project) }
-    let(:test_post) { build(:post, user_id: user.id, project_id: project.id) }
-    let(:test_post2) { build(:post, user_id: user.id, project_id: project.id) }
+    let(:test_post) { create(:post) }
+    let(:test_post2) { create(:post) }
 
     context 'company_name' do
       it '空欄でないこと' do
@@ -206,6 +204,59 @@ RSpec.describe Post, type: :model do
         test_post.contact_des = Faker::Lorem.characters(number: 1001)
         test_post.valid?
         expect(test_post.errors[:contact_des]).to include('は1000文字以内で入力してください')
+      end
+    end
+  end
+
+  describe 'ActiveStrageテスト' do
+    before do
+      @post = create(:post)
+      @file = fixture_file_upload('/files/test.png')
+    end
+    it '添付ファイルなしの登録ができる' do
+      @post.post_files = nil
+      expect(@post).to be_valid
+    end
+    it '添付ファイルの登録ができる' do
+      @post.post_files = @file
+      expect(@post).to be_valid
+    end
+    it '添付ファイル（複数）の登録ができる' do
+      @post.post_files = [@file, @file]
+      expect(@post).to be_valid
+    end
+  end
+
+  describe 'アソシエーションテスト' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    context 'Userモデルとのアソシエーション' do
+      let(:target) { :user }
+      it 'N:1の関係' do
+        expect(association.macro).to eq :belongs_to
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'User'
+      end
+    end
+    context 'Projectモデルとのアソシエーション' do
+      let(:target) { :project }
+      it 'N:1の関係' do
+        expect(association.macro).to eq :belongs_to
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Project'
+      end
+    end
+    context 'Auditモデルとのアソシエーション' do
+      let(:target) { :audits }
+      # 1:Nのアソシエーション
+      it '1:Nの関係' do
+        expect(association.macro).to eq :has_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Audited::Audit'
       end
     end
   end
