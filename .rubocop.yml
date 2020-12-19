@@ -21,7 +21,7 @@ Layout/LineLength:
   Max: 500
 
 Metrics/BlockLength:
-  Max: 120
+  Max: 180
 
 # 追加した規約ファイル読込
 require:

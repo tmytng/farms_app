@@ -40,6 +40,24 @@ RSpec.describe User, type: :model do
         test_user2.valid?
         expect(test_user2.errors[:name]).to include('はすでに存在します')
       end
+      it '15文字以内であること' do
+        test_user.name = Faker::Lorem.characters(number: 16)
+        is_expected.to eq false
+      end
+      it '15文字以上の場合はエラーが出る' do
+        test_user.name = Faker::Lorem.characters(number: 16)
+        test_user.valid?
+        expect(test_user.errors[:name]).to include('は15文字以内で入力してください')
+      end
+      it '3文字未満はNG' do
+        test_user.name = Faker::Lorem.characters(number: 2)
+        is_expected.to eq false
+      end
+      it '3文字未満の場合はエラーが出る' do
+        test_user.name = Faker::Lorem.characters(number: 2)
+        test_user.valid?
+        expect(test_user.errors[:name]).to include('は3文字以上で入力してください')
+      end
     end
 
     context 'email' do
@@ -104,6 +122,60 @@ RSpec.describe User, type: :model do
         test_user.password_confirmation = 'password2'
         test_user.valid?
         expect(test_user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
+      end
+    end
+  end
+
+  describe 'アソシエーションテスト' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    context 'Postモデルとのアソシエーション' do
+      let(:target) { :posts }
+      # 1:Nのアソシエーション
+      it '1:Nの関係' do
+        expect(association.macro).to eq :has_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Post'
+      end
+    end
+    context 'Auditモデルとのアソシエーション' do
+      let(:target) { :audits }
+      # 1:Nのアソシエーション
+      it '1:Nの関係' do
+        expect(association.macro).to eq :has_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Audit'
+      end
+    end
+    context 'Messageモデルとのアソシエーション' do
+      let(:target) { :messages }
+      # 1:Nのアソシエーション
+      it '1:Nの関係' do
+        expect(association.macro).to eq :has_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Message'
+      end
+    end
+    context 'ProjectUserモデルとのアソシエーション' do
+      let(:target) { :project_users }
+      it '1:Nの関係（中間テーブル）' do
+        expect(association.macro).to eq :has_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'ProjectUser'
+      end
+    end
+    context 'Projectモデルとのアソシエーション' do
+      let(:target) { :projects }
+      it 'N:Nの関係（中間テーブルが介在）' do
+        expect(association.macro).to eq :has_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Project'
       end
     end
   end
