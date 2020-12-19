@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
   describe 'ActiveStrageテスト' do
     before do
       @user = build(:user)
-      @user.avatar = fixture_file_upload('/files/test_user.png')
+      @user.avatar = fixture_file_upload('/files/test.png')
     end
     it 'アバター画像の登録ができる' do
       expect(@user).to be_valid
