@@ -179,4 +179,14 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe 'データベース接続テスト' do
+    subject { described_class.connection_config[:database] }
+
+    it '指定のDBに接続していること' do
+      is_expected.to match(/farms_app_test/)
+    end
+    it '本番DBに接続していないこと' do
+      is_expected.not_to match(/farms_app_production/)
+    end
+  end
 end
