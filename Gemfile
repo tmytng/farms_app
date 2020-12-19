@@ -37,6 +37,7 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'overcommit'
   gem 'pry-byebug'
   gem 'pry-rails'

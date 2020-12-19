@@ -1,23 +1,19 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable
   rolify
   has_many :posts, dependent: :nullify
   has_many :project_users, dependent: :destroy
   has_many :projects, through: :project_users
   has_many :messages, dependent: :nullify
-  has_one_attached :avatar
   has_many :audits, dependent: :nullify
+  has_one_attached :avatar
   after_create :assign_admin_role
   after_create :assign_default_role
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
-  validates :email, presence: true, uniqueness: true
-  validates :name, length: { maximum: 15 }
-  validates :name, length: { minimum: 3 }
+  validates :name, presence: true, uniqueness: { case_sensitive: true }, length: { minimum: 3, maximum: 15 }
+  validates :email, presence: true, uniqueness: { case_sensitive: true }
 
   scope :recent, -> { order(created_at: :desc) }
 
@@ -40,7 +36,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = 'test-admin'
+      user.name = 'ゲスト管理者'
       user.admin = true
       user.add_role(:admin)
     end
