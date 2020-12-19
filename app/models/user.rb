@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :audits, dependent: :nullify
   has_many :messages, dependent: :nullify
   has_many :posts, dependent: :nullify
-  has_many :projects, through: :project_users
   has_many :project_users, dependent: :destroy
+  has_many :projects, through: :project_users
   has_one_attached :avatar
   after_create :assign_admin_role
   after_create :assign_default_role

@@ -12,17 +12,17 @@ class Post < ApplicationRecord
 
   audited associated_with: :project
 
-  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/.freeze
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :company_name, presence: true
-  validates :prefecture_id, presence: true, exclusion: { in: ['---'] }
-  validates :company_address, presence: true
-  validates :contact_person, presence: true
-  validates :phone_number, format: { with: VALID_PHONE_REGEX, message: 'は有効でありません。' }
-  validates :email, presence: true
-  validates :purchase_date, presence: true
-  validates :leadstatus_id, presence: true, exclusion: { in: ['---'] }
-  validates :product_id, presence: true, exclusion: { in: ['---'] }
+  validates :company_name, presence: true, length: { maximum: 30 }
+  validates :prefecture_id, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 47 }, exclusion: { in: ['---'] }
+  validates :company_address, allow_blank: true, length: { maximum: 40 }
+  validates :contact_person, allow_blank: true, length: { maximum: 20 }
+  validates :phone_number, allow_blank: true, format: { with: VALID_PHONE_REGEX, message: 'は有効でありません。' }
+  validates :email, allow_blank: true, length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX, message: 'は有効でありません。' }
+  validates :leadstatus_id, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 10 }, exclusion: { in: ['---'] }
+  validates :product_id, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 5 }, exclusion: { in: ['---'] }
   validates :contact_reason, presence: true, length: { maximum: 30 }
   validates :contact_des, presence: true, length: { maximum: 1000 }
 
