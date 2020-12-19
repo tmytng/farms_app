@@ -189,6 +189,15 @@ RSpec.describe User, type: :model do
         expect(association.class_name).to eq 'Project'
       end
     end
+    context 'Roleモデルとのアソシエーション' do
+      let(:target) { :roles }
+      it 'N:Nの関係（中間テーブルが介在）' do
+        expect(association.macro).to eq :has_and_belongs_to_many
+      end
+      it '関連づけられたクラス名' do
+        expect(association.class_name).to eq 'Role'
+      end
+    end
   end
   describe 'データベース接続テスト' do
     subject { described_class.connection_config[:database] }
