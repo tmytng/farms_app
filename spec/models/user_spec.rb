@@ -2,11 +2,22 @@
 
 require 'rails_helper'
 
+# subject〜を書くことでis_expected〜を使えるようになる
+# letが呼び出された時点で実行される
+
 RSpec.describe User, type: :model do
+  describe 'ActiveStrageテスト' do
+    before do
+      @user = build(:user)
+      @user.avatar = fixture_file_upload('/files/test_user.png')
+    end
+    it 'アバター画像の登録ができる' do
+      expect(@user).to be_valid
+    end
+  end
+
   describe 'バリデーションテスト' do
-    # subject〜を書くことでis_expected〜を使えるようになる
     subject { test_user.valid? }
-    # letが呼び出された時点で実行される
     let(:user) { create(:user) }
     let(:user2) { create(:user) }
 
