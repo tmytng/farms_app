@@ -3,7 +3,9 @@
   = form_with(model: [@project, @post], class: "form-field",local: true) do |f|
     .row
       .col-sm-12.px-0
-        %h3.p-3 CID:#{@post.id} ログ詳細
+        %h3.p-3
+          %i.far.fa-file-alt.fa-fw
+          CID:#{@post.id} ログ詳細
     .row.mb-2
       .col-sm-12.col-lg-3.px-3.company-info
         %h3.sub 顧客情報

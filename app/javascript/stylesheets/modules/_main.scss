@@ -9,11 +9,13 @@ body {
     }
 }
 
+.sub {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
 .main {
     padding: 16px 0;
-    .sub {
-        font-size: 1.6rem;
-    }
     ul.pj-members {
         display: flex;
         justify-content: left;
@@ -155,8 +157,8 @@ body {
     background: gray;
     text-align: center;
     border-radius: 50%;
-    bottom: 152px;
-    right: 38px;
+    bottom: 148px;
+    right: 36px;
     position: fixed;
     display: flex;
     align-items: center;
@@ -275,6 +277,10 @@ body {
             margin-right: 8px;
         }
     }
+}
+
+.contact-field {
+    overflow: scroll;
 }
 
 // 未整理

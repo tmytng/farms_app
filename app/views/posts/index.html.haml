@@ -5,7 +5,8 @@
     %table.table.table-striped.table-hover
       %thead
         %tr
-          %th 問い合わせ番号
+          %th 閲覧
+          %th CID
           %th 会社名
           %th 担当者
           %th ステータス
@@ -17,7 +18,8 @@
         %tr.table-row
           %td
             = link_to project_post_path(@project, post) do
-              #{post.id}
+              %i.far.fa-list-alt
+          %td #{post.id}
           %td #{post.company_name}
           %td #{post.contact_person}
           %td #{post.leadstatus.name}
@@ -31,4 +33,4 @@
       %i.fas.fa-search-plus.fa-3x.my-fff
   = link_to new_project_post_path do
     .postbtn
-      %i.fas.fa-file-signature.fa-3x.my-fff
+      %i.fas.fa-pencil-alt.fa-3x.my-fff
