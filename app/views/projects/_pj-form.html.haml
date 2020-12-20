@@ -11,10 +11,10 @@
     = f.text_area	:profile, size: "20x6", maxlength: "400", class: "form-control form-control-sm", required: "#{'required'}"
     %p.invalid-feedback
       プロジェクト概要を入力してください
-  .form-group
+  .form-group.custom-file
     = f.label :avatar, "プロジェクトイメージ"
     %br
-    = f.file_field :prj_image
+    = f.file_field :prj_image, class: "attachment-font"
   .checkbox.check-control
     = f.label :member, "プロジェクトメンバー"
     %span.require 必須

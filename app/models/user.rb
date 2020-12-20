@@ -38,7 +38,6 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = 'ゲスト管理者'
-      user.avatar = 'images/default_user.png'
       user.admin = true
       user.add_role(:admin)
     end

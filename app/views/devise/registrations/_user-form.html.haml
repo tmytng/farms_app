@@ -9,11 +9,11 @@
       = f.text_field :name, class: "form-control form-control-sm", required: "#{'required'}"
       %p.invalid-feedback
         ユーザー名を入力してください
-    .form-group
+    .form-group.custom-file
       = f.label :avatar, "ユーザー画像"
       %span.require 必須
       %br
-      = f.file_field :avatar, required: "#{'required'}"
+      = f.file_field :avatar, class: "attachment-font", required: "#{'required'}"
       %p.invalid-feedback
         ユーザー画像をアップロードしてください
     .form-group

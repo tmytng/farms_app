@@ -188,13 +188,13 @@
     }
     .status-info {
         background-color: #f8fcf8;
-        .custom-file {
-            .attachment-font {
-                font-size: 0.8rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+    }
+    .custom-file {
+        .attachment-font {
+            font-size: 0.8rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
     .status-info-show {
