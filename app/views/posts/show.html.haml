@@ -1,9 +1,9 @@
 = render "layouts/global-navigation"
-.container.post-main
+.container.main.form-main
   = form_with(model: [@project, @post], class: "form-field",local: true) do |f|
     .row
       .col-sm-12.px-0
-        %h3.p-3
+        %h3.p-2
           %i.far.fa-file-alt.fa-fw
           CID:#{@post.id} ログ詳細
     .row.mb-2

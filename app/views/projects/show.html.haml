@@ -11,7 +11,7 @@
       - if current_user.has_role? :admin
         = link_to "CSVエクスポート", project_posts_path(@project, format: :csv), class: 'btn btn-danger btn-sm'
   .row
-    .col-md-12
+    .col-md-12.footer-menus
       = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary "
 
 -# .pj-contents

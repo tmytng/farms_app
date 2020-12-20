@@ -1,5 +1,4 @@
 = form_with(model: project, html: { class: "form-field needs-validation", novalidate: true }, local: true) do |f|
-  %h5.text-muted.my-2 プロジェクト概要
   .form-group
     = f.label :name, "プロジェクト名", class: "label-text"
     %span.require 必須
@@ -9,14 +8,13 @@
   .form-group
     = f.label :profile, "プロジェクト概要", class: "label-text"
     %span.require 必須
-    = f.text_field :profile, id: "project_profile", class: "form-control form-control-sm", required: "#{'required'}"
+    = f.text_area	:profile, size: "20x6", maxlength: "400", class: "form-control form-control-sm", required: "#{'required'}"
     %p.invalid-feedback
       プロジェクト概要を入力してください
   .form-group
     = f.label :avatar, "プロジェクトイメージ"
     %br
     = f.file_field :prj_image
-  %h5.text-muted.my-2 メンバー情報
   .checkbox.check-control
     = f.label :member, "プロジェクトメンバー"
     %span.require 必須

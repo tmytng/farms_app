@@ -3,23 +3,26 @@
   .row.justify-content-center
     %h1.col-auto.sub.mb-3
       %i.fas.fa-user-plus.fa-fw
-      新規ユーザー登録
+      新規メンバー登録
+  .row.justify-content-center
+    .col-auto.mb-3
+      プロジェクトにジョインするメンバーを登録しましょう！
   .row.justify-content-center
     .col-auto.user-form-width
       = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user form-field needs-validation', html: { novalidate: true }, local: true do |f|
         .form-group
-          = f.label :name, "ユーザー名", class: "label-text"
+          = f.label :name, "メンバー名", class: "label-text"
           %span.require 必須
           = f.text_field :name, class: "form-control form-control-sm", required: "#{'required'}"
           %p.invalid-feedback
-            ユーザー名を入力してください
+            メンバー名を入力してください
         .form-group
-          = f.label :avatar, "ユーザー画像"
+          = f.label :avatar, "メンバー画像"
           %span.require 必須
           %br
           = f.file_field :avatar, required: "#{'required'}"
           %p.invalid-feedback
-            ユーザー画像をアップロードしてください
+            メンバー画像をアップロードしてください
         .form-group
           = f.label :email, "Eメール", class: "label-text"
           %span.require 必須
