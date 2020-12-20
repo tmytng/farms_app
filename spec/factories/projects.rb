@@ -2,15 +2,9 @@
 
 FactoryBot.define do
   factory :project do
-    name              { 'test-project' }
-    profile           { 'これはテストプロジェクトです' }
-    creator           { 'testuser' }
+    sequence(:id)   { |n| n }
+    sequence(:name) { Faker::Lorem.characters(number: 15) }
+    profile         { Faker::Lorem.characters(number: 40) }
+    creator         { 'test-admin' }
   end
-
-  # after(:create) do |user|
-  #   create(:project_user,
-  #         project: project,
-  #         user: create(:user))
-  #   end
-  # end
 end

@@ -20,6 +20,12 @@ Style/FrozenStringLiteralComment:
 Layout/LineLength:
   Max: 500
 
+Metrics/BlockLength:
+  Max: 260
+
+Style/MutableConstant:
+  Enabled: false
+
 # 追加した規約ファイル読込
 require:
   - rubocop-rails
