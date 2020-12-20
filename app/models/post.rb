@@ -3,7 +3,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :project, optional: true
-  has_many_attached :post_files
+  has_many_attached :attachments
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture

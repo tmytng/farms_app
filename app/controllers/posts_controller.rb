@@ -31,11 +31,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save!
-      flash[:notice] = "#{@post.company_name}様の新規登録が完了しました"
+    @post.attachments = params[:post][:attachments]
+    if @post.save
+      flash[:notice] = "#{@post.company_name}の新規登録が完了しました"
       redirect_to project_posts_path(@project)
     else
-      flash.now[:notice] = '登録内容に誤りがあります'
       render :new
     end
   end
@@ -43,11 +43,11 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+    @post.attachments = params[:post][:attachments]
     if @post.update(post_params)
-      redirect_to project_post_path, notice: "#{@post.company_name}様の登録情報を修正しました"
+      redirect_to project_post_path, notice: "#{@post.company_name}の登録情報を更新しました"
     else
-      flash.now[:notice] = '修正内容に誤りがあります'
-      render :new
+      render :edit
     end
   end
 
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason, :phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :project_id, post_files: []).merge(user_id: current_user.id)
+    params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason, :phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :project_id, attachments: []).merge(user_id: current_user.id)
   end
 
   def search_params

@@ -214,15 +214,15 @@ RSpec.describe Post, type: :model do
       @file = fixture_file_upload('/files/test.png')
     end
     it '添付ファイルなしの登録ができる' do
-      @post.post_files = nil
+      @post.attachments = nil
       expect(@post).to be_valid
     end
     it '添付ファイルの登録ができる' do
-      @post.post_files = @file
+      @post.attachments = @file
       expect(@post).to be_valid
     end
     it '添付ファイル（複数）の登録ができる' do
-      @post.post_files = [@file, @file]
+      @post.attachments = [@file, @file]
       expect(@post).to be_valid
     end
   end

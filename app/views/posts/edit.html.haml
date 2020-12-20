@@ -1,6 +1,6 @@
 = render "layouts/global-navigation"
 .container.post-main
   .row
-    %h1.col-sm-12
-    = "[INFO ID:#{@post.id}] ログ情報変更"
+    .col-sm-12.px-0
+      %h3.p-3  CID:#{@post.id} ログ情報変更
   = render partial: 'post-form', locals: { post: @post, project: @project, logs: @logs }
