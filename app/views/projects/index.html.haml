@@ -1,10 +1,13 @@
-.container
-  = render "layouts/global-navigation"
-  .container.container-m.main
-    .row
-      %h1.sub.mb-4
-        プロジェクト
-    .row
-      - @projects.each do |project|
-        .col-sm-12.bg-light
-          = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }
+= render "layouts/global-navigation"
+.container.main
+  .row
+    %h1.col.sub.mb-2
+      %i.fas.fa-building.fa-fw
+      プロジェクト
+  .row
+    .col.mb-4
+      自身が所属するプロジェクトを選択して、新たな顧客とのやり取りをチームで共有しましょう！
+  .row
+    - @projects.each do |project|
+      .col-sm-12.bg-light
+        = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }

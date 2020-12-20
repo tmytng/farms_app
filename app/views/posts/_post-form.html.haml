@@ -59,7 +59,7 @@
         %span{class: "require"} 必須
         = f.collection_select(:leadstatus_id, Leadstatus.all, :id, :name,{include_blank: "---"}, class: "form-control form-control-sm" )
       .form-group
-        = f.label :purchase_date, "購入予定時期:", class: "label-text"
+        = f.label :purchase_date, "購入予定時期", class: "label-text"
         %span{class: "require"} 必須
         = f.date_field :purchase_date, class: "form-control form-control-sm", required: "#{'required'}"
         %p.invalid-feedback
@@ -69,8 +69,8 @@
         %span{class: "require"} 必須
         = f.collection_select(:product_id, Product.all, :id, :name,{include_blank: "---"}, class: "form-control form-control-sm" )
       .form-group.custom-file
-        = f.label :post_files, "添付ファイル"
-        = f.file_field :post_files, multiple: true
+        = f.label :attachments, "添付ファイル"
+        = f.file_field :attachments, multiple: true, class: "attachment-font"
   .row
     .col
       .post-footer

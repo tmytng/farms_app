@@ -1,6 +1,9 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
 .container
-  .row
-    .col
+  .row.mb-2
+    .col-sm-12.px-0
+      %h3
+        %i.fas.fa-search-plus.fa-fw
+        詳細検索
       = render 'search_form'

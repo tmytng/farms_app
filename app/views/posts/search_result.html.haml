@@ -1,26 +1,27 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.pj-main.container
-  %h2 検索結果
-  %table.table.table-striped.table-hover
-    %thead
-      %tr
-        %th 問い合わせ番号
-        %th 会社名
-        %th 担当者
-        %th ステータス
-        %th 問い合わせ日時
-        %th 更新日時
-        %th 登録者
-    %tbody
-    - @posts_results.each do |result|
-      %tr.table-row
-        %td #{result.id}
-        %td #{result.company_name}
-        %td #{result.contact_person}
-        %td #{result.leadstatus.name}
-        %td #{l result.created_at, format: :short}
-        %td #{l result.updated_at, format: :short}
-        %td #{result.user.name}
+.container
+  .contact-field
+    %h2 検索結果
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th 問い合わせ番号
+          %th 会社名
+          %th 担当者
+          %th ステータス
+          %th 問い合わせ日時
+          %th 更新日時
+          %th 登録者
+      %tbody
+      - @posts_results.each do |result|
+        %tr.table-row
+          %td #{result.id}
+          %td #{result.company_name}
+          %td #{result.contact_person}
+          %td #{result.leadstatus.name}
+          %td #{l result.created_at, format: :short}
+          %td #{l result.updated_at, format: :short}
+          %td #{result.user.name}
 
   = link_to "戻る", :back, class: "backbtn btn btn-secondary"

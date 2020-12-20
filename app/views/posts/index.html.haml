@@ -1,11 +1,12 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.pj-main.container
+.container
   .contact-field
     %table.table.table-striped.table-hover
       %thead
         %tr
-          %th 問い合わせ番号
+          %th 閲覧
+          %th CID
           %th 会社名
           %th 担当者
           %th ステータス
@@ -17,7 +18,8 @@
         %tr.table-row
           %td
             = link_to project_post_path(@project, post) do
-              #{post.id}
+              %i.far.fa-list-alt
+          %td #{post.id}
           %td #{post.company_name}
           %td #{post.contact_person}
           %td #{post.leadstatus.name}
@@ -26,7 +28,9 @@
           %td #{post.user.name}
 
 - if @project.user_ids.include? current_user.id
+  = link_to search_project_posts_path(@project) do
+    .searchbtn
+      %i.fas.fa-search-plus.fa-3x.my-fff
   = link_to new_project_post_path do
     .postbtn
-      %span.postbtn__text 新規登録
-      = image_pack_tag 'icon/icon_pen.png', alt: '投稿ボタン', class: 'postbtn__icon'
+      %i.fas.fa-pencil-alt.fa-3x.my-fff

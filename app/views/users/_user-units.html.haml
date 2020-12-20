@@ -13,5 +13,6 @@
             最終ログイン：
             - if user.current_sign_in_at.present?
               = "#{l user.current_sign_in_at, format: :short}"
-        %li.list-group-item.m-0
-          = link_to "メッセージを送る", user_path(user), class:"btn btn-primary btn-sm"
+        -# 追加機能実装予定
+        -# %li.list-group-item.m-0
+        -#   = link_to "メッセージを送る", user_path(user), class:"btn btn-primary btn-sm"

@@ -1,6 +1,8 @@
 = render "layouts/global-navigation"
-.container.post-main
+.container.main.form-main
   .row
-    %h1.col-sm-12
-    コンタクトログ登録
+    .col-sm-12.px-0
+      %h3.p-2
+        %i.fas.fa-edit.fa-fw
+        コンタクトログ新規登録
   = render partial: 'post-form', locals: { post: @post, project: @project, logs: @logs }
