@@ -2,12 +2,12 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    # prepend_before_action :require_no_authentication, only: [:cancel] #rubocop
+    prepend_before_action :require_no_authentication, only: [:cancel]
     prepend_before_action :authenticate_scope!, only: %i[edit update]
     prepend_before_action :set_minimum_password_length, only: %i[edit]
-    # before_action :configure_sign_up_params, only: [:create] #rubocop
+    before_action :configure_sign_up_params, only: [:create]
     before_action :configure_account_update_params, only: [:update]
-    # before_action :creatable?, only: %i[new create] #rubocop
+    before_action :creatable?, only: %i[new create]
     before_action :editable?, only: %i[edit update]
 
     # GET /resource/sign_up
