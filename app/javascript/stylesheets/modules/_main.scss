@@ -74,21 +74,8 @@ body {
     }
 }
 
-.pj-category {
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    &__act-lists {
-        display: flex;
-        &__list {
-            margin-left: 10px;
-            line-height: 40px;
-            &--active {
-                font-weight: bold;
-                color: darkorange;
-            }
-        }
-    }
+.pj-sidebtn {
+    text-align: center;
 }
 
 // user-show
@@ -169,7 +156,7 @@ body {
     text-align: center;
     border-radius: 50%;
     bottom: 152px;
-    right: 40px;
+    right: 38px;
     position: fixed;
     display: flex;
     align-items: center;
