@@ -2,8 +2,15 @@
   = render "layouts/global-navigation"
   .container.container-m.main
     .row
-      %h1.sub.mb-4
+      %h1.sub.mb-2
         プロジェクト
+    .row
+      .col.mb-4
+        自身が所属するプロジェクトにアサインして、顧客とのやり取りを共有しましょう！
+        %br
+        - if current_user.has_role? :admin
+          あなたが管理ユーザーの場合には、新規にプロジェクトを登録することができます。
+          = link_to "プロジェクト新規登録", new_project_path, class: 'btn btn-primary btn-sm'
     .row
       - @projects.each do |project|
         .col-sm-12.bg-light

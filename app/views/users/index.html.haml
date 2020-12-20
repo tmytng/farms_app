@@ -4,9 +4,13 @@
     .row
       %h1.sub.mb-4
         メンバーディレクトリ
-    .row.mb-4
-      - if current_user.has_role? :admin
-        = link_to "メンバー新規登録", new_user_registration_path, class: 'btn btn-primary btn-sm'
+    .row
+      .col.mb-4
+        本アプリケーションに登録されているメンバーの一覧です。
+        %br
+        - if current_user.has_role? :admin
+          あなたが管理ユーザーの場合には、新規にメンバーを追加登録することができます。
+          = link_to "メンバー新規追加", new_user_registration_path, class: 'btn btn-primary btn-sm'
     .row
       - @users.each do |user|
         .col.bg-light

@@ -5,6 +5,10 @@
       %h1.sub.mb-4
         メンバー情報
     .row
+      .col-sm-12.mb-2
+        - if @user == current_user
+          あなた自身の登録情報は以下の通りです。
+    .row
       .col-sm-12
         .card.border-0
           .row.no-gutters

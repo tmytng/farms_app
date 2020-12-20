@@ -147,13 +147,13 @@
     // post-index
     .postbtn {
         width: 120px;
-        background: #3CCACE;
+        background: #269800;
         text-align: center;
         border-radius: 4%;
         bottom: 32px;
         right: 32px;
         position: fixed;
-        padding: 15px;
+        padding: 16px;
         &__text {
             color: #151515;
             display: block;
@@ -166,11 +166,34 @@
         }
     }
     
-    .postbtn:hover {
+    .postbtn:hover,
+    .searchbtn:hover {
         opacity: 0.7;
         transition: 200ms;
     }
     
+    .searchbtn {
+        width: 120px;
+        background: #269800;
+        text-align: center;
+        border-radius: 50%;
+        bottom: 172px;
+        right: 32px;
+        position: fixed;
+        padding: 16px;
+        &__text {
+            color: #151515;
+            display: block;
+            font-size: 16px;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        &__icon {
+            width: 60%;
+        }
+    }
+    
+    // post-search
     .post-search {
         .form-box {
             width: 100%;
