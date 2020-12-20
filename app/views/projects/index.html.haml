@@ -1,18 +1,13 @@
-.container
-  = render "layouts/global-navigation"
-  .container.container-m.main
-    .row
-      %h1.col.sub.mb-2
-        %i.fas.fa-building.fa-fw
-        プロジェクト
-    .row
-      .col.mb-4
-        自身が所属するプロジェクトにアサインして、顧客とのやり取りを共有しましょう！
-        %br
-        - if current_user.has_role? :admin
-          あなたが管理ユーザーの場合には、新規にプロジェクトを登録することができます。
-          = link_to "プロジェクト新規登録", new_project_path, class: 'btn btn-primary btn-sm'
-    .row
-      - @projects.each do |project|
-        .col-sm-12.bg-light
-          = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }
+= render "layouts/global-navigation"
+.container.main
+  .row
+    %h1.col.sub.mb-2
+      %i.fas.fa-building.fa-fw
+      プロジェクト
+  .row
+    .col.mb-4
+      自身が所属するプロジェクトにアサインして、新たな顧客とのやり取りをチームで共有しましょう！
+  .row
+    - @projects.each do |project|
+      .col-sm-12.bg-light
+        = render partial: 'pj-units', locals: { project: project, user: @user, post: @post }

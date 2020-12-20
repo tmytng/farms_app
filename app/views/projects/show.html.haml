@@ -1,6 +1,6 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.container
+.container.main
   .row
     .col-md-12
       %h1 ダッシュボード
@@ -12,7 +12,7 @@
         = link_to "CSVエクスポート", project_posts_path(@project, format: :csv), class: 'btn btn-danger btn-sm'
   .row
     .col-md-12
-      = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary btn-sm"
+      = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary "
 
 -# .pj-contents
 -#   = render "layouts/global-navigation"

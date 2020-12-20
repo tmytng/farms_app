@@ -1,9 +1,11 @@
-.container
-  = render "layouts/global-navigation"
-  .container.container-m.main
-    .row
-      %h1.sub.mb-4
-        プロジェクトグループ新規作成
-    .row
-      .pj-new-form.bg-light
-        = render partial: 'pj-form', locals: { project: @project }
+= render "layouts/global-navigation"
+.container.main
+  .row
+    %h1.col.sub.mb-2
+      プロジェクトグループ新規作成
+  .row
+  .col.mb-3
+    プロジェクトの新規登録を行います。
+  .row
+    .col.bg-light
+      = render partial: 'pj-form', locals: { project: @project }

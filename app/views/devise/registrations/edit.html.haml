@@ -1,10 +1,10 @@
-.container
-  = render "layouts/global-navigation"
-  .container.container-m.main
-    .row
-      %h1.sub.mb-4
-        メンバー情報変更
-    .row
-      .col
-        - form_url = (request.path_info.to_s == edit_other_user_registration_path(resource))? other_user_registration_path(resource): user_registration_path
-        = render 'form', resource: resource, resource_name: resource_name, form_url: form_url
+= render "layouts/global-navigation"
+.container.main.form-main
+  .row.justify-content-center
+    %h1.col-auto.sub.mb-3
+      %i.fas.fa-user-edit.fa-fw
+      メンバー情報変更
+  .row.justify-content-center
+    .col-auto
+      - form_url = (request.path_info.to_s == edit_other_user_registration_path(resource))? other_user_registration_path(resource): user_registration_path
+      = render 'user-form', resource: resource, resource_name: resource_name, form_url: form_url

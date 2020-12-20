@@ -1,11 +1,11 @@
-.container
-  = render "layouts/global-navigation"
-  .container.container-m.main
-    .row
-      %h1.sub.mb-4
-        = "情報変更:"
-        %br
-        = " #{@project.name}"
-    .row
-      .pj-new-form.bg-light
-        = render partial: 'pj-form', locals: { project: @project }
+= render "layouts/global-navigation"
+.container.main
+  .row
+    %h1.col.sub.mb-2
+      = "情報変更: #{@project.name}"
+  .row
+    .col.mb-3
+      プロジェクトの情報変更を行います。
+  .row
+    .col.bg-light
+      = render partial: 'pj-form', locals: { project: @project }

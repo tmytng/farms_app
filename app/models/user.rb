@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: true }, length: { minimum: 3, maximum: 15 }
   validates :email, presence: true, uniqueness: { case_sensitive: true }
+  validates :profile, length: { maximum: 240 }
 
   scope :recent, -> { order(created_at: :desc) }
 
