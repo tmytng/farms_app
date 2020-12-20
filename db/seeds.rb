@@ -58,11 +58,11 @@ User.create!(
   current_sign_in_at: '2020-10-01'
 )
 
-6.times do
-  x += 1
-  user = User.find(x)
-  user.image.attach(io: File.open('app/javascript/images/default_user.png'), filename: 'test.jpg')
-end
+# 6.times do
+#   x += 1
+#   user = User.find(x)
+#   user.image.attach(io: File.open('app/javascript/images/default_user.png'), filename: 'test.jpg')
+# end
 
 p 'create Projects'
 Project.create!(
