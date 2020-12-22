@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require('bootstrap/dist/js/bootstrap.min.js')
-import "../stylesheets/application.scss";
+import "src/css/application";
+// import "src/js/search";
 import '@fortawesome/fontawesome-free/js/all';
-// import "../src/search";
 const images = require.context('../images', true)
