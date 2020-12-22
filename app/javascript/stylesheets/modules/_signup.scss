@@ -4,12 +4,19 @@
     text-decoration: none;
 }
 
+body.sessions {
+    padding: 0;
+}
+
 .signup-wrapper {
     height: 100vh;
     width: 100vw;
     display: flex;
+    position: relative;
     flex-direction: column;
+    padding-bottom: 20px;
     background-color: #556b2f;
+    box-sizing: border-box;
 }
 
 .signup-header {
@@ -175,8 +182,7 @@ h1 {
 
 .signup-footer {
     width: 100%;
-    height: 20px;
-    margin-bottom: 8px;
+    line-height: 20px;
     position: absolute;
     bottom: 0;
     text-align: center;
