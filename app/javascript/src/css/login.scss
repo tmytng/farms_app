@@ -4,7 +4,7 @@
     text-decoration: none;
 }
 
-body.sessions {
+body {
     padding: 0;
 }
 
@@ -182,7 +182,8 @@ h1 {
 
 .signup-footer {
     width: 100%;
-    line-height: 20px;
+    height: 20px;
+    line-height: 16px;
     position: absolute;
     bottom: 0;
     text-align: center;
