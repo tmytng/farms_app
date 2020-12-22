@@ -7,7 +7,7 @@
     = csp_meta_tag
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application'
-  %body
+  %body{:class => "#{controller.controller_name}"}
     = render 'layouts/notifications'
     = yield
 
