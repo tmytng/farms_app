@@ -54,7 +54,7 @@ module Users
                       else
                         :updated
                       end
-          set_flash_message :success, flash_key
+          set_flash_message :notice, flash_key
         end
         bypass_sign_in resource, scope: resource_name unless by_admin_user?(params)
         respond_with resource, location: after_update_path_for(resource)
@@ -102,7 +102,6 @@ module Users
     # The path used after sign up.
     def after_sign_up_path_for(resource)
       if current_user_is_admin?
-        # flash[:success] = 'メンバーを登録しました'
         users_path
       else
         super(resource)
@@ -112,10 +111,10 @@ module Users
     # The path used after update.
     def after_update_path_for(resource)
       if current_user_is_admin?
-        # flash[:success] = '更新が完了しました'
+        flash[:notice] = '更新が完了しました'
         users_path
       else
-        # flash[:success] = 'ユーザー情報の更新が完了しました'
+        flash[:notice] = 'ユーザー情報の更新が完了しました'
         super(resource)
       end
     end
