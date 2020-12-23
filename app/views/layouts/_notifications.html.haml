@@ -1,6 +1,6 @@
 .Notification
   - flash.each do |key, value|
-    %div{class: "alert alert-#{key} alert-dismissable"}
+    %div{class: "alert alert-#{bootstrap_alert(key)} alert-dismissable"}
       = value
       %button.close(type="button" data-dismiss="alert" aria-hidden="true")
         &times;
