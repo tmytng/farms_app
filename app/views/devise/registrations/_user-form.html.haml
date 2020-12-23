@@ -4,18 +4,18 @@
 = form_for(resource, options) do |f|
   - if !defined?(password_only) || !password_only
     .form-group
-      = f.label :name, "ユーザー名", class: "label-text"
+      = f.label :name, "メンバー名", class: "label-text"
       %span.require 必須
       = f.text_field :name, class: "form-control form-control-sm", required: "#{'required'}"
       %p.invalid-feedback
-        ユーザー名を入力してください
+        メンバー名を入力してください
     .form-group.custom-file
-      = f.label :avatar, "ユーザー画像"
+      = f.label :avatar, "メンバー画像"
       %span.require 必須
       %br
       = f.file_field :avatar, class: "attachment-font", required: "#{'required'}"
       %p.invalid-feedback
-        ユーザー画像をアップロードしてください
+        メンバー画像をアップロードしてください
     .form-group
       = f.label :email, "Eメール", class: "label-text"
       %span.require 必須

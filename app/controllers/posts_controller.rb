@@ -57,9 +57,13 @@ class PostsController < ApplicationController
   def show; end
 
   def destroy
-    if @post.destroy!
+    if @post.destroy
       flash[:success] = '[CID:#{@post.id}]の削除が完了しました'
       redirect_to project_posts_path
+    else
+      flash[:danger] = '[CID:#{@post.id}]の削除はできません'
+      redirect_to project_post_path
+    end
   end
 
   def import
@@ -88,7 +92,5 @@ class PostsController < ApplicationController
 
   def set_logs
     @logs = @post.audits.all
-  end
-
   end
 end
