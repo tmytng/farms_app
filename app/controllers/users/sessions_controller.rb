@@ -22,8 +22,7 @@ module Users
     def new_guest
       user = User.guest
       sign_in user
-      flash[:success] = 'ゲストユーザーとしてログインしました。'
-      redirect_to root_path
+      redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
     end
     # protected
 
