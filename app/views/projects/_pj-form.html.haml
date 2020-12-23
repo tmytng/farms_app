@@ -17,26 +17,24 @@
     = f.file_field :prj_image, class: "attachment-font"
   .checkbox.check-control
     = f.label :member, "プロジェクトメンバー"
-    %span.require 必須
-    %br
     = f.collection_check_boxes :user_ids, User.all, :id, :name, include_hidden: false
     %p.invalid-feedback
       プロジェクトメンバーを選択してください
     = f.hidden_field :creator, value: current_user.id
-    .footer-menus.mt-4.mb-3
-      .form-group.footer-menus__btns
-        = link_to "戻る", :back, class: "backbtn btn btn-secondary mr-4"
-      - if request.path_info == new_project_path
-        .form-group.footer-menus__btns
-          = f.submit "登録する", class: "btn btn-primary"
-      - else
-        .form-group.footer-menus__btns
-          = f.submit "更新する", method: :patch, class: "btn btn-primary"
-- if request.path_info == new_project_path
-- else
-  .footer-menus
+  .footer-menus.mt-4.mb-3
     .form-group.footer-menus__btns
-      = button_to '削除する', project_path, method: :delete, data: { confirm: "プロジェクト:#{project.name}を削除します。\nよろしいですか？"}, class: "btn btn-danger"
+      = link_to "戻る", :back, class: "backbtn btn btn-secondary mr-4"
+    - if request.path_info == new_project_path
+      .form-group.footer-menus__btns
+        = f.submit "登録する", class: "btn btn-primary"
+    - else
+      .form-group.footer-menus__btns
+        = f.submit "更新する", method: :patch, class: "btn btn-primary"
+  -# - if request.path_info == new_project_path
+  -# - else
+  -#   .footer-menus
+  -#     .form-group.footer-menus__btns
+  -#       = link_to '削除する', project_path, method: :delete, data: { confirm: "プロジェクト:#{project.name}を削除します。\nよろしいですか？"}, class: "btn btn-danger"
 
 
 
