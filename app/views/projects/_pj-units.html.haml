@@ -21,8 +21,12 @@
         %li.list-group-item
           = link_to "このプロジェクトを選択する", project_posts_path(project), class:"btn btn-primary"
           - if current_user.has_role? :admin
-            = link_to "このプロジェクトを編集する", edit_project_path(project), class:"btn btn-secondary"
-            = link_to 'このプロジェクトを削除する', project_path(project), method: :delete, data: { confirm: "プロジェクト:#{project.name}を削除します。\nよろしいですか？"}, class: "btn btn-danger"
+            = link_to edit_project_path(project) do
+              .btn.btn-secondary
+                %i.fas.fa-edit
+            = link_to project_path(project), method: :delete, data: { confirm: "プロジェクト:#{project.name}を削除します。\nよろしいですか？"} do
+              .btn.btn-danger
+                %i.far.fa-trash-alt
         %li.list-group-item.border-0.pb-0.text-muted
           PID: #{project.id.to_s}
         %li.list-group-item.border-0.py-0.text-muted
