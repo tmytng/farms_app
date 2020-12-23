@@ -122,8 +122,6 @@ ActiveRecord::Schema.define(version: 2020_12_23_135749) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_stockers_on_post_id"
-    t.index ["user_id"], name: "index_stockers_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

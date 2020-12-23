@@ -3,8 +3,6 @@ class CreateStockers < ActiveRecord::Migration[6.0]
     create_table :stockers do |t|
       t.integer :user_id
       t.integer :post_id
-      t.index :user_id
-      t.index :post_id
       t.timestamps
     end
   end
