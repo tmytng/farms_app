@@ -33,9 +33,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.attachments = params[:post][:attachments]
     if @post.save
-      flash[:notice] = "#{@post.company_name}の新規登録が完了しました"
+      flash[:success] = '#{@post.company_name}の新規登録が完了しました'
       redirect_to project_posts_path(@project)
     else
+      flash[:warning] = '入力内容を確認してください'
       render :new
     end
   end
@@ -45,8 +46,10 @@ class PostsController < ApplicationController
   def update
     @post.attachments = params[:post][:attachments]
     if @post.update(post_params)
-      redirect_to project_post_path, notice: "#{@post.company_name}の登録情報を更新しました"
+      flash[:success] = '#{@post.company_name}の登録情報を更新しました'
+      redirect_to project_post_path
     else
+      flash[:warning] = '入力内容を確認してください'
       render :edit
     end
   end
@@ -54,12 +57,15 @@ class PostsController < ApplicationController
   def show; end
 
   def destroy
-    redirect_to project_posts_path, notice: "[INFO ID:#{@post.id}]の削除が完了しました" if @post.destroy!
+    if @post.destroy!
+      flash[:success] = '[CID:#{@post.id}]の削除が完了しました'
+      redirect_to project_posts_path
   end
 
   def import
     current_user.posts.import(params[:file])
-    redirect_to project_posts_path, notice: '投稿履歴を追加しました'
+    flash[:success] = '投稿履歴を追加しました'
+    redirect_to project_posts_path
   end
 
   private
@@ -82,5 +88,7 @@ class PostsController < ApplicationController
 
   def set_logs
     @logs = @post.audits.all
+  end
+
   end
 end
