@@ -1,4 +1,5 @@
 module DeviseHelper
+  # test
   def bootstrap_alert(key)
     case key
     when 'warning'
