@@ -8,6 +8,9 @@
     .col-auto.mb-3
       メンバーの登録情報を変更します。
   .row.justify-content-center
+    .col-auto.mb-3
+      = render partial: 'layouts/error_messages', locals: { model: @user}
+  .row.justify-content-center
     .col-auto
       - form_url = (request.path_info.to_s == edit_other_user_registration_path(resource))? other_user_registration_path(resource): user_registration_path
       = render 'user-form', resource: resource, resource_name: resource_name, form_url: form_url

@@ -8,5 +8,8 @@
     .col-auto.mb-3
       プロジェクトの新規登録を行います。
   .row.justify-content-center
+    .col-auto.mb-3
+      = render partial: 'layouts/error_messages', locals: { model: @project}
+  .row.justify-content-center
     .col-auto.bg-light.pj-form-width
       = render partial: 'pj-form', locals: { project: @project }
