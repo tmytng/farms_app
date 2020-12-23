@@ -21,7 +21,7 @@
               %h2.card-title
                 = @user.name
               .card-text
-                = @user.profile
+                = simple_format @user.profile
             %ul.list-group.list-group-flush
               %li.list-group-item.border-0.py-0
                 メールアドレス：#{@user.email}
