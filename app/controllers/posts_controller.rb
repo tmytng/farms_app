@@ -36,7 +36,6 @@ class PostsController < ApplicationController
       flash[:success] = "#{@post.company_name}の新規登録が完了しました"
       redirect_to project_posts_path(@project)
     else
-      flash[:warning] = '入力内容を確認してください'
       render :new
     end
   end
@@ -49,7 +48,6 @@ class PostsController < ApplicationController
       flash[:success] = "#{@post.company_name}の登録情報を更新しました"
       redirect_to project_post_path
     else
-      flash[:warning] = '入力内容を確認してください'
       render :edit
     end
   end
@@ -68,8 +66,7 @@ class PostsController < ApplicationController
 
   def import
     current_user.posts.import(params[:file])
-    flash[:success] = '投稿履歴を追加しました'
-    redirect_to project_posts_path
+    redirect_to project_posts_path, notice: '投稿履歴を追加しました'
   end
 
   private

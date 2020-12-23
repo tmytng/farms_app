@@ -19,7 +19,6 @@ class ProjectsController < ApplicationController
       flash[:success] = '新規プロジェクトを作成しました'
       redirect_to projects_path
     else
-      flash[:warning] = '入力内容を確認してください'
       render :new
     end
   end
@@ -27,9 +26,8 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       flash[:success] = 'プロジェクト情報を更新しました'
-      redirect_to projects_path
+      redirect_to project_posts_path(@project)
     else
-      flash[:warning] = '入力内容を確認してください'
       render :edit
     end
   end
@@ -38,12 +36,11 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy
-      flash[:success] = 'プロジェクトを削除しました'
-      redirect_to projects_path
-    else
-      flash[:danger] = 'プロジェクトの削除に失敗しました'
+      flash[:success] = '削除が完了しました'
       redirect_to root_path
-
+    else
+      flash[:danger] = '削除に失敗しました'
+      render :edit
     end
   end
 
