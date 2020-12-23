@@ -16,7 +16,7 @@
                   = link_to user_path(member) do
                     = image_tag member.avatar
         .card-text
-          = project.profile
+          = simple_format project.profile
       %ul.list-group.list-group-flush
         %li.list-group-item
           = link_to "このプロジェクトを選択する", project_posts_path(project), class:"btn btn-primary"

@@ -5,7 +5,9 @@
     %table.table.table-striped.table-hover
       %thead
         %tr
-          %th 閲覧
+          %th
+          %th
+            %i.far.fa-eye.fa-fw
           %th CID
           %th 会社名
           %th 担当者
@@ -16,6 +18,13 @@
       %tbody
       - @posts.each do |post|
         %tr.table-row
+          %td
+            - if current_user.already_stocked?(post)
+              = link_to post_stockers_path(post), method: :delete do
+                %i.fas.fa-star
+            - else
+              = link_to post_stockers_path(post), method: :post do
+                %i.far.fa-star
           %td
             = link_to project_post_path(@project, post) do
               %i.far.fa-list-alt

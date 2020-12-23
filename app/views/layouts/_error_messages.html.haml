@@ -1,6 +1,11 @@
 - if model.errors.any?
-  .error-alert
-    - unless model.valid?
-      %ul
-        - model.errors.full_messages.each do |message|
-          %li= message
+  .alert.alert-danger{role: "alert"}
+    %h4.alert-heading
+      = pluralize(model.errors.count, "error")
+      %button.close(type="button" data-dismiss="alert" aria-hidden="true")
+        &times;
+    %hr
+    %p.mb-0
+      - model.errors.full_messages.each do |message|
+        %li= message
+

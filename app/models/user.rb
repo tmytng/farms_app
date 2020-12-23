@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :nullify
   has_many :project_users, dependent: :destroy
   has_many :projects, through: :project_users
+  has_many :stockers, dependent: :destroy
   has_one_attached :avatar
   after_create :assign_admin_role
   after_create :assign_default_role
@@ -41,5 +42,9 @@ class User < ApplicationRecord
       user.admin = true
       user.add_role(:admin)
     end
+  end
+
+  def already_stocked?(post)
+    stockers.exists?(post_id: post.id)
   end
 end

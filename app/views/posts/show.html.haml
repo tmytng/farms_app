@@ -4,7 +4,12 @@
     .row
       .col-sm-12.px-0
         %h3.p-2
-          %i.far.fa-list-alt.fa-fw
+          - if current_user.already_stocked?(@post)
+            = link_to post_stockers_path(@post), method: :delete do
+              %i.fas.fa-star.fa-fw
+          - else
+            = link_to post_stockers_path(@post), method: :post do
+              %i.far.fa-star.fa-fw
           CID:#{@post.id} ログ詳細
     .row.mb-2
       .col-sm-12.col-lg-3.px-3.company-info
