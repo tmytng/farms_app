@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.attachments = params[:post][:attachments]
     if @post.save
-      flash[:success] = "#{@post.company_name}の新規登録が完了しました"
+      flash[:notice] = "#{@post.company_name}の新規登録が完了しました"
       redirect_to project_posts_path(@project)
     else
       render :new
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def update
     @post.attachments = params[:post][:attachments]
     if @post.update(post_params)
-      flash[:success] = "#{@post.company_name}の登録情報を更新しました"
+      flash[:notice] = "#{@post.company_name}の登録情報を更新しました"
       redirect_to project_post_path
     else
       render :edit
@@ -56,10 +56,10 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      flash[:success] = "[CID:#{@post.id}]の削除が完了しました"
+      flash[:notice] = "[CID:#{@post.id}]の削除が完了しました"
       redirect_to project_posts_path
     else
-      flash[:danger] = "[CID:#{@post.id}]の削除はできません"
+      flash[:error] = "[CID:#{@post.id}]の削除はできません"
       redirect_to project_post_path
     end
   end

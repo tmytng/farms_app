@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      flash[:success] = '新規プロジェクトを作成しました'
+      flash[:notice] = '新規プロジェクトを作成しました'
       redirect_to projects_path
     else
       render :new
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      flash[:success] = 'プロジェクト情報を更新しました'
+      flash[:notice] = 'プロジェクト情報を更新しました'
       redirect_to project_posts_path(@project)
     else
       render :edit
@@ -36,10 +36,10 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy
-      flash[:success] = '削除が完了しました'
+      flash[:notice] = '削除が完了しました'
       redirect_to root_path
     else
-      flash[:danger] = '削除に失敗しました'
+      flash[:error] = '削除に失敗しました'
       render :edit
     end
   end
