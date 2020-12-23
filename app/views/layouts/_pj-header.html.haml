@@ -20,4 +20,6 @@
         .desc-box
           = @project.profile
     .col-md-2.pj-sidebtn
-      = link_to "ダッシュボードへ", project_path(@project), class: 'btn btn-primary btn-sm'
+      - if request.path_info == project_path(@project)
+      - else
+        = link_to "ダッシュボードへ", project_path(@project), class: 'btn btn-primary btn-sm'
