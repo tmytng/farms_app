@@ -19,12 +19,11 @@
             メンバー名を入力してください
         .form-group.custom-file
           = f.label :avatar, "メンバー画像"
-          %span.require 必須
           %br
           = f.file_field :avatar, class: "attachment-font", required: "#{'required'}"
           %p.invalid-feedback
             メンバー画像をアップロードしてください
-        .form-group
+        .form-group.mt-5
           = f.label :email, "Eメール", class: "label-text"
           %span.require 必須
           = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm", required: "#{'required'}"

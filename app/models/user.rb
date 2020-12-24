@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :projects, through: :project_users
   has_many :stockers, dependent: :destroy
   has_one_attached :avatar
-  before_create :default_avatar
+  after_create :default_avatar
   after_create :assign_admin_role
   after_create :assign_default_role
 
