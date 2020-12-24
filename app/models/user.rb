@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many :projects, through: :project_users
   has_many :stockers, dependent: :destroy
   has_one_attached :avatar
-  before_create :default_avatar
   after_create :assign_admin_role
   after_create :assign_default_role
 
@@ -47,11 +46,5 @@ class User < ApplicationRecord
 
   def already_stocked?(post)
     stockers.exists?(post_id: post.id)
-  end
-
-  def default_avatar
-    if !self.avatar.attached?
-      self.avatar.attach(io: File.open(Rails.root.join('app', 'javascript', 'images', 'default_user_avatar.png')), filename: 'default_user_avatar.png', content_type: 'image/png')
-    end
   end
 end
