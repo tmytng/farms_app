@@ -119,6 +119,7 @@ body {
 
 .pj-sidebtn {
     text-align: center;
+    padding: 0;
 }
 
 // user-show
@@ -134,20 +135,24 @@ body {
 }
 
 .msg-board {
-    background-color: aquamarine;
-    height: calc(100vh - 300px);
-}
-
-.action-board {
-    background-color: aquamarine;
-    height: calc((100vh - 300px) / 1.5);
+    height: calc(100vh - 292px);
     width: 100%;
+    font-size: 0.8rem;
+    overflow: scroll;
+    & dt {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        background-color: #fcfced;
+    }
+    & .msg-list__datetime {
+        color: #555555;
+    }
 }
 
 .msg-form {
-    background-color: aquamarine;
-    height: calc((100vh - 300px) / 3);
+    height: calc((100vh - 292px) / 1.5);
     width: 100%;
+    font-size: 0.9rem;
 }
 
 // post-index
@@ -298,6 +303,8 @@ body {
 
 .contact-field {
     overflow: scroll;
+    font-size: 0.9rem;
+    font-weight: 350;
 }
 
 // 未整理

@@ -1,17 +1,26 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
 .container.main
-  .row
+  .row.mx-2
     .col-sm-12.col-md-6
-      .bg-info.msg-board
-        %p test
-    .col-sm-12.col-md-6
-      .row
-        .bg-danger.action-board
-          %p test
-      .row
-        .bg-warning.msg-form
-          %p test
+      %h3.msg-board.py-2
+        - if @messages
+          - @messages.each do |m|
+            %dl.msg-list
+              %dt.msg-list__sub
+                = m.title
+              %dd.msg-list__datetime
+                = "by #{m.user.name} (#{l m.created_at, format: :short})"
+              %dd.msg-list__content
+                = m.content
+              %dd.msg-list__content.py-2.border-bottom
+                - if current_user.has_role? :admin or current_user.id == m.user.id
+                  = link_to "編集", edit_project_message_path(@project, m)
+                  = link_to "削除", project_message_path(@project, m), method: :delete
+    - if current_user.has_role? :admin or @project.user_ids.include? current_user.id
+      .col-sm-12.col-md-6
+        .msg-form.px-3
+          = render partial: 'msg-board-form', locals: { message: @message, project: @project }
 
 
   -# .row.mb-4
@@ -23,41 +32,3 @@
   -# .row
   -#   .col-md-12.footer-menus
   -#     = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary "
-
--# .pj-contents
--#   = render "layouts/global-navigation"
--#   = render "layouts/pj-header"
--#   .pj-main
--#     .mission-field
--#       .mission-items
--#         .mission-items__msg
--#           .msg-box
--#             %h4 コメント一覧
--#             - if @messages
--#               - @messages.each do |m|
--#                 %ul.msg-list
--#                   %li.meg-lists
--#                     = l m.created_at
--#                   %li.meg-lists
--#                     = m.user.name
--#                   %li.meg-lists
--#                     = m.content
--#           - if current_user
--#             = form_with model: [@project, @message], local: true do |f|
--#               .Form__contents
--#                 = f.text_field :content, placeholder: 'type a message'
--#                 = f.submit 'Send', class: 'Form__submit'
--#           - else
--#             投稿はログインユーザーのみです。
--#         .mission-items__item
--#           %h4 稼働実績
--#           = column_chart User.pluck(:name)
--#         .mission-items__item
--#           %h4 アクション履歴
--#           %br
--#           17:10 〇〇さんが問い合わせ番号△△をチェックしました。
--#           %br
--#           16:59 〇〇さんが問い合わせ番号△△を更新しました。
--#           %br
--#           16:30 〇〇さんが問い合わせ番号△△を登録しました。
--#           %br

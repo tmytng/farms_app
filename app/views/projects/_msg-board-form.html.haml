@@ -1,0 +1,14 @@
+= form_with(model: [project, message], local: true) do |f|
+  .row
+    .col-md-12
+      .form-group
+        = f.label :title, "件名", class: "col-form-label"
+        = f.text_field :title, class: "form-control form-control-sm"
+  .row
+    .col-md-12
+      .form-group
+        = f.rich_text_area :content, class: "form-control form-text-area message-text-area"
+  .row.mb-2
+    .col-md-12
+      .form-group.text-center
+        = f.submit '投稿する', class: "btn btn-primary"

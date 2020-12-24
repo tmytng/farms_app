@@ -1,0 +1,7 @@
+= render "layouts/global-navigation"
+= render "layouts/pj-header"
+.container.main
+  .row.mx-2.justify-content-center
+    .col-sm-12.col-md-6
+      .msg-form.px-3
+        = render partial: 'projects/msg-board-form', locals: { message: @message, project: @project }

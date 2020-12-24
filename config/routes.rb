@@ -27,9 +27,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :projects do
-  #   resources :message
-  # end
+  resources :projects do
+    resources :messages
+  end
 
   resources :posts do
     resource :stockers, only: [:create, :destroy]
