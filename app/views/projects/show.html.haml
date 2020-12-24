@@ -2,17 +2,27 @@
 = render "layouts/pj-header"
 .container.main
   .row
-    .col-md-12
-      %h1 ダッシュボード
-  .row.mb-4
-    .col-md-12
-      %p 本プロジェクトの顧客情報をCSV形式で出力できます（管理ユーザー権限）。
-      %p
-      - if current_user.has_role? :admin
-        = link_to "CSVエクスポート", project_posts_path(@project, format: :csv), class: 'btn btn-danger btn-sm'
-  .row
-    .col-md-12.footer-menus
-      = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary "
+    .col-sm-12.col-md-6
+      .bg-info.msg-board
+        %p test
+    .col-sm-12.col-md-6
+      .row
+        .bg-danger.action-board
+          %p test
+      .row
+        .bg-info.msg-form
+          %p test
+
+
+  -# .row.mb-4
+  -#   .col-md-12
+  -#     %p 本プロジェクトの顧客情報をCSV形式で出力できます（管理ユーザー権限）。
+  -#     %p
+  -#     - if current_user.has_role? :admin
+  -#       = link_to "CSVエクスポート", project_posts_path(@project, format: :csv), class: 'btn btn-danger btn-sm'
+  -# .row
+  -#   .col-md-12.footer-menus
+  -#     = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary "
 
 -# .pj-contents
 -#   = render "layouts/global-navigation"

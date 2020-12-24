@@ -133,6 +133,23 @@ body {
     }
 }
 
+.msg-board {
+    background-color: aquamarine;
+    height: calc(100vh - 300px);
+}
+
+.action-board {
+    background-color: aquamarine;
+    height: calc((100vh - 300px) / 1.5);
+    width: 100%;
+}
+
+.msg-form {
+    background-color: aquamarine;
+    height: calc((100vh - 300px) / 3);
+    width: 100%;
+}
+
 // post-index
 .postbtn {
     width: 100px;
