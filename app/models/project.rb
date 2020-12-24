@@ -7,7 +7,6 @@ class Project < ApplicationRecord
   has_many :users, through: :project_users
   has_associated_audits
   has_one_attached :prj_image
-  before_create :default_pjr_image
 
   validates :name, presence: true, uniqueness: { case_sensitive: true }, length: { maximum: 30 }
   validates :profile, presence: true, length: { maximum: 200 }
@@ -24,12 +23,6 @@ class Project < ApplicationRecord
       Project.all
     else
       Project.where('profile LIKE(?)', "%#{search}%")
-    end
-  end
-
-  def default_pjr_image
-    if !self.prj_image.attached?
-      self.prj_image.attach(io: File.open(Rails.root.join('app', 'javascript', 'images', 'default_prj_image.png')), filename: 'default_prj_image.png', content_type: 'image/png')
     end
   end
 end
