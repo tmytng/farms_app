@@ -42,7 +42,8 @@ body {
 }
 
 #navBarSearchForm {
-    width: 430px !important;
+    width: 400px !important;
+    margin-left: 8rem;
 }
 
 .main {
@@ -140,12 +141,16 @@ body {
     font-size: 0.8rem;
     overflow: scroll;
     & dt {
-        font-size: 1.1rem;
-        margin-bottom: 0.4rem;
-        background-color: #fcfced;
+        font-size: 1.2rem;
+        padding: 0.2rem;
+        background-color: #6E9999;
+        color: #fff;
+        font-weight: 500;
     }
     & .msg-list__datetime {
+        padding: 0.4rem 0.2rem;
         color: #555555;
+        background-color: #EFF4F4;
     }
 }
 

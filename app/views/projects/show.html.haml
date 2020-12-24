@@ -1,9 +1,9 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.container.main
+.container-fluid.main
   .row.mx-2
-    .col-sm-12.col-md-6
-      %h3.msg-board.py-2
+    .col-sm-12.col-md-8
+      %h3.msg-board.py-2.pl-5
         - if @messages
           - @messages.each do |m|
             %dl.msg-list
@@ -18,8 +18,8 @@
                   = link_to "編集", edit_project_message_path(@project, m)
                   = link_to "削除", project_message_path(@project, m), method: :delete
     - if current_user.has_role? :admin or @project.user_ids.include? current_user.id
-      .col-sm-12.col-md-6
-        .msg-form.px-3
+      .col-sm-12.col-md-4
+        .msg-form.pr-4
           = render partial: 'msg-board-form', locals: { message: @message, project: @project }
 
 
