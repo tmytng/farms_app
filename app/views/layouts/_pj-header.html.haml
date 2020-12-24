@@ -13,7 +13,7 @@
               - if member.avatar.attached?
                 = link_to user_path(member) do
                   = image_tag member.avatar
-  .row.mb-4.pb-2
+  .row.mb-2.pb-2
     .col-md-2
     .col-md-8
       .pj-desc
@@ -21,5 +21,6 @@
           = @project.profile
     .col-md-2.pj-sidebtn
       - if request.path_info == project_path(@project)
+        = link_to "コンタクトログへ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
       - else
         = link_to "ダッシュボードへ", project_path(@project), class: 'btn btn-primary btn-sm'
