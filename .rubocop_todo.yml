@@ -31,7 +31,7 @@ Metrics/PerceivedComplexity:
 # Include: app/controllers/**/*.rb
 Rails/LexicallyScopedActionFilter:
   Exclude:
-    - 'app/controllers/users/registrations_controller.rb'
+    - "app/controllers/users/registrations_controller.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -39,27 +39,27 @@ Rails/LexicallyScopedActionFilter:
 # Include: app/models/**/*.rb
 Rails/Validation:
   Exclude:
-    - 'app/models/stocker.rb'
+    - "app/models/stocker.rb"
 
 # Offense count: 2
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
   Exclude:
-    - 'app/models/project.rb'
-    - 'app/models/user.rb'
+    - "app/models/project.rb"
+    - "app/models/user.rb"
 
 # Offense count: 1
 # Configuration parameters: MinBranchesCount.
 Style/HashLikeCase:
   Exclude:
-    - 'app/helpers/application_helper.rb'
+    - "app/helpers/application_helper.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:
   Exclude:
-    - 'app/models/project.rb'
-    - 'app/models/user.rb'
+    - "app/models/project.rb"
+    - "app/models/user.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -67,11 +67,12 @@ Style/IfUnlessModifier:
 # SupportedStyles: both, prefix, postfix
 Style/NegatedIf:
   Exclude:
-    - 'app/models/project.rb'
+    - "app/models/project.rb"
+    - "app/models/user.rb"
 
 # Offense count: 4
 # Cop supports --auto-correct.
 Style/RedundantSelf:
   Exclude:
-    - 'app/models/project.rb'
-    - 'app/models/user.rb'
+    - "app/models/project.rb"
+    - "app/models/user.rb"

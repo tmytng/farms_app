@@ -32,9 +32,4 @@ class Project < ApplicationRecord
       self.prj_image.attach(io: File.open('app/javascript/images/default_pj.png'), filename: 'default_pj.png', content_type: 'image/png')
     end
   end
-  # def default_prj_image
-  #   if !self.prj_image.attached?
-  #     self.prj_image.attach(io: File.open(Rails.root.join('app', 'javascript', 'images', 'default_user.png')), filename: 'default_prj_image.png', content_type: 'image/png')
-  #   end
-  # end
 end
