@@ -24,6 +24,6 @@
           = @project.profile
     .col-md-2.pj-sidebtn
       - if request.path_info == project_path(@project)
-        = link_to "コンタクトログへ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
+        = link_to "コンタクトログ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
       - else
-        = link_to "メッセージボードへ", project_path(@project), class: 'btn btn-primary btn-sm'
+        = link_to "メッセージボード", project_path(@project), class: 'btn btn-primary btn-sm mb-2'

@@ -162,9 +162,9 @@ body {
 
 // post-index
 .postbtn {
-    width: 100px;
-    height: 100px;
-    background: orange;
+    width: 108px;
+    height: 108px;
+    background: orangered;
     text-align: center;
     border-radius: 50%;
     bottom: 32px;
@@ -184,7 +184,41 @@ body {
     background: gray;
     text-align: center;
     border-radius: 50%;
-    bottom: 148px;
+    bottom: 152px;
+    right: 37px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .my-fff {
+        color: snow;
+    }
+}
+
+.calendarbtn {
+    width: 90px;
+    height: 90px;
+    background: limegreen;
+    text-align: center;
+    border-radius: 50%;
+    bottom: 252px;
+    right: 37px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .my-fff {
+        color: snow;
+    }
+}
+
+.chartbtn {
+    width: 90px;
+    height: 90px;
+    background: darkturquoise;
+    text-align: center;
+    border-radius: 50%;
+    bottom: 356px;
     right: 37px;
     position: fixed;
     display: flex;
@@ -196,7 +230,9 @@ body {
 }
 
 .postbtn:hover,
-.searchbtn:hover {
+.searchbtn:hover,
+.calendarbtn:hover,
+.chartbtn:hover {
     opacity: 0.7;
     transition: 200ms;
 }
