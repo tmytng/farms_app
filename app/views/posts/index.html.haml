@@ -36,10 +36,10 @@
           %td #{l post.updated_at, format: :short}
           %td #{post.user.name}
 
-  = link_to search_project_posts_path(@project) do
+  = link_to chart_project_posts_path(@project) do
     .chartbtn
       %i.fas.fa-chart-bar.fa-3x.my-fff
-  = link_to search_project_posts_path(@project) do
+  = link_to calendar_project_posts_path(@project) do
     .calendarbtn
       %i.far.fa-calendar-alt.fa-3x.my-fff
   = link_to search_project_posts_path(@project) do

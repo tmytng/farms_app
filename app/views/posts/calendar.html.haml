@@ -1,0 +1,21 @@
+= render "layouts/global-navigation"
+= render "layouts/pj-header"
+.container.main
+  .row.mb-2
+    .col-sm-12.col-md-12
+      %h4
+        %i.far.fa-calendar-alt.fa-fw
+        カレンダー
+  .row.mb-4
+    .col-sm-12.col-md-8
+      .calendar-board
+        カレンダービジュアル
+    .col-sm-12.col-md-4
+      .appoint-box
+        直近の案件リスト
+  .row
+    .col-sm-12.col-md-12.px-0
+      .pj-footer
+        .col-md-12.footer-menus.text-center
+          = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary"
+
