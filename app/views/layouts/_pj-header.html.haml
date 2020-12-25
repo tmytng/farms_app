@@ -4,8 +4,10 @@
       .pj-sub
         - if request.path_info == project_path(@project)
           = "メッセージボード：#{@project.name}"
+        - elsif request.path_info == search_project_posts_path(@project)
+          = "詳細検索：#{@project.name}"
         - elsif request.path_info == calendar_project_posts_path(@project)
-          = "カレンダー：#{@project.name}"
+          = "アポイントカレンダー：#{@project.name}"
         - else
           = @project.name
   .row

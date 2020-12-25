@@ -1,11 +1,6 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
 .container.main
-  .row
-    .col-sm-12.col-md-8
-      %h4 アポイントカレンダー
-    .col-sm-12.col-md-4
-      %h4 購入予定時期スケジュール
   .row.mb-4
     .col-sm-12.col-md-8
       .calendar-board.h-100
@@ -26,10 +21,9 @@
             %dd.m-0
               = link_to "会社名：#{plist.company_name}", project_post_path(@project, plist)
             %dd.m-0
-              = "商品名：#{plist.product.name}"
+              = "購入予定商品：#{plist.product.name}"
             %dd.m-0
               = "案件担当者：#{plist.user.name}"
-
   .row
     .col-sm-12.col-md-12.px-0
       .pj-footer
