@@ -25,6 +25,7 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'ransack'
 gem 'rolify'
 gem 'sass-rails', '~> 5'
+gem 'simple_calendar', '~> 2.0'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
