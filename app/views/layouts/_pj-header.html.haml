@@ -1,11 +1,18 @@
-.jumbotron.mb-2.p-0
+.jumbotron.mb-0.py-2
   .row
     .col-md-12
       .pj-sub
-        = @project.name
+        - if request.path_info == project_path(@project)
+          = "メッセージボード：#{@project.name}"
+        - elsif request.path_info == search_project_posts_path(@project)
+          = "詳細検索：#{@project.name}"
+        - elsif request.path_info == calendar_project_posts_path(@project)
+          = "アポイントカレンダー：#{@project.name}"
+        - else
+          = @project.name
   .row
     .col-md-12
-      .pj-member.m-1
+      .pj-member
         %ul.member-list
           members:
           - @project.users.each do |member|
@@ -13,7 +20,7 @@
               - if member.avatar.attached?
                 = link_to user_path(member) do
                   = image_tag member.avatar
-  .row.mb-4.pb-2
+  .row.pb-2
     .col-md-2
     .col-md-8
       .pj-desc
@@ -21,5 +28,6 @@
           = @project.profile
     .col-md-2.pj-sidebtn
       - if request.path_info == project_path(@project)
+        = link_to "コンタクトログ", project_posts_path(@project), class: 'btn btn-primary btn-sm'
       - else
-        = link_to "ダッシュボードへ", project_path(@project), class: 'btn btn-primary btn-sm'
+        = link_to "メッセージボード", project_path(@project), class: 'btn btn-primary btn-sm mb-2'
