@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
     @message = @project.messages.new(message_params)
     if @project.save
       flash[:notice] = 'メッセージボードに投稿しました'
-      redirect_to project_path(@project)
+      # redirect_to project_path(@project)
+      redirect_back(fallback_location: root_path)
     else
-      flash[:error] = '投稿できません'
-      render :create
+      flash[:error] = '投稿できませんでした。投稿内容を確認してください。'
+      redirect_back(fallback_location: root_path)
+
     end
   end
 
@@ -22,7 +24,8 @@ class MessagesController < ApplicationController
       flash[:notice] = 'メッセージボードに投稿しました'
       redirect_to project_path(@project)
     else
-      flash[:error] = '投稿できません'
+      flash[:error] = '投稿できませんでした。投稿内容を確認してください。'
+      @project = Project.find(params[:project_id])
       render :edit
     end
   end
