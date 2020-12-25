@@ -1,18 +1,35 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
 .container.main
-  .row.mb-2
-    .col-sm-12.col-md-12
-      %h4
-        %i.far.fa-calendar-alt.fa-fw
-        カレンダー
+  .row
+    .col-sm-12.col-md-8
+      %h4 アポイントカレンダー
+    .col-sm-12.col-md-4
+      %h4 購入予定時期スケジュール
   .row.mb-4
     .col-sm-12.col-md-8
-      .calendar-board
-        カレンダービジュアル
+      .calendar-board.h-100
+        = month_calendar(events: @posts) do |date, posts|
+          = date.day
+          %br
+          %ul
+          - posts.each do |post|
+            %li.list-unstyled
+              = link_to "#{post.company_name}", project_post_path(@project, post)
     .col-sm-12.col-md-4
-      .appoint-box
-        直近の案件リスト
+      .purchase-box.mt-3
+        直近一ヶ月の購入見込みユーザーの一覧です。
+        %dl
+          - @post_lists.each do |plist|
+            %dt.mt-2
+              = "#{l plist.purchase_date, format: :day}"
+            %dd.m-0
+              = link_to "会社名：#{plist.company_name}", project_post_path(@project, plist)
+            %dd.m-0
+              = "商品名：#{plist.product.name}"
+            %dd.m-0
+              = "案件担当者：#{plist.user.name}"
+
   .row
     .col-sm-12.col-md-12.px-0
       .pj-footer

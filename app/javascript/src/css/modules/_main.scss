@@ -86,7 +86,7 @@
     
     .pj-sub {
         text-align: center;
-        padding: 16px 0;
+        padding: 4px 0 8px 0;
         font-size: 2rem;
         font-weight: bold;
     }
@@ -163,18 +163,18 @@
     
     // カレンダー
     .calendar-board {
-        height: calc(100vh - 400px);
-        background-color: #555555;
+        height: calc(100vh - 292px);
+        background-color: #fff;
         width: 100%;
         font-size: 0.8rem;
         overflow: scroll;
     }
     
-    .appoint-box {
-        height: calc(100vh - 400px);
+    .purchase-box {
+        height: auto;
         width: 100%;
         background-color: aliceblue;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
     
     // post-index
@@ -246,12 +246,20 @@
         }
     }
     
-    .postbtn:hover,
+    .postbtn:hover {
+        opacity: 0.7;
+        transition: 200ms;
+        width: 114px;
+        height: 114px;
+    }
+    
     .searchbtn:hover,
     .calendarbtn:hover,
     .chartbtn:hover {
         opacity: 0.7;
         transition: 200ms;
+        width: 96px;
+        height: 96px;
     }
     
     // post-search
