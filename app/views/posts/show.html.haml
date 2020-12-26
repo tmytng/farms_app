@@ -10,7 +10,7 @@
           - else
             = link_to post_stockers_path(@post), method: :post do
               %i.far.fa-star.fa-fw
-          [CID: #{@post.id}] #{@post.company_name}
+          CID:#{@post.id} ログ詳細
     .row.mb-2
       .col-sm-12.col-lg-3.px-3.company-info
         %h3.sub 顧客情報
@@ -53,10 +53,7 @@
             %br
             = f.collection_select(:leadstatus_id, Leadstatus.all, :id, :name,{include_blank: "---"}, class: "form-control form-control-sm", disabled: true )
           .form-group
-            = f.label :start_time, "次回アポイント", class: "label-text"
-            = f.date_field :start_time, class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
-          .form-group
-            = f.label :purchase_date, "購入予定時期", class: "label-text"
+            = f.label :purchase_date, "購入予定時期:", class: "label-text"
             = f.date_field :purchase_date, class: "form-control form-control-sm form-control-plaintext", readonly: "#{'readonly'}"
           .form-group
             = f.label :product_id, "提案商材", class: "label-text"
@@ -103,6 +100,9 @@
       - if @project.user_ids.include? current_user.id
         .form-group
           = link_to "修正する", edit_project_post_path, class: "btn btn-primary"
+      -# 追加機能（予定）
+        -# .form-group
+        -#   = link_to "ストックする", edit_project_post_path, class: "btn btn-primary"
       - if user_signed_in? && current_user.has_role?(:admin)
         .form-group
           = button_to "削除する", project_post_path, method: :delete, data: { confirm: "[CID:#{@post.id}]\n顧客名:#{@post.company_name}様を削除します。\nよろしいですか？"}, class: "btn btn-danger"
