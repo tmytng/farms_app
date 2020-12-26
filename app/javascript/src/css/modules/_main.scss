@@ -377,3 +377,28 @@
     .label-text {
         font-weight: 500;
     }
+    
+    .team-kpi-box {
+        background-color: gainsboro;
+        width: 100%;
+        height: calc((100vh - 292px) / 2);
+    }
+    
+    .memeber-kpi-box {
+        background-color: yellow;
+        width: 100%;
+        height: calc((100vh - 292px) / 2);
+        overflow: scroll;
+    }
+    
+    .team-graph-box {
+        background-color: gainsboro;
+        width: 100%;
+        height: calc((100vh - 292px) / 2);
+    }
+    
+    .member-action-box {
+        background-color: aquamarine;
+        width: 100%;
+        height: calc((100vh - 292px) / 2);
+    }
