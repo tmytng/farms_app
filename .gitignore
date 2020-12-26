@@ -20,6 +20,8 @@
 /public/assets
 .byebug_history
 .DS_Store
+.rubocop.yml
+.rubocop_todo.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
