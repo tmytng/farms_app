@@ -28,8 +28,6 @@ class Project < ApplicationRecord
   end
 
   def default_prj_image
-    if !self.prj_image.attached?
-      self.prj_image.attach(io: File.open('app/javascript/images/default_pj.png'), filename: 'default_pj.png', content_type: 'image/png')
-    end
+    prj_image.attach(io: File.open('app/javascript/images/default_pj.png'), filename: 'default_pj.png', content_type: 'image/png') unless prj_image.attached?
   end
 end
