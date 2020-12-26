@@ -64,11 +64,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def calendar
-    @posts = Post.all
-    @post_lists = Post.where(purchase_date: Time.zone.today.beginning_of_day..Time.zone.now.months_since(1)).order(created_at: :desc)
-  end
-
   def import
     current_user.posts.import(params[:file])
     redirect_to project_posts_path, notice: '投稿履歴を追加しました'
@@ -77,7 +72,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason, :phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :project_id, :start_time, attachments: []).merge(user_id: current_user.id)
+    params.require(:post).permit(:company_name, :company_address, :company_url, :prefecture_id, :contact_person, :contact_reason, :phone_number, :email, :leadstatus_id, :purchase_date, :product_id, :contact_des, :project_id, attachments: []).merge(user_id: current_user.id)
   end
 
   def search_params

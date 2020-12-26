@@ -13,5 +13,3 @@ import "src/css/application";
 // import "src/js/search";
 import '@fortawesome/fontawesome-free/js/all';
 const images = require.context('../images', true)
-require("trix")
-require("@rails/actiontext")

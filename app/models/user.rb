@@ -50,6 +50,8 @@ class User < ApplicationRecord
   end
 
   def default_avatar
-    avatar.attach(io: File.open('app/javascript/images/default_user.png'), filename: 'default_avatar.png', content_type: 'image/png') unless avatar.attached?
+    if !self.avatar.attached?
+      self.avatar.attach(io: File.open('app/javascript/images/default_user.png'), filename: 'default_avatar.png', content_type: 'image/png')
+    end
   end
 end
