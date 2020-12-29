@@ -34,6 +34,7 @@ FARMS（ファームス）は 1 人〜15 人前後の小規模チームを想定
 ・Bootstrap（レスポンシブ・UI）<br>
 ・RSpec（テスト）<br>
 ・Rubocop（静的解析）<br>
+・Action Text（投稿機能）<br>
 
 ## 主な機能
 
