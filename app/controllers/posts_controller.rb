@@ -69,6 +69,10 @@ class PostsController < ApplicationController
     @post_lists = Post.where(purchase_date: Time.zone.today.beginning_of_day..Time.zone.now.months_since(1)).order(created_at: :desc)
   end
 
+  def chart
+    @post = Post.find(30)
+  end
+
   def import
     current_user.posts.import(params[:file])
     redirect_to project_posts_path, notice: '投稿履歴を追加しました'

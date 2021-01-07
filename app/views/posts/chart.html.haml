@@ -1,8 +1,55 @@
 = render "layouts/global-navigation"
 = render "layouts/pj-header"
-.container
+.container.main
   .row.mb-2
-    .col-sm-12.px-0
-      %h3
-        %i.fas.fa-chart-bar.fa-fw
-        稼働状況
+    .col-sm-12.col-md-6
+      .team-kpi-box
+        %h4 Monthly Team KPI
+        %ul
+          %li
+            = "コンタクト全件: #{@project.posts.count}件"
+          %li リード全件全件
+          %li リード率
+          %li アポイント件数
+          %li アポイント獲得率
+    .col-sm-12.col-md-6
+      .memeber-kpi-box
+        %h4 Monthly Members KPI
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %th name
+              %th contact
+              %th Lead
+              %th Lead %
+              %th Appoint
+          %tbody
+          - @project.posts.each do |pjpost|
+            %tr.table-row
+              %td #{pjpost.user.name}
+              %td test
+              %td test
+              %td test
+              %td test
+  .row.mb-4
+    .col-sm-12.col-md-6
+      .team-graph-box
+        %h4 Graphs
+        %ul
+          %li 【円グラフ】チーム当月：リードのステータス内訳
+          %li 【円グラフ】チーム当月：リードの商材内訳
+    .col-sm-12.col-md-6
+      .member-action-box
+        %h4 Action Logs
+        %ul
+          %li 12/28 14:20 〇〇さんがCID:XXを新規登録しました。
+          %li 12/28 14:40 〇〇さんがCID:XXを更新しました。
+          %li 12/28 14:40 〇〇さんがCID:XXをストックしました。
+          %li 12/28 14:40 〇〇さんがCID:XXをチェックしました。
+
+  .row
+    .col-sm-12.col-md-12.px-0
+      .pj-footer
+        .col-md-12.footer-menus.text-center
+          = link_to "コンタクトログへ戻る", project_posts_path(@project), method: :get, class: "btn btn-secondary"
+
